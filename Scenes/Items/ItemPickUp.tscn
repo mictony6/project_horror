@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://ungo6bkoqgtj"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item_pick_up.gd" id="1_1m81o"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1wx1q"]
+radius = 0.25
+
+[node name="ItemPickUp" type="Node3D"]
+script = ExtResource("1_1m81o")
+
+[node name="PickupDetector" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupDetector"]
+shape = SubResource("SphereShape3D_1wx1q")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.70528, 0)
+light_color = Color(0.959636, 0.825742, 0.63035, 1)
+light_energy = 10.0
+spot_range = 2.06905
+spot_angle = 17.5893
+
+[connection signal="body_entered" from="PickupDetector" to="." method="_on_pickup_detector_body_entered"]

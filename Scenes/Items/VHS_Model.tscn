@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6u8enll8iwbl"]
+
+[ext_resource type="PackedScene" uid="uid://bed8000406c4m" path="res://Models/VHS/scene.gltf" id="1_2m4at"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="VHSModel" parent="." instance=ExtResource("1_2m4at")]
+transform = Transform3D(0.480149, -0.0538087, -0.128691, 0, 0.461299, -0.192881, 0.139487, 0.185223, 0.442985, 0.224909, -0.240586, -0.00785526)

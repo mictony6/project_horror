@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://biw12q6503xhq"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
+[ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
+[ext_resource type="Script" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
+[ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
+radius = 0.25
+height = 1.69
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3ffw"]
+radius = 0.25
+height = 1.69
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6imyd"]
+albedo_color = Color(0.408329, 0.408329, 0.408329, 1)
+emission = Color(0.103744, 0.103744, 0.103744, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6nxlb"]
+material = SubResource("StandardMaterial3D_6imyd")
+size = Vector3(0.15, 0.15, 0.5)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_iw56a")
+head = NodePath("Head")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_l0bnd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_k3ffw")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609101, 0)
+script = ExtResource("2_md85o")
+
+[node name="PlayerCamera" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+current = true
+
+[node name="Flashlight" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433683, -0.725755, -0.219223)
+script = ExtResource("3_lf4xw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
+transform = Transform3D(0.986876, -0.0630395, 0.148664, 0.0701427, 0.996609, -0.0430265, -0.145447, 0.0528895, 0.987951, -0.0373753, 0.375055, -0.129719)
+mesh = SubResource("BoxMesh_6nxlb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
+transform = Transform3D(1, -2.37487e-08, 7.45058e-08, 2.79397e-09, 1, 0, -1.49012e-08, 3.72529e-09, 1, -0.0073247, -1.19209e-07, -0.332387)
+visible = false
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 2.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Flashlight/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0073247, 0, -0.332387)
+light_energy = 5.0
+shadow_enabled = true
+spot_range = 26.1792
+spot_attenuation = 2.0
+spot_angle_attenuation = 2.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_1pglf")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_3osqa")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("6_ljmwu")
+
+[node name="Jumping" type="Node" parent="StateMachine"]
+script = ExtResource("7_66hg8")
+
+[node name="Sprinting" type="Node" parent="StateMachine"]
+script = ExtResource("8_44e46")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("9_tv1m5")

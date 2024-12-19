@@ -1,0 +1,8 @@
+Model Information:
+* title:	VHS Tape
+* source:	https://sketchfab.com/3d-models/vhs-tape-8689615c92ab4ed695fef495945b8aae
+* author:	Digital.Dream.Realm (https://sketchfab.com/Digital.Dream.Realm)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
