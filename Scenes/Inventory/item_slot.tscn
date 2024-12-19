@@ -1,10 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2teacee44gnl"]
+[gd_scene load_steps=4 format=3 uid="uid://b2teacee44gnl"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/item_slot.gd" id="1_nqmhj"]
+[ext_resource type="Texture2D" uid="uid://7upkc6uwkiot" path="res://icon.svg" id="1_wsp7r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpw6f"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.396889, 0.396889, 0.396889, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="ItemSlot" type="PanelContainer"]
+offset_right = 128.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hpw6f")
 script = ExtResource("1_nqmhj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+texture = ExtResource("1_wsp7r")

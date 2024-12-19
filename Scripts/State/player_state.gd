@@ -7,7 +7,7 @@ const SPRINTING = "Sprinting";
 const JUMPING = "Jumping";
 const CROUCHING = "Crouching";
 const FALLING = "Falling";
-
+const MENU = "Menu";
 var player: Player;
 
 func _ready() -> void:

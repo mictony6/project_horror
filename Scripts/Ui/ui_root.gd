@@ -3,6 +3,9 @@ extends CanvasLayer
 
 @onready var player: Player = %Player
 @onready var inventory_dialog: InventoryDialog = %InventoryDialog
+func _ready() -> void:
+
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("inventory"):

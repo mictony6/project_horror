@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=15 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
 radius = 0.25
@@ -89,3 +90,6 @@ script = ExtResource("8_44e46")
 
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("9_tv1m5")
+
+[node name="Menu" type="Node" parent="StateMachine"]
+script = ExtResource("10_6f3fu")
