@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c443kxbgrt23s"]
+[gd_scene load_steps=4 format=3 uid="uid://c443kxbgrt23s"]
 
 [ext_resource type="Script" path="res://Scripts/Inventory/inventory_dialog.gd" id="1_fdvss"]
 [ext_resource type="PackedScene" uid="uid://b2teacee44gnl" path="res://Scenes/Inventory/item_slot.tscn" id="2_3wsld"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8m3r"]
+bg_color = Color(0, 0, 0, 0.709804)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0, 0, 0, 0)
 
 [node name="InventoryDialog" type="PanelContainer"]
 anchors_preset = 15
@@ -9,11 +17,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p8m3r")
 script = ExtResource("1_fdvss")
 slot_scene = ExtResource("2_3wsld")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -31,8 +41,11 @@ text = "x"
 
 [node name="InventoryGrid" type="GridContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
 columns = 5
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

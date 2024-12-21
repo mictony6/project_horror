@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=16 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
 [ext_resource type="Script" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
+[ext_resource type="Script" path="res://Scripts/ToolManager/tool_manager.gd" id="4_l1v1m"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
@@ -49,11 +50,10 @@ cull_mask = 1048573
 current = true
 
 [node name="Flashlight" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433683, -0.725755, -0.219223)
 script = ExtResource("3_lf4xw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
-transform = Transform3D(0.986876, -0.0630395, 0.148664, 0.0701427, 0.996609, -0.0430265, -0.145447, 0.0528895, 0.987951, -0.0373753, 0.375055, -0.129719)
+transform = Transform3D(0.987688, 0, -0.156434, 0, 1, 0, 0.156434, 0, 0.987688, -0.477, -0.259, -0.27)
 mesh = SubResource("BoxMesh_6nxlb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
@@ -71,6 +71,10 @@ shadow_enabled = true
 spot_range = 26.1792
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
+
+[node name="ToolManager" type="Node3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
+script = ExtResource("4_l1v1m")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1pglf")

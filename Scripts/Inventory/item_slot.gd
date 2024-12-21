@@ -1,7 +1,16 @@
 extends PanelContainer
 class_name ItemSlot
 
-@onready var texture_rect: TextureRect = %TextureRect
+@onready var button: Button = %Button
 
-func set_item_to_display(item: Item):
-	texture_rect.texture = item.icon;
+var _id: int
+
+
+func set_item_to_display(item: Item, id: int):
+	_id = id
+	button.icon = item.icon;
+	button.button_down.connect(_on_button_down)
+
+func _on_button_down():
+	print("hey")
+	GlobalEventManager.item_used.emit(_id)

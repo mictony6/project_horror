@@ -16,10 +16,14 @@ func open(inventory: Inventory):
 	show()
 	for child in inventory_grid.get_children():
 		child.queue_free()
+
+	var index = 0
 	for item in inventory.get_items():
-		var slot = slot_scene.instantiate()
+		var slot: ItemSlot = slot_scene.instantiate()
 		inventory_grid.add_child(slot)
-		slot.set_item_to_display(item)
+		slot.set_item_to_display(item, index)
+		index += 1
+
 
 	get_tree().paused = true
 

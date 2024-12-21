@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://do3q85f4hq28m"]
+
+[ext_resource type="Texture2D" uid="uid://dht44i72tktmc" path="res://Images/Icons/Items/Knife_Icon-removebg-preview (1).png" id="1_a3bgg"]
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_stqh8"]
+[ext_resource type="PackedScene" uid="uid://fij05bjh7sin" path="res://Scenes/Items/Knife_Model.tscn" id="2_fx6jc"]
+
+[resource]
+script = ExtResource("1_stqh8")
+name = "Knife"
+scene = ExtResource("2_fx6jc")
+icon = ExtResource("1_a3bgg")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)

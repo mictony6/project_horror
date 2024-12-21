@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
 [ext_resource type="Resource" uid="uid://ysxptc4hlepp" path="res://Resources/Items/VHS.tres" id="2_mserk"]
-[ext_resource type="Script" path="res://Scripts/Global/input_manager.gd" id="4_0ihj2"]
 [ext_resource type="PackedScene" uid="uid://bn4rv40xedxm6" path="res://Scenes/HubMap.tscn" id="5_0ge8w"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="6_5hrp8"]
+[ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
 
 [sub_resource type="Gradient" id="Gradient_bcej7"]
@@ -77,23 +77,18 @@ size = Vector3(47, 1, 65)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86929, 0)
 
-[node name="InputManager" type="Node" parent="."]
-script = ExtResource("4_0ihj2")
+[node name="Items" type="Node" parent="."]
 
-[node name="blockout" parent="." instance=ExtResource("5_0ge8w")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
-
-[node name="ItemPickUp" parent="." instance=ExtResource("6_5hrp8")]
+[node name="ItemPickUp" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27592, 2.02238, -3.33164)
 item = ExtResource("2_mserk")
 
-[node name="ItemPickUp2" parent="." instance=ExtResource("6_5hrp8")]
-transform = Transform3D(0.393027, 0, 0.919527, 0, 1, 0, -0.919527, 0, 0.393027, -3.14703, 2.02238, -0.368597)
-item = ExtResource("2_mserk")
+[node name="ItemPickUp2" parent="Items" instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907879, 2.02238, -3.33164)
+item = ExtResource("6_lw2ra")
 
-[node name="ItemPickUp3" parent="." instance=ExtResource("6_5hrp8")]
-transform = Transform3D(0.19622, 0, -0.98056, 0, 1, 0, 0.98056, 0, 0.19622, -0.523832, 2.02238, -3.33164)
-item = ExtResource("2_mserk")
+[node name="HubMapMesh" parent="." instance=ExtResource("5_0ge8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 
 [node name="VHSPlayer" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40791, 2.27238, -3.84247)

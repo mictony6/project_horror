@@ -3,6 +3,7 @@ class_name Inventory
 
 var _content: Array[Item];
 
+
 func add_item(item: Item):
     _content.append(item)
 
