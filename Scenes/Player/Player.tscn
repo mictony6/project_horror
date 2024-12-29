@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=21 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -28,6 +28,85 @@ emission = Color(0.103744, 0.103744, 0.103744, 1)
 material = SubResource("StandardMaterial3D_6imyd")
 size = Vector3(0.15, 0.15, 0.5)
 
+[sub_resource type="Animation" id="Animation_g1b5t"]
+resource_name = "use_item"
+length = 0.333337
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/ToolManager")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/ToolManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_ixu11"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/ToolManager")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_hnek6"]
+resource_name = "FlashLightDown"
+length = 0.400003
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0666667, 1, -0.142315, 0, 0, 0.989821, 0.166667, 1, -0.0826485, 0, 0, 0.996579, 0.366667, 1, -0.707107, 0, 0, 0.707107)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.477, -0.259, -0.27, 0.1, 1, -0.477, -0.259, -0.27, 0.366667, 1, -0.477, -0.593915, -0.000639707)
+
+[sub_resource type="Animation" id="Animation_h0unq"]
+resource_name = "FlashLightUp"
+length = 0.200003
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107, 0.2, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.477, -0.593915, -0.000639707, 0.2, 1, -0.477, -0.259, -0.27)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
+_data = {
+"FlashLightDown": SubResource("Animation_hnek6"),
+"FlashLightUp": SubResource("Animation_h0unq"),
+"RESET": SubResource("Animation_ixu11"),
+"use_item": SubResource("Animation_g1b5t")
+}
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
 collision_layer = 2
 collision_mask = 5
@@ -45,15 +124,12 @@ shape = SubResource("CapsuleShape3D_k3ffw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609101, 0)
 script = ExtResource("2_md85o")
 
-[node name="PlayerCamera" type="Camera3D" parent="Head"]
-cull_mask = 1048573
-current = true
-
-[node name="Flashlight" type="Node3D" parent="Head"]
+[node name="Flashlight" type="Node3D" parent="Head" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("3_lf4xw")
+animation_player = NodePath("../../AnimationPlayer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
-transform = Transform3D(0.987688, 0, -0.156434, 0, 1, 0, 0.156434, 0, 0.987688, -0.477, -0.259, -0.27)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477, -0.259, -0.27)
 mesh = SubResource("BoxMesh_6nxlb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
@@ -72,9 +148,14 @@ spot_range = 26.1792
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
 
-[node name="ToolManager" type="Node3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
+[node name="ToolManager" type="Node3D" parent="Head" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.454326, -0.222685, -0.504557)
 script = ExtResource("4_l1v1m")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="PlayerCamera" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+current = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1pglf")
@@ -97,3 +178,8 @@ script = ExtResource("9_tv1m5")
 
 [node name="Menu" type="Node" parent="StateMachine"]
 script = ExtResource("10_6f3fu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j7fa5")
+}

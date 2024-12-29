@@ -8,7 +8,7 @@ func add_item(item: Item):
     _content.append(item)
 
 func remove_item(item: Item):
-    pass
-
+    _content.erase(item)
+    
 func get_items() -> Array[Item]:
     return _content;
