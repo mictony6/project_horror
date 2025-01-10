@@ -1,12 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://page8jtypua8"]
+[gd_scene load_steps=19 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
 [ext_resource type="Resource" uid="uid://ysxptc4hlepp" path="res://Resources/Items/VHS.tres" id="2_mserk"]
 [ext_resource type="PackedScene" uid="uid://bn4rv40xedxm6" path="res://Scenes/HubMap.tscn" id="5_0ge8w"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="6_5hrp8"]
+[ext_resource type="PackedScene" uid="uid://jhee7el5barj" path="res://Scenes/Sorter/sorter.tscn" id="6_8t7s4"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
+[ext_resource type="PackedScene" uid="uid://8agfkeryohk2" path="res://Scenes/Level1.tscn" id="9_3i71v"]
+[ext_resource type="ArrayOccluder3D" uid="uid://du6kq67q63rqc" path="res://Occluder/MainScene.occ" id="10_alxih"]
+[ext_resource type="PackedScene" uid="uid://dsbnhtgldkneg" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
 
 [sub_resource type="Gradient" id="Gradient_bcej7"]
 offsets = PackedFloat32Array(0.246324, 0.720588, 1)
@@ -31,27 +35,21 @@ sky_material = SubResource("PhysicalSkyMaterial_p850l")
 [sub_resource type="Environment" id="Environment_ywojk"]
 background_mode = 2
 sky = SubResource("Sky_aojxt")
-ambient_light_sky_contribution = 0.0
 tonemap_mode = 2
 tonemap_white = 16.0
 ssil_normal_rejection = 0.52
 glow_enabled = true
-fog_mode = 1
-fog_density = 0.5031
 fog_sky_affect = 0.074
-volumetric_fog_density = 0.4488
 volumetric_fog_sky_affect = 0.387
 volumetric_fog_temporal_reprojection_enabled = false
 
-[sub_resource type="BoxMesh" id="BoxMesh_bj3ly"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_f2dvu"]
-radius = 0.825172
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8cnb"]
+albedo_color = Color(0.341015, 0.179624, 0.0504853, 1)
 
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.192419, -0.981313, 0, 0.981313, 0.192419, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -0.946051, 0.324017, 0, -0.324017, -0.946051, 0, 0, 0)
 shadow_enabled = true
 sky_mode = 2
 
@@ -62,6 +60,7 @@ environment = SubResource("Environment_ywojk")
 transform = Transform3D(1, 0, 0, 0, 0.999915, -0.0130372, 0, 0.0130372, 0.999915, -1.88703, -0.202635, -3.05944)
 use_collision = true
 size = Vector3(47, 1, 74.882)
+material = SubResource("StandardMaterial3D_k8cnb")
 
 [node name="Floor2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.905561, -0.424215, 0, 0.424215, 0.905561, -0.0879922, -0.0372665, 7.09808)
@@ -69,13 +68,13 @@ use_collision = true
 size = Vector3(12.2502, 1, 3.02295)
 
 [node name="Ceiling" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.685195, 23.5154, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.685195, 12.5154, -8)
 use_collision = true
 size = Vector3(47, 1, 65)
 
 [node name="Player" parent="." instance=ExtResource("1_2b26y")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.86929, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09855, 4.03286, 1.35015)
 
 [node name="Items" type="Node" parent="."]
 
@@ -90,19 +89,31 @@ item = ExtResource("6_lw2ra")
 [node name="HubMapMesh" parent="." instance=ExtResource("5_0ge8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 
-[node name="VHSPlayer" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40791, 2.27238, -3.84247)
+[node name="Sorter" parent="." instance=ExtResource("6_8t7s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 1.78655, -3.78363)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VHSPlayer"]
-mesh = SubResource("BoxMesh_bj3ly")
-
-[node name="Area3D" type="Area3D" parent="VHSPlayer"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VHSPlayer/Area3D"]
-shape = SubResource("SphereShape3D_f2dvu")
+[node name="Sorter2" parent="." instance=ExtResource("6_8t7s4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2008, 1.78655, -3.78363)
 
 [node name="UiRoot" type="CanvasLayer" parent="."]
 script = ExtResource("6_3iylo")
 
 [node name="InventoryDialog" parent="UiRoot" instance=ExtResource("7_uss5p")]
 unique_name_in_owner = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
+size = Vector3(58.7178, 15, 0.001)
+
+[node name="Node3D" parent="." instance=ExtResource("9_3i71v")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 178.245, 0, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("10_alxih")
+
+[node name="sorter" parent="." instance=ExtResource("11_wabes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3619, -49.9066, 2.78257)
+
+[node name="ItemPickUp" parent="." instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3619, -49.9066, -3.01054)
+item = ExtResource("6_lw2ra")

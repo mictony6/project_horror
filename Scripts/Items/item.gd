@@ -8,3 +8,5 @@ class_name Item
 @export_group("Tool Handling")
 @export var position: Vector3
 @export var rotation: Vector3
+@export var strength: int = 0
+@export var uses: int = 13

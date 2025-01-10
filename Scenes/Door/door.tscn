@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ldkpt3p061qj"]
+
+[ext_resource type="PackedScene" uid="uid://hqqkrg8j3e43" path="res://Models/Prototyping/door-rotate.glb" id="1_igaas"]
+[ext_resource type="Script" path="res://Scripts/Door/door.gd" id="2_4sy5e"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2hmf1"]
+points = PackedVector3Array(0.0499951, 0.8, 0.6, -0.0500098, 0.8, 0.6, 0.0499951, -5.00927e-33, 0.6, 0.075, 0.42498, 0.549961, 0.0499951, 0.8, 1.44382e-15, -0.0500098, 0.8, 1.44382e-15, -0.075, 0.42498, 0.549961, -0.0500098, -5.00927e-33, 0.6, 0.0499951, -5.00927e-33, 1.44382e-15, 0.075, 0.274941, 0.549961, 0.075, 0.42498, 0.449941, -0.0500098, -5.00927e-33, 1.44382e-15, -0.075, 0.42498, 0.449941, -0.075, 0.274941, 0.549961, 0.075, 0.274941, 0.449941, -0.075, 0.274941, 0.449941)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mn3i4"]
+size = Vector3(0.36377, 0.775391, 0.635498)
+
+[node name="door-rotate2" instance=ExtResource("1_igaas")]
+script = ExtResource("2_4sy5e")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="door-rotate/door" index="1"]
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door-rotate/door/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_2hmf1")
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139158, 0.4, 0.310864)
+shape = SubResource("BoxShape3D_mn3i4")

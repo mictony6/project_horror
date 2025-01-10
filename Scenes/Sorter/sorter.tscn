@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://jhee7el5barj"]
+
+[ext_resource type="Script" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
+[ext_resource type="ArrayMesh" uid="uid://dd7ur2i3g8cmv" path="res://Models/Sorter/sorter_mesh.res" id="2_vimd1"]
+[ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="3_4dqu1"]
+[ext_resource type="Script" path="res://Scripts/Sorter/sorter_ui.gd" id="3_gwc7d"]
+[ext_resource type="PackedScene" uid="uid://cebkhw8yskfnv" path="res://Scenes/Sorter/cd_slot.tscn" id="5_h7q42"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_onlwj"]
+points = PackedVector3Array(-0.593065, -0.022, -0.964448, 0.626987, 0.415956, 1.03822, -0.638009, 0.415956, 1.03822, 0.626987, 0.415956, -1.03822, 0.582043, -0.022, 0.964448, -0.638009, 0.415956, -1.03822, -0.593065, -0.022, 0.964448, 0.582043, -0.022, -0.964448)
+
+[sub_resource type="SystemFont" id="SystemFont_nb4lx"]
+font_names = PackedStringArray("Century Gothic")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_xmrdi"]
+font = SubResource("SystemFont_nb4lx")
+font_size = 40
+
+[node name="Sorter" type="Node3D" groups=["Sorter"]]
+script = ExtResource("1_p1nr8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_vimd1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_onlwj")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_4dqu1")]
+
+[node name="SorterUI" type="CanvasLayer" parent="."]
+layer = 99
+script = ExtResource("3_gwc7d")
+
+[node name="Control" type="Control" parent="SorterUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SorterUI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Sort your VHS"
+label_settings = SubResource("LabelSettings_xmrdi")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Button" type="Button" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "X"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="CDSlot2" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[node name="CDSlot5" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[node name="CDSlot3" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[node name="CDSlot4" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[connection signal="pressed" from="SorterUI/Control/VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]

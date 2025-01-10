@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=29 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
+[ext_resource type="Script" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
 radius = 0.25
@@ -28,40 +29,8 @@ emission = Color(0.103744, 0.103744, 0.103744, 1)
 material = SubResource("StandardMaterial3D_6imyd")
 size = Vector3(0.15, 0.15, 0.5)
 
-[sub_resource type="Animation" id="Animation_g1b5t"]
-resource_name = "use_item"
-length = 0.333337
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/ToolManager")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/ToolManager")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
-
-[sub_resource type="Animation" id="Animation_ixu11"]
-length = 0.001
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/ToolManager")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_fujj6"]
+size = Vector3(0.6, 0.493904, 0.699585)
 
 [sub_resource type="Animation" id="Animation_hnek6"]
 resource_name = "FlashLightDown"
@@ -99,6 +68,72 @@ tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, -0.477, -0.593915, -0.000639707, 0.2, 1, -0.477, -0.259, -0.27)
 
+[sub_resource type="Animation" id="Animation_ixu11"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/ToolManager")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/ToolManager")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_g1b5t"]
+resource_name = "use_item"
+length = 0.333337
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/ToolManager")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/ToolManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
 _data = {
 "FlashLightDown": SubResource("Animation_hnek6"),
@@ -107,11 +142,47 @@ _data = {
 "use_item": SubResource("Animation_g1b5t")
 }
 
+[sub_resource type="Curve" id="Curve_r84nn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xbxkh"]
+curve = SubResource("Curve_r84nn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v2il4"]
+direction = Vector3(0, 1, -1)
+spread = 60.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -6, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 0.25
+scale_max = 0.75
+scale_curve = SubResource("CurveTexture_xbxkh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_21y63"]
+shading_mode = 0
+albedo_color = Color(0.831409, 0.426701, 0.271455, 1)
+billboard_keep_scale = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_xogcg"]
+material = SubResource("StandardMaterial3D_21y63")
+radius = 0.1
+height = 0.2
+radial_segments = 12
+rings = 6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hwxf7"]
+radius = 0.952158
+
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_iw56a")
 head = NodePath("Head")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.82371)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 layers = 2
@@ -130,6 +201,7 @@ animation_player = NodePath("../../AnimationPlayer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477, -0.259, -0.27)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_6nxlb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
@@ -144,18 +216,28 @@ omni_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0073247, 0, -0.332387)
 light_energy = 5.0
 shadow_enabled = true
-spot_range = 26.1792
+spot_range = 50.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
 
 [node name="ToolManager" type="Node3D" parent="Head" node_paths=PackedStringArray("animation_player")]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.454326, -0.222685, -0.504557)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
 script = ExtResource("4_l1v1m")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
 cull_mask = 1048573
 current = true
+
+[node name="ToolManagerArea" type="Area3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.609101, 0)
+collision_layer = 8
+collision_mask = 16
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/ToolManagerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153247, 0.424211, -0.622159)
+shape = SubResource("BoxShape3D_fujj6")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1pglf")
@@ -183,3 +265,32 @@ script = ExtResource("10_6f3fu")
 libraries = {
 "": SubResource("AnimationLibrary_j7fa5")
 }
+
+[node name="HitParticles" type="GPUParticles3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.82371)
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v2il4")
+draw_pass_1 = SubResource("SphereMesh_xogcg")
+
+[node name="InteractLabel" type="Label" parent="."]
+offset_right = 141.0
+offset_bottom = 23.0
+text = "Press E to Interact"
+horizontal_alignment = 1
+
+[node name="InteractableDetector" type="Area3D" parent="." node_paths=PackedStringArray("interaction_label")]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("12_vrtle")
+interaction_label = NodePath("../InteractLabel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
+shape = SubResource("SphereShape3D_hwxf7")
+
+[connection signal="area_entered" from="Head/ToolManagerArea" to="Head/ToolManager" method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractableDetector" to="InteractableDetector" method="_on_area_exited"]

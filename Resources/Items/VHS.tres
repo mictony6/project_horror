@@ -11,3 +11,5 @@ scene = ExtResource("1_diib4")
 icon = ExtResource("1_18g1g")
 position = Vector3(0, 0, 0)
 rotation = Vector3(0, 0, 0)
+strength = 0
+uses = 1

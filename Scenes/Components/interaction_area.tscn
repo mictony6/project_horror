@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxscfr3d28o76"]
+
+[ext_resource type="Script" path="res://Scripts/Interactiions/interaction_area.gd" id="1_66mcs"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gwsdc"]
+radius = 1.39661
+
+[node name="InteractionArea" type="Area3D"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_66mcs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24292, 0)
+shape = SubResource("SphereShape3D_gwsdc")

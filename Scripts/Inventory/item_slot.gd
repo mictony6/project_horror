@@ -12,5 +12,4 @@ func set_item_to_display(item: Item, id: int):
 	button.button_down.connect(_on_button_down)
 
 func _on_button_down():
-	print("hey")
 	GlobalEventManager.item_used.emit(_id)

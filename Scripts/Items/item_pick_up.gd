@@ -5,20 +5,21 @@ class_name ItemPickUp
 @export var item: Item;
 var item_child;
 var default_pos: Vector3;
-
+@onready var interaction_area: InteractionArea = $InteractionArea
 
 func _ready() -> void:
-
-	item_child = item.scene.instantiate();
-	add_child(item_child);
+	if item:
+		item_child = item.scene.instantiate();
+		add_child(item_child);
+	interaction_area._interaction = handle_interaction
 	if not Engine.is_editor_hint():
 		default_pos = position;
 		bob()
+	
+func handle_interaction():
+	GlobalVariables.player.inventory.add_item(item);
+	queue_free()
 
-func _on_pickup_detector_body_entered(body: Node3D) -> void:
-	if body is Player:
-		body.on_item_pickup(item);
-		queue_free();
 func bob():
 	#make the iten bob up and down
 	var tween: Tween = get_tree().create_tween().set_loops().bind_node(self).set_trans(Tween.TRANS_SINE)

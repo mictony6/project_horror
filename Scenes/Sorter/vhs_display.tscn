@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkkwp4g4fn4r0"]
+
+[ext_resource type="Texture2D" uid="uid://b1y0njss806dw" path="res://Images/sample_vhs_poster.jpg" id="1_o6g8o"]
+
+[node name="VHSDisplay" type="PanelContainer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_o6g8o")
+expand_mode = 3

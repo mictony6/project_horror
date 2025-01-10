@@ -11,3 +11,5 @@ scene = ExtResource("2_fx6jc")
 icon = ExtResource("1_a3bgg")
 position = Vector3(0, 0, 0)
 rotation = Vector3(0, 0, 0)
+strength = 4
+uses = 13
