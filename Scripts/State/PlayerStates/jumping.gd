@@ -25,7 +25,7 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING);
 
 func enter(previous_state_path: String, data := {}) -> void:
-	if data.has("sprinting"):
+	if Input.is_action_pressed("sprint"):
 		is_sprinting = true;
 	else:
 		is_sprinting = false;
