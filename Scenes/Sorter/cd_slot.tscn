@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cebkhw8yskfnv"]
+[gd_scene load_steps=6 format=3 uid="uid://cebkhw8yskfnv"]
 
 [ext_resource type="Script" path="res://Scripts/Sorter/cd_slot.gd" id="1_croir"]
 [ext_resource type="Texture2D" uid="uid://b1y0njss806dw" path="res://Images/sample_vhs_poster.jpg" id="1_um1jd"]
+[ext_resource type="Resource" uid="uid://cg1umgmr2iffk" path="res://Resources/Items/EmptyCD.tres" id="2_cvr4h"]
+[ext_resource type="Script" path="res://Scripts/Sorter/cd_display.gd" id="2_w1o1w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vevbs"]
 content_margin_top = 6.0
@@ -11,24 +13,17 @@ content_margin_bottom = 12.0
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vevbs")
 script = ExtResource("1_croir")
+item = ExtResource("2_cvr4h")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="CdDisplay" type="VBoxContainer" parent="."]
 layout_mode = 2
+script = ExtResource("2_w1o1w")
 
-[node name="Button" type="MenuButton" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CdDisplay"]
 layout_mode = 2
-size_flags_vertical = 3
-icon = ExtResource("1_um1jd")
-flat = false
-icon_alignment = 1
-expand_icon = true
-switch_on_hover = true
-item_count = 2
-popup/item_0/text = "Insert CD"
-popup/item_1/text = "Remove CD"
-popup/item_1/id = 1
-popup/item_1/disabled = true
+texture = ExtResource("1_um1jd")
+expand_mode = 5
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="CdDisplay"]
 layout_mode = 2
 text = "Sample"

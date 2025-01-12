@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://page8jtypua8"]
+[gd_scene load_steps=17 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
 [ext_resource type="Resource" uid="uid://ysxptc4hlepp" path="res://Resources/Items/VHS.tres" id="2_mserk"]
@@ -8,8 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://jhee7el5barj" path="res://Scenes/Sorter/sorter.tscn" id="6_8t7s4"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
-[ext_resource type="PackedScene" uid="uid://8agfkeryohk2" path="res://Scenes/Level1.tscn" id="9_3i71v"]
-[ext_resource type="ArrayOccluder3D" uid="uid://du6kq67q63rqc" path="res://Occluder/MainScene.occ" id="10_alxih"]
 [ext_resource type="PackedScene" uid="uid://dsbnhtgldkneg" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
 
 [sub_resource type="Gradient" id="Gradient_bcej7"]
@@ -104,12 +102,6 @@ unique_name_in_owner = true
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
 size = Vector3(58.7178, 15, 0.001)
-
-[node name="Node3D" parent="." instance=ExtResource("9_3i71v")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 178.245, 0, 0)
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-occluder = ExtResource("10_alxih")
 
 [node name="sorter" parent="." instance=ExtResource("11_wabes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3619, -49.9066, 2.78257)

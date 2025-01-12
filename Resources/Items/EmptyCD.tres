@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cg1umgmr2iffk"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_drfrp"]
+[ext_resource type="Texture2D" uid="uid://b1y0njss806dw" path="res://Images/sample_vhs_poster.jpg" id="1_xxa2y"]
+
+[resource]
+script = ExtResource("1_drfrp")
+name = "Empty"
+icon = ExtResource("1_xxa2y")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+strength = 0
+uses = 13
