@@ -1,4 +1,5 @@
 extends PlayerState
+var velocity_on_enter: Vector3
 
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -8,8 +9,8 @@ func update(_delta: float) -> void:
 
 
 func physics_update(_delta: float) -> void:
-	player.velocity.x = player.direction.x * player.SPEED;
-	player.velocity.z = player.direction.z * player.SPEED;
+	player.velocity.x = player.velocity.x;
+	player.velocity.z = player.velocity.z;
 	player.velocity.y -= (player.gravity * _delta)
 	player.move_and_slide();
 
@@ -22,6 +23,7 @@ func physics_update(_delta: float) -> void:
 			finished.emit(WALKING);
 
 func enter(previous_state_path: String, data := {}) -> void:
+	velocity_on_enter = player.velocity
 	pass
 
 func exit() -> void:

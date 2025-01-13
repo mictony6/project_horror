@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 GlobalEventManager="*res://Scripts/Global/global_event_manager.gd"
 GlobalVariables="*res://Scripts/Global/global_variables.gd"
+EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fabimakesgames.embed_game/plugin.cfg")
 
 [input]
 
