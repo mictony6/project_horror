@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dq5r0fd14w4cq"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_5ho8k"]
+[ext_resource type="Texture2D" uid="uid://7upkc6uwkiot" path="res://icon.svg" id="1_37c6c"]
+[ext_resource type="PackedScene" uid="uid://6u8enll8iwbl" path="res://Scenes/Items/VHS_Model.tscn" id="2_1nat6"]
+
+[resource]
+script = ExtResource("1_5ho8k")
+name = "CD1"
+scene = ExtResource("2_1nat6")
+icon = ExtResource("1_37c6c")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+strength = 0
+uses = 13
+cd_name = ""
+cd_author = ""
+cd_description = ""
+sorter_key = "sorter_1"

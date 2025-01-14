@@ -15,7 +15,7 @@ func _ready() -> void:
 	if not Engine.is_editor_hint():
 		default_pos = position;
 		bob()
-	
+
 func handle_interaction():
 	GlobalVariables.player.inventory.add_item(item);
 	queue_free()

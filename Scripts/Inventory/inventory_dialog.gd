@@ -24,7 +24,6 @@ func open(inventory: Inventory):
 		slot.set_item_to_display(item, index)
 		index += 1
 
-
 	get_tree().paused = true
 
 func close():

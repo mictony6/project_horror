@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="3_4dqu1"]
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter_ui.gd" id="3_gwc7d"]
 [ext_resource type="PackedScene" uid="uid://cebkhw8yskfnv" path="res://Scenes/Sorter/cd_slot.tscn" id="5_h7q42"]
-[ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_pd5tu"]
-[ext_resource type="Resource" uid="uid://ysxptc4hlepp" path="res://Resources/Items/VHS.tres" id="7_x7b2j"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_onlwj"]
 points = PackedVector3Array(-0.593065, -0.022, -0.964448, 0.626987, 0.415956, 1.03822, -0.638009, 0.415956, 1.03822, 0.626987, 0.415956, -1.03822, 0.582043, -0.022, 0.964448, -0.638009, 0.415956, -1.03822, -0.593065, -0.022, 0.964448, 0.582043, -0.022, -0.964448)
@@ -18,6 +16,13 @@ subpixel_positioning = 0
 [sub_resource type="LabelSettings" id="LabelSettings_xmrdi"]
 font = SubResource("SystemFont_nb4lx")
 font_size = 40
+
+[sub_resource type="InputEventKey" id="InputEventKey_aukea"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_d10t4"]
+events = [SubResource("InputEventKey_aukea")]
 
 [node name="Sorter" type="Node3D" groups=["Sorter"]]
 script = ExtResource("1_p1nr8")
@@ -70,33 +75,33 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Sort your VHS"
+text = "CD Sorter"
 label_settings = SubResource("LabelSettings_xmrdi")
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Button" type="Button" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
+[node name="CloseButton" type="Button" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+shortcut = SubResource("Shortcut_d10t4")
 text = "X"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
+[node name="Slots" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="CDSlot2" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-item = ExtResource("6_pd5tu")
-
-[node name="CDSlot5" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-item = ExtResource("7_x7b2j")
-
-[node name="CDSlot3" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+[node name="CDSlot2" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
 layout_mode = 2
 
-[node name="CDSlot6" parent="SorterUI/Control/VBoxContainer/HBoxContainer" instance=ExtResource("5_h7q42")]
+[node name="CDSlot5" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
 layout_mode = 2
 
-[connection signal="pressed" from="SorterUI/Control/VBoxContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]
+[node name="CDSlot3" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[node name="CDSlot6" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
+layout_mode = 2
+
+[connection signal="pressed" from="SorterUI/Control/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

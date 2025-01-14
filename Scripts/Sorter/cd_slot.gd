@@ -25,7 +25,6 @@ func _drop_data(at_position: Vector2, data: Variant) -> void:
 	set_item(slot.item)
 	data.set_item(previous_item)
 
-
 func set_item(new_item: Item) -> void:
 	item = new_item
 	texture_rect.texture = item.icon

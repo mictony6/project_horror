@@ -1,11 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://page8jtypua8"]
+[gd_scene load_steps=20 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
-[ext_resource type="Resource" uid="uid://ysxptc4hlepp" path="res://Resources/Items/VHS.tres" id="2_mserk"]
+[ext_resource type="Resource" uid="uid://dq5r0fd14w4cq" path="res://Resources/Items/CDs/CD1.tres" id="3_mfhcb"]
+[ext_resource type="Resource" uid="uid://cdxqmwa7h0g2l" path="res://Resources/Items/CDs/CD2.tres" id="4_k2nwy"]
 [ext_resource type="PackedScene" uid="uid://bn4rv40xedxm6" path="res://Scenes/HubMap.tscn" id="5_0ge8w"]
+[ext_resource type="Resource" uid="uid://dwjhlwd5it7b4" path="res://Resources/Items/CDs/CD3.tres" id="5_2wk71"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="6_5hrp8"]
 [ext_resource type="PackedScene" uid="uid://jhee7el5barj" path="res://Scenes/Sorter/sorter.tscn" id="6_8t7s4"]
+[ext_resource type="Resource" uid="uid://cv6348h1ffs7q" path="res://Resources/Items/CDs/CD4.tres" id="6_kasdb"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
 [ext_resource type="PackedScene" uid="uid://dsbnhtgldkneg" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
@@ -78,7 +81,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09855, 4.03286, 1.35015)
 
 [node name="ItemPickUp" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27592, 2.02238, -3.33164)
-item = ExtResource("2_mserk")
+item = ExtResource("3_mfhcb")
+
+[node name="ItemPickUp4" parent="Items" instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21769, 2.02238, -2.06375)
+item = ExtResource("4_k2nwy")
+
+[node name="ItemPickUp5" parent="Items" instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21769, 2.02238, -0.12001)
+item = ExtResource("5_2wk71")
+
+[node name="ItemPickUp3" parent="Items" instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76341, 2.02238, 2.19414)
+item = ExtResource("6_kasdb")
 
 [node name="ItemPickUp2" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907879, 2.02238, -3.33164)
@@ -92,6 +107,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 1.78655, -3.78363)
 
 [node name="Sorter2" parent="." instance=ExtResource("6_8t7s4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2008, 1.78655, -3.78363)
+sorter_id = "sorter_2"
 
 [node name="UiRoot" type="CanvasLayer" parent="."]
 script = ExtResource("6_3iylo")

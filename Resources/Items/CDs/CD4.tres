@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://cv6348h1ffs7q"]
+
+[ext_resource type="Texture2D" uid="uid://cy5dvjltglg1m" path="res://Images/Icons/Items/VHS_Temp_Icon-removebg-preview.png" id="1_1grv2"]
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="1_isepc"]
+[ext_resource type="PackedScene" uid="uid://6u8enll8iwbl" path="res://Scenes/Items/VHS_Model.tscn" id="2_ux6ms"]
+
+[resource]
+script = ExtResource("1_isepc")
+name = "CD4"
+scene = ExtResource("2_ux6ms")
+icon = ExtResource("1_1grv2")
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0, 0)
+strength = 0
+uses = 13
+cd_name = ""
+cd_author = ""
+cd_description = ""
+sorter_key = "sorter_1"

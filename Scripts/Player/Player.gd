@@ -37,7 +37,3 @@ func _process(_delta: float) -> void:
 	# make direction relative to camera
 	direction = direction.rotated(Vector3.UP, head.rotation.y);
 	direction = direction.normalized();
-
-
-func on_item_pickup(item: Item):
-	inventory.add_item(item);

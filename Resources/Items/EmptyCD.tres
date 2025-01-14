@@ -11,3 +11,7 @@ position = Vector3(0, 0, 0)
 rotation = Vector3(0, 0, 0)
 strength = 0
 uses = 13
+cd_name = "Empty"
+cd_author = "Mic Tony"
+cd_description = "This is an empty placeholder CD,."
+sorter_key = "sorter_1"

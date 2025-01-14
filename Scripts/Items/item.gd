@@ -10,3 +10,9 @@ class_name Item
 @export var rotation: Vector3
 @export var strength: int = 0
 @export var uses: int = 13
+
+@export_group("CD Handling")
+@export var cd_name: String
+@export var cd_author: String
+@export var cd_description: String
+@export var sorter_key: String
