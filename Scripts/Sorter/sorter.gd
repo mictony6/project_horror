@@ -1,12 +1,14 @@
 extends Node3D
 class_name Sorter
 
-
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var sorter_ui: CanvasLayer = $SorterUI
 @onready var contents: HBoxContainer = %Slots
 @export var sorter_id: String = "sorter_1"
+@export var empty_cd: Item
 var num_of_slots: int
+
+var last_arrangement = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -15,27 +17,41 @@ func _ready() -> void:
 	num_of_slots = contents.get_child_count()
 
 
-func update_contents():
-	# initialize contents based on player inventory
-	# find all cd items in player inventory with the samne sorter_id
-
+func update_contents() -> void:
 	var cd_items: Array[Item] = []
 	for item in GlobalVariables.player.inventory.get_items():
 		if item.sorter_key == sorter_id:
 			cd_items.append(item)
 
-	assert(cd_items.size() <= num_of_slots, "Number of CD items in player inventory exceeds the number of slots in the sorter")
+	# Use saved arrangement if available
+	if not last_arrangement.is_empty():
+		# Sort using item name
+		cd_items.sort_custom(func(a, b):
+			return last_arrangement.get(a.name, 999) < last_arrangement.get(b.name, 999)
+		)
 
-	for i in range(cd_items.size()):
-		var cd_display: CdSlot = contents.get_child(i)
+	# Update slots
+	for i in range(num_of_slots):
+		var cd_slot: CdSlot = contents.get_child(i)
+		if i < cd_items.size():
+			cd_slot.set_item(cd_items[i])
+		else:
+			cd_slot.set_item(empty_cd)
 
-		cd_display.set_item(cd_items[i])
-
+func save_current_arrangement() -> void:
+	last_arrangement.clear()
+	for i in range(num_of_slots):
+		var cd_slot: CdSlot = contents.get_child(i)
+		var item = cd_slot.item
+		if item != empty_cd:
+			# Store position using item name or another identifying property
+			last_arrangement[item.name] = i
 
 func handle_interaction():
 	open_sorter_ui()
 
 func _on_close_button_pressed() -> void:
+	save_current_arrangement()
 	close_sorter_ui()
 
 func open_sorter_ui():
@@ -47,6 +63,7 @@ func open_sorter_ui():
 	get_tree().paused = true
 
 func close_sorter_ui():
+
 	GlobalVariables.can_open_inventory = true
 	get_tree().paused = false
 	interaction_area.is_interactable = true

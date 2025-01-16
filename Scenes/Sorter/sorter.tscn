@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://jhee7el5barj"]
+[gd_scene load_steps=12 format=3 uid="uid://jhee7el5barj"]
 
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
+[ext_resource type="Resource" uid="uid://cg1umgmr2iffk" path="res://Resources/Items/EmptyCD.tres" id="2_smna7"]
 [ext_resource type="ArrayMesh" uid="uid://dd7ur2i3g8cmv" path="res://Models/Sorter/sorter_mesh.res" id="2_vimd1"]
 [ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="3_4dqu1"]
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter_ui.gd" id="3_gwc7d"]
@@ -26,6 +27,7 @@ events = [SubResource("InputEventKey_aukea")]
 
 [node name="Sorter" type="Node3D" groups=["Sorter"]]
 script = ExtResource("1_p1nr8")
+empty_cd = ExtResource("2_smna7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
