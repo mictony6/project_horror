@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://devmio8hcmrre"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5igjda6chowu" path="res://Models/Sorter/Mesh/sorter_Cube_004.res" id="2_dh84y"]
+[ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_i0yr5"]
+[ext_resource type="Script" path="res://Scripts/Sorter/diskholder.gd" id="2_rweyg"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_40ewm"]
+points = PackedVector3Array(0.389945, 0.0299768, 0.34246, -0.389945, 0.0299768, 0.34246, 0.389945, -0.0270454, 0.34246, 0.389945, 0.0299768, -0.457761, -0.389945, -0.0270454, 0.34246, -0.389945, 0.0299768, -0.457761, 0.389945, -0.0270454, 0.332434, 0.389945, 0.000416355, -0.457761, -0.389945, -0.0270454, 0.332434, -0.389945, 0.000416355, -0.457761, 0.389945, -0.00658305, -0.45079, 0.382769, -0.00453458, -0.455725, -0.389945, -0.00658305, -0.45079, -0.382846, -0.00453458, -0.455725)
+
+[node name="DiskholderMesh" type="MeshInstance3D"]
+mesh = ExtResource("2_dh84y")
+skeleton = NodePath("")
+script = ExtResource("2_rweyg")
+
+[node name="Selectable" parent="." instance=ExtResource("2_i0yr5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Selectable"]
+shape = SubResource("ConvexPolygonShape3D_40ewm")

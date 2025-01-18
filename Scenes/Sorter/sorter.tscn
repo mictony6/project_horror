@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://jhee7el5barj"]
+[gd_scene load_steps=16 format=3 uid="uid://jhee7el5barj"]
 
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
 [ext_resource type="Resource" uid="uid://cg1umgmr2iffk" path="res://Resources/Items/EmptyCD.tres" id="2_smna7"]
-[ext_resource type="ArrayMesh" uid="uid://dd7ur2i3g8cmv" path="res://Models/Sorter/sorter_mesh.res" id="2_vimd1"]
 [ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="3_4dqu1"]
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter_ui.gd" id="3_gwc7d"]
 [ext_resource type="PackedScene" uid="uid://cebkhw8yskfnv" path="res://Scenes/Sorter/cd_slot.tscn" id="5_h7q42"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_onlwj"]
-points = PackedVector3Array(-0.593065, -0.022, -0.964448, 0.626987, 0.415956, 1.03822, -0.638009, 0.415956, 1.03822, 0.626987, 0.415956, -1.03822, 0.582043, -0.022, 0.964448, -0.638009, 0.415956, -1.03822, -0.593065, -0.022, 0.964448, 0.582043, -0.022, -0.964448)
+[ext_resource type="ArrayMesh" uid="uid://cb8ifmao4wklg" path="res://Models/Sorter/Mesh/sorter_Cube_003.res" id="6_37yn7"]
+[ext_resource type="PackedScene" uid="uid://devmio8hcmrre" path="res://Scenes/Sorter/diskholder.tscn" id="7_g5qku"]
+[ext_resource type="ArrayMesh" uid="uid://ddleqw5vgds4t" path="res://Models/Sorter/Mesh/sorter_Cube_005.res" id="8_fub5j"]
+[ext_resource type="ArrayMesh" uid="uid://cofnjmlx32ibu" path="res://Models/Sorter/Mesh/sorter_Cube_007.res" id="9_vegfq"]
+[ext_resource type="ArrayMesh" uid="uid://bt2psuq0iqud0" path="res://Models/Sorter/Mesh/sorter_Cube_008.res" id="10_8y8jn"]
+[ext_resource type="ArrayMesh" uid="uid://b0vdqyvtblekt" path="res://Models/Sorter/Mesh/sorter_Cube_009.res" id="11_xt5r3"]
 
 [sub_resource type="SystemFont" id="SystemFont_nb4lx"]
 font_names = PackedStringArray("Century Gothic")
@@ -28,17 +30,6 @@ events = [SubResource("InputEventKey_aukea")]
 [node name="Sorter" type="Node3D" groups=["Sorter"]]
 script = ExtResource("1_p1nr8")
 empty_cd = ExtResource("2_smna7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("2_vimd1")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_onlwj")
-
-[node name="InteractionArea" parent="." instance=ExtResource("3_4dqu1")]
 
 [node name="SorterUI" type="CanvasLayer" parent="."]
 layer = 99
@@ -105,5 +96,45 @@ layout_mode = 2
 
 [node name="CDSlot6" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
 layout_mode = 2
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_4dqu1")]
+interaction_name = "Open Sorter"
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = ExtResource("6_37yn7")
+skeleton = NodePath("")
+
+[node name="Diskholder" parent="." instance=ExtResource("7_g5qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 1.718, 1)
+
+[node name="Diskholder2" parent="." instance=ExtResource("7_g5qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 1.24329, 1)
+
+[node name="Diskholder3" parent="." instance=ExtResource("7_g5qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.755235, 1)
+
+[node name="Diskholder4" parent="." instance=ExtResource("7_g5qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.279825, 1)
+
+[node name="Open_Close" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521044, 1.85573, 0.549876)
+mesh = ExtResource("8_fub5j")
+skeleton = NodePath("")
+
+[node name="Play" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521044, 1.76062, 0.549876)
+mesh = ExtResource("9_vegfq")
+skeleton = NodePath("")
+
+[node name="Stop" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521044, 1.6665, 0.549876)
+mesh = ExtResource("10_8y8jn")
+skeleton = NodePath("")
+
+[node name="Accept" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.521044, 1.57376, 0.549876)
+mesh = ExtResource("11_xt5r3")
+skeleton = NodePath("")
 
 [connection signal="pressed" from="SorterUI/Control/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

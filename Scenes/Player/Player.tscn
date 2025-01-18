@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=32 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
 [ext_resource type="Script" path="res://Scripts/ToolManager/tool_manager.gd" id="4_l1v1m"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
+[ext_resource type="Script" path="res://Scripts/Selectable/selector.gd" id="5_87ota"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
@@ -93,7 +94,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/3/type = "rotation_3d"
@@ -130,7 +131,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 
@@ -174,6 +175,14 @@ rings = 6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hwxf7"]
 radius = 0.952158
+
+[sub_resource type="SystemFont" id="SystemFont_y0hnp"]
+font_names = PackedStringArray("Arial")
+oversampling = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpyav"]
+font = SubResource("SystemFont_y0hnp")
+font_size = 30
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
 collision_layer = 2
@@ -239,6 +248,13 @@ monitoring = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153247, 0.424211, -0.622159)
 shape = SubResource("BoxShape3D_fujj6")
 
+[node name="Selector" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("5_87ota")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1pglf")
 initial_state = NodePath("Idle")
@@ -291,6 +307,16 @@ interaction_label = NodePath("../InteractLabel")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
 shape = SubResource("SphereShape3D_hwxf7")
 
-[connection signal="area_entered" from="Head/ToolManagerArea" to="Head/ToolManager" method="_on_area_3d_area_entered"]
+[node name="Recticle" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+"
+label_settings = SubResource("LabelSettings_rpyav")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractableDetector" to="InteractableDetector" method="_on_area_exited"]

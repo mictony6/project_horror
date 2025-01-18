@@ -22,6 +22,9 @@ func update_contents() -> void:
 	for item in GlobalVariables.player.inventory.get_items():
 		if item.sorter_key == sorter_id:
 			cd_items.append(item)
+	
+	if cd_items.is_empty():
+		return
 
 	# Use saved arrangement if available
 	if not last_arrangement.is_empty():

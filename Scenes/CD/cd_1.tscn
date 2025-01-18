@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbpbf6fgbtsjr"]
+
+[ext_resource type="PackedScene" uid="uid://bgfan8vcmitj1" path="res://Models/CD/cd1.glb" id="1_71f0w"]
+
+[node name="CD1" instance=ExtResource("1_71f0w")]
+
+[node name="Circle" parent="." index="0"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)

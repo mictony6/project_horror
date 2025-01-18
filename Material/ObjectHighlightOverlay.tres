@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bts55if8ojc01"]
+
+[ext_resource type="Shader" path="res://Shaders/object_higlight.gdshader" id="1_k3hdr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_k3hdr")
+shader_parameter/outline_color = Color(1, 0.733333, 0.556863, 1)
+shader_parameter/outline_width = 2.0

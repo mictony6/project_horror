@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://cv6348h1ffs7q" path="res://Resources/Items/CDs/CD4.tres" id="6_kasdb"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
-[ext_resource type="PackedScene" uid="uid://dsbnhtgldkneg" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
+[ext_resource type="PackedScene" uid="uid://dmifqahgum8wm" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
 
 [sub_resource type="Gradient" id="Gradient_bcej7"]
 offsets = PackedFloat32Array(0.246324, 0.720588, 1)
@@ -103,11 +103,7 @@ item = ExtResource("6_lw2ra")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 
 [node name="Sorter" parent="." instance=ExtResource("6_8t7s4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65862, 1.78655, -3.78363)
-
-[node name="Sorter2" parent="." instance=ExtResource("6_8t7s4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2008, 1.78655, -3.78363)
-sorter_id = "sorter_2"
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.23343, 1.17178, -2.16973)
 
 [node name="UiRoot" type="CanvasLayer" parent="."]
 script = ExtResource("6_3iylo")
