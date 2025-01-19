@@ -21,7 +21,7 @@ func handle_select() -> void:
 
 # when its opened, the diskholder can be selected
 func _on_open_close_opened() -> void:
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, 0), 0.5)
 	closed = false
@@ -29,7 +29,7 @@ func _on_open_close_opened() -> void:
 
 # when its closed, the diskholder cannot be selected
 func _on_open_close_closed() -> void:
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, -0.7), 0.5)
 	closed = true

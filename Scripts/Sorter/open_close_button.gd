@@ -24,7 +24,7 @@ func toggle() -> void:
 		closed.emit()
 
 func animate_click():
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "position", _clicked_position, 0.1)
 	tween.tween_property(self, "position", _default_position, 0.1)
