@@ -1,18 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://devmio8hcmrre"]
+[gd_scene load_steps=13 format=3 uid="uid://devmio8hcmrre"]
 
 [ext_resource type="ArrayMesh" uid="uid://b5igjda6chowu" path="res://Models/Sorter/Mesh/sorter_Cube_004.res" id="2_dh84y"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_i0yr5"]
 [ext_resource type="Script" path="res://Scripts/Sorter/diskholder.gd" id="2_rweyg"]
+[ext_resource type="ArrayMesh" uid="uid://ddleqw5vgds4t" path="res://Models/Sorter/Mesh/sorter_Cube_005.res" id="4_vgjd7"]
+[ext_resource type="Script" path="res://Scripts/Sorter/open_close_button.gd" id="5_yyxub"]
+[ext_resource type="ArrayMesh" uid="uid://cofnjmlx32ibu" path="res://Models/Sorter/Mesh/sorter_Cube_007.res" id="7_ta4ca"]
+[ext_resource type="ArrayMesh" uid="uid://bt2psuq0iqud0" path="res://Models/Sorter/Mesh/sorter_Cube_008.res" id="8_5muru"]
+[ext_resource type="ArrayMesh" uid="uid://b0vdqyvtblekt" path="res://Models/Sorter/Mesh/sorter_Cube_009.res" id="9_1ah52"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_40ewm"]
-points = PackedVector3Array(0.389945, 0.0299768, 0.34246, -0.389945, 0.0299768, 0.34246, 0.389945, -0.0270454, 0.34246, 0.389945, 0.0299768, -0.457761, -0.389945, -0.0270454, 0.34246, -0.389945, 0.0299768, -0.457761, 0.389945, -0.0270454, 0.332434, 0.389945, 0.000416355, -0.457761, -0.389945, -0.0270454, 0.332434, -0.389945, 0.000416355, -0.457761, 0.389945, -0.00658305, -0.45079, 0.382769, -0.00453458, -0.455725, -0.389945, -0.00658305, -0.45079, -0.382846, -0.00453458, -0.455725)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf4sw"]
+albedo_color = Color(0.403941, 0.410734, 0.359118, 1)
+roughness = 0.5
+grow_amount = -4.078
 
-[node name="DiskholderMesh" type="MeshInstance3D"]
-mesh = ExtResource("2_dh84y")
-skeleton = NodePath("")
+[sub_resource type="BoxShape3D" id="BoxShape3D_gl5d8"]
+size = Vector3(0.858765, 0.216553, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr8h6"]
+albedo_color = Color(0.670924, 0.191896, 0.12246, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gnscl"]
+size = Vector3(0.242188, 0.0947266, 0.177032)
+
+[node name="Diskholder" type="Node3D"]
 script = ExtResource("2_rweyg")
 
-[node name="Selectable" parent="." instance=ExtResource("2_i0yr5")]
+[node name="DiskholderMesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_dh84y")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_lf4sw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Selectable"]
-shape = SubResource("ConvexPolygonShape3D_40ewm")
+[node name="Selectable" parent="DiskholderMesh" instance=ExtResource("2_i0yr5")]
+interaction_name = "Insert Disk"
+secondary_interaction_name = "Retrieve Disk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiskholderMesh/Selectable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00323486, 0.000244141, 0)
+shape = SubResource("BoxShape3D_gl5d8")
+
+[node name="Open_Close" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, 0.13773, -0.450124)
+mesh = ExtResource("4_vgjd7")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_lr8h6")
+script = ExtResource("5_yyxub")
+
+[node name="Selectable" parent="Open_Close" instance=ExtResource("2_i0yr5")]
+interaction_name = "Close"
+secondary_interaction_name = "Open"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Open_Close/Selectable"]
+shape = SubResource("BoxShape3D_gnscl")
+
+[node name="Play" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, 0.0426199, -0.450124)
+mesh = ExtResource("7_ta4ca")
+skeleton = NodePath("")
+
+[node name="Stop" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, -0.0515001, -0.450124)
+mesh = ExtResource("8_5muru")
+skeleton = NodePath("")
+
+[node name="Accept" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, -0.14424, -0.450124)
+mesh = ExtResource("9_1ah52")
+skeleton = NodePath("")
+
+[connection signal="closed" from="Open_Close" to="." method="_on_open_close_closed"]
+[connection signal="opened" from="Open_Close" to="." method="_on_open_close_opened"]

@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcrdncdcmw4yn"]
+[gd_scene load_steps=3 format=3 uid="uid://dcrdncdcmw4yn"]
 
 [ext_resource type="Script" path="res://Scripts/Selectable/selectable.gd" id="1_8uljv"]
+[ext_resource type="Texture2D" uid="uid://uuglhnq6gcxp" path="res://Images/mouse_left.png" id="2_i06k0"]
 
 [node name="Selectable" type="Area3D"]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_8uljv")
+
+[node name="InputPrompt" type="VBoxContainer" parent="."]
+offset_right = 90.0
+offset_bottom = 91.0
+
+[node name="TextureRect" type="TextureRect" parent="InputPrompt"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("2_i06k0")
+
+[node name="Label" type="Label" parent="InputPrompt"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Open/Close"
+horizontal_alignment = 1
+vertical_alignment = 1

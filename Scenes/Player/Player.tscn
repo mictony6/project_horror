@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=33 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
 [ext_resource type="Script" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
+[ext_resource type="Texture2D" uid="uid://0h3lijepkj2a" path="res://Images/keyboard_e.png" id="14_xo1pu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
 radius = 0.25
@@ -292,17 +293,11 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_v2il4")
 draw_pass_1 = SubResource("SphereMesh_xogcg")
 
-[node name="InteractLabel" type="Label" parent="."]
-offset_right = 141.0
-offset_bottom = 23.0
-text = "Press E to Interact"
-horizontal_alignment = 1
-
-[node name="InteractableDetector" type="Area3D" parent="." node_paths=PackedStringArray("interaction_label")]
+[node name="InteractableDetector" type="Area3D" parent="." node_paths=PackedStringArray("interaction_prompt")]
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("12_vrtle")
-interaction_label = NodePath("../InteractLabel")
+interaction_prompt = NodePath("../InteractPrompt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
 shape = SubResource("SphereShape3D_hwxf7")
@@ -316,6 +311,42 @@ grow_vertical = 2
 text = "+"
 label_settings = SubResource("LabelSettings_rpyav")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractPrompt" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractPrompt"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.5
+offset_top = -32.0
+offset_right = 64.5
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="InteractPrompt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture = ExtResource("14_xo1pu")
+
+[node name="Label" type="Label" parent="InteractPrompt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interact"
 vertical_alignment = 1
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
