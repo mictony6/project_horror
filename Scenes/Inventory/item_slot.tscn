@@ -29,3 +29,5 @@ focus_mode = 0
 icon = ExtResource("2_4bkxo")
 icon_alignment = 1
 expand_icon = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

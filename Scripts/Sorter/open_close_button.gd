@@ -1,7 +1,7 @@
 extends MeshInstance3D
 
 @onready var selectable_component: Selectable = $Selectable
-var is_closed: bool = false
+var is_closed: bool = true
 signal opened
 signal closed
 
@@ -13,6 +13,7 @@ func _ready() -> void:
 	_clicked_position = position - Vector3(0, 0, 0.05)
 	selectable_component.mesh_instance = self
 	selectable_component.select = toggle
+	
 
 func toggle() -> void:
 	animate_click()

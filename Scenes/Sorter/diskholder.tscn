@@ -31,13 +31,17 @@ mesh = ExtResource("2_dh84y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lf4sw")
 
-[node name="Selectable" parent="DiskholderMesh" instance=ExtResource("2_i0yr5")]
+[node name="Selectable" parent="DiskholderMesh" groups=["Diskholder"] instance=ExtResource("2_i0yr5")]
 interaction_name = "Insert Disk"
 secondary_interaction_name = "Retrieve Disk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DiskholderMesh/Selectable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00323486, 0.000244141, 0)
 shape = SubResource("BoxShape3D_gl5d8")
+
+[node name="InsertMarker" type="Marker3D" parent="DiskholderMesh"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, -0.073)
 
 [node name="Open_Close" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, 0.13773, -0.450124)
@@ -47,8 +51,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lr8h6")
 script = ExtResource("5_yyxub")
 
 [node name="Selectable" parent="Open_Close" instance=ExtResource("2_i0yr5")]
-interaction_name = "Close"
-secondary_interaction_name = "Open"
+interaction_name = "Open"
+secondary_interaction_name = "Close"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Open_Close/Selectable"]
 shape = SubResource("BoxShape3D_gnscl")

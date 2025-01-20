@@ -1,17 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://page8jtypua8"]
+[gd_scene load_steps=16 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
 [ext_resource type="Resource" uid="uid://dq5r0fd14w4cq" path="res://Resources/Items/CDs/CD1.tres" id="3_mfhcb"]
-[ext_resource type="Resource" uid="uid://cdxqmwa7h0g2l" path="res://Resources/Items/CDs/CD2.tres" id="4_k2nwy"]
 [ext_resource type="PackedScene" uid="uid://bn4rv40xedxm6" path="res://Scenes/HubMap.tscn" id="5_0ge8w"]
-[ext_resource type="Resource" uid="uid://dwjhlwd5it7b4" path="res://Resources/Items/CDs/CD3.tres" id="5_2wk71"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="6_5hrp8"]
 [ext_resource type="PackedScene" uid="uid://jhee7el5barj" path="res://Scenes/Sorter/sorter.tscn" id="6_8t7s4"]
-[ext_resource type="Resource" uid="uid://cv6348h1ffs7q" path="res://Resources/Items/CDs/CD4.tres" id="6_kasdb"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="6_lw2ra"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
-[ext_resource type="PackedScene" uid="uid://dmifqahgum8wm" path="res://Models/Sorter/sorter.glb" id="11_wabes"]
 
 [sub_resource type="Gradient" id="Gradient_bcej7"]
 offsets = PackedFloat32Array(0.246324, 0.720588, 1)
@@ -37,7 +33,7 @@ sky_material = SubResource("PhysicalSkyMaterial_p850l")
 background_mode = 2
 sky = SubResource("Sky_aojxt")
 tonemap_mode = 2
-tonemap_white = 16.0
+tonemap_white = 8.0
 ssil_normal_rejection = 0.52
 glow_enabled = true
 fog_sky_affect = 0.074
@@ -79,23 +75,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46492, 2.04145, -0.148022)
 
 [node name="Items" type="Node" parent="."]
 
-[node name="ItemPickUp" parent="Items" instance=ExtResource("6_5hrp8")]
+[node name="CD1" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27592, 2.02238, -3.33164)
 item = ExtResource("3_mfhcb")
 
-[node name="ItemPickUp4" parent="Items" instance=ExtResource("6_5hrp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21769, 2.02238, -2.06375)
-item = ExtResource("4_k2nwy")
-
-[node name="ItemPickUp5" parent="Items" instance=ExtResource("6_5hrp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.21769, 2.02238, -0.12001)
-item = ExtResource("5_2wk71")
-
-[node name="ItemPickUp3" parent="Items" instance=ExtResource("6_5hrp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76341, 2.02238, 2.19414)
-item = ExtResource("6_kasdb")
-
-[node name="ItemPickUp2" parent="Items" instance=ExtResource("6_5hrp8")]
+[node name="Knife" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907879, 2.02238, -3.33164)
 item = ExtResource("6_lw2ra")
 
@@ -105,19 +89,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 [node name="Sorter" parent="." instance=ExtResource("6_8t7s4")]
 transform = Transform3D(0.207055, 0, -0.772741, 0, 0.8, 0, 0.772741, 0, 0.207055, 4.23343, 1.08247, -2.16973)
 
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
+size = Vector3(58.7178, 15, 0.001)
+
 [node name="UiRoot" type="CanvasLayer" parent="."]
 script = ExtResource("6_3iylo")
 
 [node name="InventoryDialog" parent="UiRoot" instance=ExtResource("7_uss5p")]
 unique_name_in_owner = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
-size = Vector3(58.7178, 15, 0.001)
-
-[node name="sorter" parent="." instance=ExtResource("11_wabes")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3619, -49.9066, 2.78257)
-
-[node name="ItemPickUp" parent="." instance=ExtResource("6_5hrp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.3619, -49.9066, -3.01054)
-item = ExtResource("6_lw2ra")

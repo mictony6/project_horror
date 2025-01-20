@@ -230,9 +230,11 @@ spot_range = 50.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
 
-[node name="ToolManager" type="Node3D" parent="Head" node_paths=PackedStringArray("animation_player")]
+[node name="ToolManager" type="Node3D" parent="Head" node_paths=PackedStringArray("player", "selector", "animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
 script = ExtResource("4_l1v1m")
+player = NodePath("../..")
+selector = NodePath("../Selector")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]

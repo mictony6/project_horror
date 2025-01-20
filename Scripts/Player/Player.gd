@@ -17,7 +17,7 @@ var direction: Vector3 = Vector3.ZERO;
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GlobalVariables.player = self;
-
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():

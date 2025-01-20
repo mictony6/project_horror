@@ -4,6 +4,7 @@ class_name Selectable
 var can_be_selected: bool = true
 @export var interaction_name: String
 @export var secondary_interaction_name: String
+var interaction_index: int = 0
 var mesh_instance: MeshInstance3D
 var material_overlay: Material
 @onready var input_prompt: VBoxContainer = $InputPrompt
@@ -42,7 +43,9 @@ func unhighlight() -> void:
 	mesh_instance.material_overlay = null
 
 func switch_interaction_label() -> void:
-	if label.text == interaction_name:
+	if interaction_index == 0:
 		label.text = secondary_interaction_name
+		interaction_index = 1
 	else:
 		label.text = interaction_name
+		interaction_index = 0

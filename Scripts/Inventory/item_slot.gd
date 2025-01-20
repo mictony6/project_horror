@@ -9,7 +9,7 @@ var _id: int
 func set_item_to_display(item: Item, id: int):
 	_id = id
 	button.icon = item.icon;
-	button.button_down.connect(_on_button_down)
 
-func _on_button_down():
+
+func _on_button_button_down() -> void:
 	GlobalEventManager.item_used.emit(_id)
