@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://devmio8hcmrre"]
+[gd_scene load_steps=15 format=3 uid="uid://devmio8hcmrre"]
 
 [ext_resource type="ArrayMesh" uid="uid://b5igjda6chowu" path="res://Models/Sorter/Mesh/sorter_Cube_004.res" id="2_dh84y"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_i0yr5"]
 [ext_resource type="Script" path="res://Scripts/Sorter/diskholder.gd" id="2_rweyg"]
 [ext_resource type="ArrayMesh" uid="uid://ddleqw5vgds4t" path="res://Models/Sorter/Mesh/sorter_Cube_005.res" id="4_vgjd7"]
 [ext_resource type="Script" path="res://Scripts/Sorter/open_close_button.gd" id="5_yyxub"]
+[ext_resource type="Script" path="res://Scripts/Sorter/play_button.gd" id="7_hp4a6"]
 [ext_resource type="ArrayMesh" uid="uid://cofnjmlx32ibu" path="res://Models/Sorter/Mesh/sorter_Cube_007.res" id="7_ta4ca"]
 [ext_resource type="ArrayMesh" uid="uid://bt2psuq0iqud0" path="res://Models/Sorter/Mesh/sorter_Cube_008.res" id="8_5muru"]
 [ext_resource type="ArrayMesh" uid="uid://b0vdqyvtblekt" path="res://Models/Sorter/Mesh/sorter_Cube_009.res" id="9_1ah52"]
@@ -21,7 +22,10 @@ size = Vector3(0.858765, 0.216553, 1)
 albedo_color = Color(0.670924, 0.191896, 0.12246, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gnscl"]
-size = Vector3(0.242188, 0.0947266, 0.177032)
+size = Vector3(0.242188, 0.0917969, 0.177032)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7spm"]
+size = Vector3(0.242188, 0.0876465, 0.177032)
 
 [node name="Diskholder" type="Node3D"]
 script = ExtResource("2_rweyg")
@@ -61,6 +65,14 @@ shape = SubResource("BoxShape3D_gnscl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, 0.0426199, -0.450124)
 mesh = ExtResource("7_ta4ca")
 skeleton = NodePath("")
+script = ExtResource("7_hp4a6")
+
+[node name="Selectable" parent="Play" instance=ExtResource("2_i0yr5")]
+interaction_name = "Play"
+secondary_interaction_name = "Stop"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Play/Selectable"]
+shape = SubResource("BoxShape3D_l7spm")
 
 [node name="Stop" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.636044, -0.0515001, -0.450124)
@@ -74,3 +86,4 @@ skeleton = NodePath("")
 
 [connection signal="closed" from="Open_Close" to="." method="_on_open_close_closed"]
 [connection signal="opened" from="Open_Close" to="." method="_on_open_close_opened"]
+[connection signal="play_btn_pressed" from="Play" to="." method="_on_play_play_btn_pressed"]

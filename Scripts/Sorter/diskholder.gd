@@ -11,6 +11,7 @@ var disk_item: DiskItem = null
 
 signal diskholder_opened(name: String)
 signal diskholder_closed(name: String) # i havent no use for this signal yet
+signal disk_played(disk: DiskItem)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -89,3 +90,13 @@ func retrieve_disk(inventory: Inventory):
 ## Very ambiguous, but it works
 func force_toggle():
 	$Open_Close.toggle()
+
+func _on_play_play_btn_pressed() -> void:
+	if !has_disk():
+		return
+	if !closed:
+		force_toggle()
+		await get_tree().create_timer(0.5).timeout
+
+	await get_tree().create_timer(0.2).timeout
+	disk_played.emit(disk_item)
