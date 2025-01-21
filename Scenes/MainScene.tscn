@@ -88,6 +88,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 
 [node name="Sorter" parent="." instance=ExtResource("6_8t7s4")]
 transform = Transform3D(0.207055, 0, -0.772741, 0, 0.8, 0, 0.772741, 0, 0.207055, 4.23343, 1.08247, -2.16973)
+empty_cd = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)

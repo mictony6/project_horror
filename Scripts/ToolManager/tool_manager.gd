@@ -23,7 +23,6 @@ func hold_item(id: int):
 	var item: Item = player.inventory.get_items()[id]
 	item.is_equipped = true
 	# if the item clicked is the same as the one held, unequip it
-		
 
 	if is_holding_item():
 		if item == item_held:
@@ -49,18 +48,19 @@ func use_held_item():
 	animation_player.play("use_item")
 		
 
-func on_disk_inserted(disk: DiskItem):
-	player.inventory.remove_item(disk)
-	unequip_item()
-
 func is_holding_item() -> bool:
 	return item_held != null
 
 
 func _process(delta: float) -> void:
 
-			
 	if is_holding_item() and item_held.uses <= 0:
 		player.inventory.remove_item(item_held)
 		item_held = null
 		get_child(0).queue_free()
+
+
+# event handler for when a disk is inserted
+func on_disk_inserted(disk: DiskItem):
+	player.inventory.remove_item(disk)
+	unequip_item()

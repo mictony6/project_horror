@@ -1,27 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://jhee7el5barj"]
+[gd_scene load_steps=6 format=3 uid="uid://jhee7el5barj"]
 
 [ext_resource type="Script" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
-[ext_resource type="Resource" uid="uid://cg1umgmr2iffk" path="res://Resources/Items/EmptyCD.tres" id="2_smna7"]
-[ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="3_4dqu1"]
-[ext_resource type="Script" path="res://Scripts/Sorter/sorter_ui.gd" id="3_gwc7d"]
-[ext_resource type="PackedScene" uid="uid://cebkhw8yskfnv" path="res://Scenes/Sorter/cd_slot.tscn" id="5_h7q42"]
 [ext_resource type="ArrayMesh" uid="uid://cb8ifmao4wklg" path="res://Models/Sorter/Mesh/sorter_Cube_003.res" id="6_37yn7"]
 [ext_resource type="PackedScene" uid="uid://devmio8hcmrre" path="res://Scenes/Sorter/diskholder.tscn" id="7_g5qku"]
-
-[sub_resource type="SystemFont" id="SystemFont_nb4lx"]
-font_names = PackedStringArray("Century Gothic")
-subpixel_positioning = 0
-
-[sub_resource type="LabelSettings" id="LabelSettings_xmrdi"]
-font = SubResource("SystemFont_nb4lx")
-font_size = 40
-
-[sub_resource type="InputEventKey" id="InputEventKey_aukea"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_d10t4"]
-events = [SubResource("InputEventKey_aukea")]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luhgl"]
 albedo_color = Color(1, 0.9375, 0.75, 1)
@@ -33,78 +14,6 @@ data = PackedVector3Array(0.6685, 0.9528, 0.5389, 0.6532, 0.4799, 0.5389, 0.6685
 
 [node name="Sorter" type="Node3D" groups=["Sorter"]]
 script = ExtResource("1_p1nr8")
-empty_cd = ExtResource("2_smna7")
-
-[node name="SorterUI" type="CanvasLayer" parent="."]
-layer = 99
-visible = false
-script = ExtResource("3_gwc7d")
-
-[node name="Control" type="Control" parent="SorterUI"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="SorterUI/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SorterUI/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_right = 0.95
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-text = "CD Sorter"
-label_settings = SubResource("LabelSettings_xmrdi")
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-
-[node name="CloseButton" type="Button" parent="SorterUI/Control/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-shortcut = SubResource("Shortcut_d10t4")
-text = "X"
-
-[node name="Slots" type="HBoxContainer" parent="SorterUI/Control/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="CDSlot2" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-
-[node name="CDSlot5" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-
-[node name="CDSlot3" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-
-[node name="CDSlot6" parent="SorterUI/Control/VBoxContainer/Slots" instance=ExtResource("5_h7q42")]
-layout_mode = 2
-
-[node name="InteractionArea" parent="." instance=ExtResource("3_4dqu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16221, 0)
-interaction_name = "Open Sorter"
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -117,16 +26,16 @@ surface_material_override/0 = SubResource("StandardMaterial3D_luhgl")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ph4uo")
 
-[node name="Diskholder" parent="." instance=ExtResource("7_g5qku")]
+[node name="Diskholders" type="Node3D" parent="."]
+
+[node name="Diskholder" parent="Diskholders" instance=ExtResource("7_g5qku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 1.718, 1)
 
-[node name="Diskholder2" parent="." instance=ExtResource("7_g5qku")]
+[node name="Diskholder2" parent="Diskholders" instance=ExtResource("7_g5qku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 1.24329, 1)
 
-[node name="Diskholder3" parent="." instance=ExtResource("7_g5qku")]
+[node name="Diskholder3" parent="Diskholders" instance=ExtResource("7_g5qku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.755235, 1)
 
-[node name="Diskholder4" parent="." instance=ExtResource("7_g5qku")]
+[node name="Diskholder4" parent="Diskholders" instance=ExtResource("7_g5qku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115, 0.279825, 1)
-
-[connection signal="pressed" from="SorterUI/Control/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_close_button_pressed"]

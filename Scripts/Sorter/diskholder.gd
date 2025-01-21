@@ -1,4 +1,5 @@
 extends Node3D
+class_name Diskholder
 
 var closed: bool = true
 
@@ -7,6 +8,9 @@ var closed: bool = true
 @onready var insert_marker: Node3D = %InsertMarker
 
 var disk_item: DiskItem = null
+
+signal diskholder_opened(name: String)
+signal diskholder_closed(name: String) # i havent no use for this signal yet
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,6 +21,8 @@ func _ready() -> void:
 	_on_open_close_closed()
 
 
+## Handles inserting and retrieving disks operator.
+## See [method insert_disk] and [method retrieve_disk]
 func handle_select() -> void:
 	# dont allow selecting if the diskholder is closed or is empty
 	if closed:
@@ -42,34 +48,44 @@ func handle_select() -> void:
 
 	selectable_component.switch_interaction_label()
 
-# when its opened, the diskholder can be selected
+## Called when the Open button is clicked
 func _on_open_close_opened() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, 0), 0.5)
 	closed = false
 	selectable_component.can_be_selected = true
+	diskholder_opened.emit(self.name)
 
-# when its closed, the diskholder cannot be selected
+## Called when the Close button is clicked
 func _on_open_close_closed() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, -0.7), 0.5)
 	closed = true
 	selectable_component.can_be_selected = false
+	diskholder_closed.emit(self.name)
+
 
 func has_disk() -> bool:
 	return disk_item != null
 
+## Called when a player uses a disk into an empty diskholder
 func insert_disk(disk: DiskItem):
 	disk_item = disk
 	disk_item.is_equipped = false
 	insert_marker.add_child(disk.scene.instantiate())
 	GlobalEventManager.disk_inserted.emit(disk_item)
 
+## Called when player a clicks on the diskholder while a disk exist
 func retrieve_disk(inventory: Inventory):
 	if disk_item != null:
 		inventory.add_item(disk_item)
 		disk_item = null
 		insert_marker.get_child(0).queue_free()
 		return true
+
+## This function is called when the player presses the force toggle button.
+## Very ambiguous, but it works
+func force_toggle():
+	$Open_Close.toggle()
