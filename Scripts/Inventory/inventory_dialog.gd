@@ -18,6 +18,7 @@ func open(inventory: Inventory):
 		child.queue_free()
 
 	var index = 0
+	print(inventory.get_items())
 	for item in inventory.get_items():
 		var slot: ItemSlot = slot_scene.instantiate()
 		inventory_grid.add_child(slot)

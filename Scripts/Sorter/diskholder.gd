@@ -6,7 +6,7 @@ var closed: bool = true
 @onready var selectable_component: Selectable = $DiskholderMesh/Selectable
 @onready var insert_marker: Node3D = %InsertMarker
 
-var disk_item: Item = null
+var disk_item: DiskItem = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,8 +29,8 @@ func handle_select() -> void:
 	match selectable_component.interaction_index:
 		0:
 			# find equippable item
-			var item: Item
-			var equipped: Array = inventory.get_items().filter(func(x: Item): return x.is_disk and x.is_equipped)
+			var item: DiskItem
+			var equipped: Array = inventory.get_items().filter(func(x: Item): return x is DiskItem and x.is_equipped)
 			if !equipped.is_empty():
 				item = equipped[0]
 			else:
@@ -61,10 +61,11 @@ func _on_open_close_closed() -> void:
 func has_disk() -> bool:
 	return disk_item != null
 
-func insert_disk(disk: Item):
+func insert_disk(disk: DiskItem):
 	disk_item = disk
 	disk_item.is_equipped = false
 	insert_marker.add_child(disk.scene.instantiate())
+	GlobalEventManager.disk_inserted.emit(disk_item)
 
 func retrieve_disk(inventory: Inventory):
 	if disk_item != null:

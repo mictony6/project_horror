@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name ItemSlot
 
-@onready var button: Button = %Button
+@onready var button: Button = $Button
 
 var _id: int
 

@@ -9,6 +9,7 @@ var item_held: Item
 
 func _ready() -> void:
 	GlobalEventManager.item_used.connect(hold_item)
+	GlobalEventManager.disk_inserted.connect(on_disk_inserted)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 
@@ -47,11 +48,10 @@ func use_held_item():
 	
 	animation_player.play("use_item")
 		
-	if selector.is_colliding():
-		var collider: Node3D = selector.get_collider()
-		if collider.is_in_group("Diskholder") and item_held.is_disk:
-			player.inventory.remove_item(item_held)
-			unequip_item()
+
+func on_disk_inserted(disk: DiskItem):
+	player.inventory.remove_item(disk)
+	unequip_item()
 
 func is_holding_item() -> bool:
 	return item_held != null

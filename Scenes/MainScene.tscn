@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="1_2b26y"]
-[ext_resource type="Resource" uid="uid://dq5r0fd14w4cq" path="res://Resources/Items/CDs/CD1.tres" id="3_mfhcb"]
+[ext_resource type="Resource" uid="uid://cerhtm150rp7p" path="res://Resources/Items/CDs/Disk1.tres" id="3_2g1nd"]
 [ext_resource type="PackedScene" uid="uid://bn4rv40xedxm6" path="res://Scenes/HubMap.tscn" id="5_0ge8w"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="6_5hrp8"]
@@ -75,13 +75,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46492, 2.04145, -0.148022)
 
 [node name="Items" type="Node" parent="."]
 
-[node name="CD1" parent="Items" instance=ExtResource("6_5hrp8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27592, 2.02238, -3.33164)
-item = ExtResource("3_mfhcb")
-
 [node name="Knife" parent="Items" instance=ExtResource("6_5hrp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0907879, 2.02238, -3.33164)
 item = ExtResource("6_lw2ra")
+
+[node name="Disk 1" parent="Items" instance=ExtResource("6_5hrp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09079, 2.02238, -3.33164)
+item = ExtResource("3_2g1nd")
 
 [node name="HubMapMesh" parent="." instance=ExtResource("5_0ge8w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
