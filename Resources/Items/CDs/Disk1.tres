@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DiskItem" load_steps=5 format=3 uid="uid://cerhtm150rp7p"]
+[gd_resource type="Resource" script_class="DiskItem" load_steps=4 format=3 uid="uid://cerhtm150rp7p"]
 
 [ext_resource type="Texture2D" uid="uid://cp7kh0gcbxomi" path="res://Models/CD/cd1_pexels-zekai-zhu-214984943-11827780.jpg" id="1_7kqwx"]
 [ext_resource type="Script" path="res://Scripts/Items/disk_item.gd" id="1_qqwds"]
-[ext_resource type="PackedScene" uid="uid://d058ortyf7d08" path="res://Scenes/Levels/disk_1_level.tscn" id="2_c6rts"]
 [ext_resource type="PackedScene" uid="uid://dbpbf6fgbtsjr" path="res://Scenes/CD/cd_1.tscn" id="2_phbyg"]
 
 [resource]
@@ -11,7 +10,7 @@ cd_name = "Disk 1"
 cd_author = ""
 cd_description = ""
 sorter_key = "sorter_1"
-level_scene = ExtResource("2_c6rts")
+level_name = "Level1"
 name = "Disk1"
 scene = ExtResource("2_phbyg")
 icon = ExtResource("1_7kqwx")

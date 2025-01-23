@@ -6,4 +6,4 @@ class_name DiskItem
 @export var cd_author: String
 @export var cd_description: String
 @export var sorter_key: String
-@export var level_scene: PackedScene
+@export var level_name: String

@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-@onready var player: Player = %Player
 @onready var inventory_dialog: InventoryDialog = %InventoryDialog
 func _ready() -> void:
 
@@ -12,4 +11,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		if inventory_dialog.is_opened:
 			inventory_dialog.close()
 		elif GlobalVariables.can_open_inventory:
-			inventory_dialog.open(player.inventory)
+			inventory_dialog.open(GlobalVariables.player.inventory)

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d058ortyf7d08"]
+
+[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
+[ext_resource type="PackedScene" uid="uid://8agfkeryohk2" path="res://Scenes/Level1.tscn" id="2_lb5ns"]
+[ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
+
+[node name="Disk1Level" type="Node3D"]
+script = ExtResource("1_4mir1")
+
+[node name="Node3D" parent="." instance=ExtResource("2_lb5ns")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("3_7yx3n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83012, 2, 0)

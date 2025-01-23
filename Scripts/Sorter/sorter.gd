@@ -20,5 +20,5 @@ func on_diskholder_opened(name: String) -> void:
 			dh.force_toggle()
 
 func on_disk_played(disk_item: DiskItem) -> void:
-	var level_scene: PackedScene = disk_item.level_scene
-	get_tree().change_scene_to_packed(level_scene)
+	var level_path: String = "res://Scenes/Levels/" + disk_item.level_name + ".tscn"
+	GlobalVariables.level_manager.load_level(level_path)
