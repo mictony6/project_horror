@@ -8,6 +8,7 @@ const JUMPING = "Jumping";
 const CROUCHING = "Crouching";
 const FALLING = "Falling";
 const MENU = "Menu";
+const CROUCH = "Crouching"
 var player: Player;
 
 func _ready() -> void:

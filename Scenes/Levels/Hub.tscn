@@ -48,26 +48,9 @@ script = ExtResource("1_kip1u")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.946051, 0.324017, 0, -0.324017, -0.946051, 0, 0, 0)
 shadow_enabled = true
-sky_mode = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ywojk")
-
-[node name="Floor" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999915, -0.0130372, 0, 0.0130372, 0.999915, -1.88703, -0.202635, -3.05944)
-use_collision = true
-size = Vector3(47, 1, 74.882)
-material = SubResource("StandardMaterial3D_k8cnb")
-
-[node name="Floor2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.905561, -0.424215, 0, 0.424215, 0.905561, -0.0879922, -0.0372665, 7.09808)
-use_collision = true
-size = Vector3(12.2502, 1, 3.02295)
-
-[node name="Ceiling" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.685195, 12.5154, -8)
-use_collision = true
-size = Vector3(47, 1, 65)
 
 [node name="Player" parent="." instance=ExtResource("2_3yv8b")]
 unique_name_in_owner = true
@@ -89,6 +72,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 [node name="Sorter" parent="." instance=ExtResource("7_kpjat")]
 transform = Transform3D(0.207055, 0, -0.772741, 0, 0.8, 0, 0.772741, 0, 0.207055, 4.23343, 1.08247, -2.16973)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
 size = Vector3(58.7178, 15, 0.001)
+
+[node name="Floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999915, -0.0130372, 0, 0.0130372, 0.999915, -1.88703, -0.202635, -3.05944)
+use_collision = true
+size = Vector3(47, 1, 74.882)
+material = SubResource("StandardMaterial3D_k8cnb")
+
+[node name="Floor2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.905561, -0.424215, 0, 0.424215, 0.905561, -0.0879922, -0.0372665, 7.09808)
+use_collision = true
+size = Vector3(12.2502, 1, 3.02295)
+
+[node name="Ceiling" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.685195, 12.5154, -8)
+use_collision = true
+size = Vector3(47, 1, 65)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202881, 3.48893, 1.09351)
+size = Vector3(5.38135, 2.80252, 1)

@@ -16,6 +16,8 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING);
 	elif Input.is_action_just_pressed("jump"):
 		finished.emit(JUMPING);
+	elif Input.is_action_just_pressed("crouch"):
+		finished.emit(CROUCH)
 	elif Input.is_action_just_released("sprint"):
 		finished.emit(WALKING);
 	elif player.direction.is_equal_approx(Vector3.ZERO):
