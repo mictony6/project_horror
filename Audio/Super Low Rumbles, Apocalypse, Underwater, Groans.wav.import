@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://o0ludr0eu2k6"
+path="res://.godot/imported/Super Low Rumbles, Apocalypse, Underwater, Groans.wav-dd4cfe137305b7b06c2aa6d8a8c0ef5a.sample"
+
+[deps]
+
+source_file="res://Audio/Super Low Rumbles, Apocalypse, Underwater, Groans.wav"
+dest_files=["res://.godot/imported/Super Low Rumbles, Apocalypse, Underwater, Groans.wav-dd4cfe137305b7b06c2aa6d8a8c0ef5a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

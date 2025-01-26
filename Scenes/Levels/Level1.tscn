@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d058ortyf7d08"]
+[gd_scene load_steps=17 format=3 uid="uid://d058ortyf7d08"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://no6acplfbuwu" path="res://Images/GreyboxTextures/greybox_grey_grid.png" id="4_ihbq4"]
 [ext_resource type="Texture2D" uid="uid://duxxlaxmbq2hl" path="res://Images/GreyboxTextures/greybox_light_grid.png" id="5_neq34"]
 [ext_resource type="Script" path="res://Scripts/Triggers/underworld_trigger.gd" id="5_qnhot"]
+[ext_resource type="AudioStream" uid="uid://o0ludr0eu2k6" path="res://Audio/Super Low Rumbles, Apocalypse, Underwater, Groans.wav" id="7_aef1o"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_nxlau"]
 
@@ -15,10 +16,12 @@ sky_material = SubResource("PhysicalSkyMaterial_nxlau")
 [sub_resource type="Environment" id="Environment_fl8jm"]
 background_mode = 2
 sky = SubResource("Sky_kmkyb")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsg4v"]
-albedo_texture = ExtResource("5_neq34")
-uv1_triplanar = true
+tonemap_mode = 3
+tonemap_white = 8.0
+ssr_enabled = true
+ssao_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_temporal_reprojection_enabled = false
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x0xyl"]
 radius = 0.547322
@@ -27,9 +30,19 @@ radius = 0.547322
 albedo_texture = ExtResource("4_ihbq4")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsg4v"]
+albedo_texture = ExtResource("5_neq34")
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdnj1"]
 albedo_texture = ExtResource("4_ihbq4")
 uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s1d5o"]
+size = Vector2(5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bihnf"]
+size = Vector2(50, 50)
 
 [node name="Disk1Level" type="Node3D"]
 script = ExtResource("1_4mir1")
@@ -42,16 +55,10 @@ shadow_enabled = true
 environment = SubResource("Environment_fl8jm")
 
 [node name="Player" parent="." instance=ExtResource("3_7yx3n")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 3.45216, -4)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["Climbable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.564925)
-use_collision = true
-polygon = PackedVector2Array(1.1, 0.5, 1.1, 1.4, 1.1, 2.8, 0, 3, -1, 2.8, -1, 1.4, -1, 0.5, -0.5, 0.5, -0.5, 1.4, -0.5, 2.3, 0, 2.6, 0.6, 2.3, 0.6, 1.4, 0.6, 0.5)
-material = SubResource("StandardMaterial3D_bsg4v")
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 15.8522, -4)
 
 [node name="Shrine" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9999, -3.40763, 0.0219785)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9999, -3.60763, 0.0219785)
 use_collision = true
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Shrine"]
@@ -86,13 +93,16 @@ depth = 2.0
 [node name="OmniLight3D" type="OmniLight3D" parent="Shrine"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 light_color = Color(0.745794, 0.565543, 0.295621, 1)
+light_energy = 2.0
 shadow_enabled = true
 
-[node name="UnderworldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sun")]
+[node name="UnderworldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sun", "ambient")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.40341, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("5_qnhot")
 sun = NodePath("../DirectionalLight3D")
+ambient = NodePath("../AudioStreamPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="UnderworldTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
@@ -126,10 +136,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.6, 
 size = Vector3(10, 10, 1)
 material = SubResource("StandardMaterial3D_x6qao")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="FloorAndWalls"]
-transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.31401, -2.34785)
-size = Vector3(1, 2.09814, 1)
-
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 use_collision = true
 
@@ -139,7 +145,18 @@ size = Vector3(25.0166, 1, 22.3545)
 material = SubResource("StandardMaterial3D_x6qao")
 
 [node name="Hole2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4, 0)
 use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hole2"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.31401, -2.34785)
+size = Vector3(1, 2.09814, 1)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Hole2" groups=["Climbable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.564925)
+use_collision = true
+polygon = PackedVector2Array(1.1, 0.5, 1.1, 1.4, 1.1, 2.8, 0, 3, -1, 2.8, -1, 1.4, -1, 0.5, -0.5, 0.5, -0.5, 1.4, -0.5, 2.3, 0, 2.6, 0.6, 2.3, 0.6, 1.4, 0.6, 0.5)
+material = SubResource("StandardMaterial3D_bsg4v")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Hole2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199999, 0, -0.41875)
@@ -147,6 +164,25 @@ use_collision = true
 size = Vector3(25.3, 1, 21.1)
 material = ExtResource("3_ixe75")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="Hole2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.2, 0)
+size = Vector3(2.58008, 8, 2)
+
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hole2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.58202, 0)
 operation = 2
+height = 9.35974
 material = SubResource("StandardMaterial3D_fdnj1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3, -0.392391)
+mesh = SubResource("PlaneMesh_s1d5o")
+skeleton = NodePath("../Hole2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.400001, -0.392391)
+mesh = SubResource("PlaneMesh_bihnf")
+skeleton = NodePath("../Hole2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_aef1o")

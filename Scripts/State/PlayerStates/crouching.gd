@@ -12,8 +12,8 @@ func update(_delta: float) -> void:
 
 ## Called by the state machine on the engine's physics update tick.
 func physics_update(_delta: float) -> void:
-	player.velocity.x = player.direction.x * player.SPEED;
-	player.velocity.z = player.direction.z * player.SPEED;
+	player.velocity.x = player.direction.x * player.SPEED * 0.5;
+	player.velocity.z = player.direction.z * player.SPEED * 0.5;
 	player.move_and_slide()
 
 	if not player.is_on_floor():
