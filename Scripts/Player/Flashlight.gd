@@ -18,7 +18,7 @@ func toggle():
 	if is_on:
 		animation_player.play("FlashLightUp")
 		spotlight.light_energy = energy
-		omni_light.light_energy = 0.5
+		omni_light.light_energy = energy * .25
 	else:
 		animation_player.play("FlashLightDown")
 		spotlight.light_energy = 0

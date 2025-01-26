@@ -1,16 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://d058ortyf7d08"]
+[gd_scene load_steps=14 format=3 uid="uid://d058ortyf7d08"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
 [ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="3_ixe75"]
 [ext_resource type="Texture2D" uid="uid://no6acplfbuwu" path="res://Images/GreyboxTextures/greybox_grey_grid.png" id="4_ihbq4"]
 [ext_resource type="Texture2D" uid="uid://duxxlaxmbq2hl" path="res://Images/GreyboxTextures/greybox_light_grid.png" id="5_neq34"]
+[ext_resource type="Script" path="res://Scripts/Triggers/underworld_trigger.gd" id="5_qnhot"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_nxlau"]
+
+[sub_resource type="Sky" id="Sky_kmkyb"]
+sky_material = SubResource("PhysicalSkyMaterial_nxlau")
 
 [sub_resource type="Environment" id="Environment_fl8jm"]
+background_mode = 2
+sky = SubResource("Sky_kmkyb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsg4v"]
 albedo_texture = ExtResource("5_neq34")
 uv1_triplanar = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_x0xyl"]
+radius = 0.547322
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6qao"]
 albedo_texture = ExtResource("4_ihbq4")
@@ -23,11 +34,15 @@ uv1_triplanar = true
 [node name="Disk1Level" type="Node3D"]
 script = ExtResource("1_4mir1")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.595035, 0.242161, 0.76635, 0.433013, 0.899895, 0.0518543, -0.677077, 0.362694, -0.640328, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fl8jm")
 
 [node name="Player" parent="." instance=ExtResource("3_7yx3n")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, -4.54784, -4)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 3.45216, -4)
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["Climbable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.564925)
@@ -35,39 +50,83 @@ use_collision = true
 polygon = PackedVector2Array(1.1, 0.5, 1.1, 1.4, 1.1, 2.8, 0, 3, -1, 2.8, -1, 1.4, -1, 0.5, -0.5, 0.5, -0.5, 1.4, -0.5, 2.3, 0, 2.6, 0.6, 2.3, 0.6, 1.4, 0.6, 0.5)
 material = SubResource("StandardMaterial3D_bsg4v")
 
-[node name="Hole" type="CSGCombiner3D" parent="." groups=["Climbable"]]
+[node name="Shrine" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9999, -3.40763, 0.0219785)
 use_collision = true
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Hole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.51815, -5.47772)
-size = Vector3(10, 6, 1)
-material = SubResource("StandardMaterial3D_x6qao")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Hole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.5, 5.5)
-size = Vector3(10, 6, 1)
-material = SubResource("StandardMaterial3D_x6qao")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Hole"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.6, -4.5, -4.47035e-08)
-size = Vector3(10, 10, 1)
-material = SubResource("StandardMaterial3D_x6qao")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Hole"]
-size = Vector3(10, 1, 10)
-material = ExtResource("3_ixe75")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hole"]
-operation = 2
-material = SubResource("StandardMaterial3D_fdnj1")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Hole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115762, -3.40763, 0.0219785)
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Shrine"]
 radius = 3.10436
 height = 3.80741
 material = ExtResource("3_ixe75")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Hole"]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Shrine"]
+operation = 2
+radius = 2.56217
+height = 3.80741
+material = ExtResource("3_ixe75")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Shrine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6, 0)
+radius = 2.56217
+height = 0.699434
+material = ExtResource("3_ixe75")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Shrine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.2, 0)
+radius = 2.0
+height = 0.699434
+material = ExtResource("3_ixe75")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Shrine"]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, -3.47953, -1.01862, -0.44314)
+operation = 2
+polygon = PackedVector2Array(0, -1, 0, 1, 0.5, 1.4, 1, 1, 1, 0, 1, -1)
+depth = 2.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Shrine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+light_color = Color(0.745794, 0.565543, 0.295621, 1)
+shadow_enabled = true
+
+[node name="UnderworldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sun")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_qnhot")
+sun = NodePath("../DirectionalLight3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UnderworldTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+shape = SubResource("SphereShape3D_x0xyl")
+
+[node name="FloorAndWalls" type="CSGCombiner3D" parent="." groups=["Climbable"]]
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="FloorAndWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.51815, -5.47772)
+size = Vector3(10, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="FloorAndWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -2.51815, -10.4777)
+size = Vector3(25.4, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="FloorAndWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -2.51815, 10.5223)
+size = Vector3(25.4, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="FloorAndWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.5, 5.5)
+size = Vector3(10, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="FloorAndWalls"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.6, -4.5, -4.47035e-08)
+size = Vector3(10, 10, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FloorAndWalls"]
 transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.31401, -2.34785)
 size = Vector3(1, 2.09814, 1)
 
@@ -78,3 +137,16 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 size = Vector3(25.0166, 1, 22.3545)
 material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="Hole2" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hole2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199999, 0, -0.41875)
+use_collision = true
+size = Vector3(25.3, 1, 21.1)
+material = ExtResource("3_ixe75")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hole2"]
+operation = 2
+material = SubResource("StandardMaterial3D_fdnj1")

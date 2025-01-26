@@ -47,7 +47,6 @@ func _process(_delta: float) -> void:
 
 func can_climb():
 	if head_raycast.is_colliding():
-		print("yes")
 		var collider = head_raycast.get_collider()
 		if collider.is_in_group("Climbable"):
 			
