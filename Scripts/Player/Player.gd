@@ -9,9 +9,9 @@ class_name Player
 const SPEED: int = 2;
 const SPRINT_SPEED: int = 3;
 const JUMP_FORCE = 4;
-const CLIMB_SPEED: int = 1
+const CLIMB_SPEED: int = 1;
 var direction: Vector3 = Vector3.ZERO;
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 
 # Components
 @export var head: Head
