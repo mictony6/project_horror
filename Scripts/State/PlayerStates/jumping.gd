@@ -25,13 +25,15 @@ func physics_update(_delta: float) -> void:
 		finished.emit(FALLING);
 
 func enter(previous_state_path: String, data := {}) -> void:
+
+
 	if Input.is_action_pressed("sprint"):
 		is_sprinting = true;
 	else:
 		is_sprinting = false;
-
+		
 	player.velocity.y += player.JUMP_FORCE;
-
+	
 
 func exit() -> void:
 	pass

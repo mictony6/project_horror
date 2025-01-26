@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=38 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
 [ext_resource type="Script" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/crouching.gd" id="13_r45dv"]
+[ext_resource type="Script" path="res://Scripts/State/PlayerStates/climbing.gd" id="14_344hs"]
 [ext_resource type="Texture2D" uid="uid://0h3lijepkj2a" path="res://Images/keyboard_e.png" id="14_xo1pu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
@@ -147,36 +148,6 @@ tracks/6/keys = {
 "values": [Vector3(0, 0.609101, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_g1b5t"]
-resource_name = "use_item"
-length = 0.333337
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/ToolManager")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/ToolManager")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_irgjh"]
 resource_name = "crouch_down"
 tracks/0/type = "value"
@@ -210,10 +181,10 @@ tracks/2/path = NodePath("Head:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.5, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.609, 0), Vector3(0, -0.255635, 0)]
+"values": [Vector3(0, 0.609, 0), Vector3(0, -0.26, 0), Vector3(0, -0.255635, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x61lc"]
@@ -249,10 +220,40 @@ tracks/2/path = NodePath("Head:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.5, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.256, 0), Vector3(0, 0.612, 0), Vector3(0, 0.609101, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g1b5t"]
+resource_name = "use_item"
+length = 0.333337
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/ToolManager")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/ToolManager")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -0.256, 0), Vector3(0, 0.609101, 0)]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
@@ -336,6 +337,7 @@ script = ExtResource("3_lf4xw")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477, -0.259, -0.27)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_6nxlb")
 
@@ -377,6 +379,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153247, 0.424211, -0.622159
 shape = SubResource("BoxShape3D_fujj6")
 
 [node name="Selector" type="RayCast3D" parent="Head"]
+unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 32
 collide_with_areas = true
@@ -408,6 +411,9 @@ script = ExtResource("10_6f3fu")
 [node name="Crouching" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player")]
 script = ExtResource("13_r45dv")
 animation_player = NodePath("../../AnimationPlayer")
+
+[node name="Climbing" type="Node" parent="StateMachine"]
+script = ExtResource("14_344hs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -486,6 +492,16 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.834163, 0)
 enabled = false
 target_position = Vector3(0, 1.69, 0)
+
+[node name="HeadRayCast" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.6, 0)
+target_position = Vector3(0, -0.3, 0)
+debug_shape_custom_color = Color(0.423151, 0.553813, 0.193966, 1)
+
+[node name="CheckCanClimb" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+enabled = false
 
 [connection signal="area_entered" from="InteractableDetector" to="InteractableDetector" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractableDetector" to="InteractableDetector" method="_on_area_exited"]

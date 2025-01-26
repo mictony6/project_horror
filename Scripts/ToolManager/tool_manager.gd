@@ -41,6 +41,7 @@ func unequip_item():
 	get_child(0).queue_free()
 
 func use_held_item():
+
 	# TODO: Replace with tween
 	if !is_holding_item():
 		return

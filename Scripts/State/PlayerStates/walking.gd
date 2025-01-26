@@ -8,9 +8,11 @@ func update(_delta: float) -> void:
 
 
 func physics_update(_delta: float) -> void:
+
 	player.velocity.x = player.direction.x * player.SPEED;
 	player.velocity.z = player.direction.z * player.SPEED;
 	player.move_and_slide()
+
 
 	if not player.is_on_floor():
 		finished.emit(FALLING);

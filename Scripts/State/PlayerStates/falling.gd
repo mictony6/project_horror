@@ -14,17 +14,17 @@ func physics_update(_delta: float) -> void:
 	player.velocity.y -= (player.gravity * _delta)
 	player.move_and_slide();
 
+	if player.can_climb():
+		finished.emit(CLIMB)
+		return
+
 	if player.is_on_floor():
-		if player.direction.is_equal_approx(Vector3.ZERO):
-			finished.emit(IDLE);
-		elif Input.is_action_pressed("sprint"):
-			finished.emit(SPRINTING);
-		else:
-			finished.emit(WALKING);
+		finished.emit(IDLE);
+
 
 func enter(previous_state_path: String, data := {}) -> void:
 	velocity_on_enter = player.velocity
-	pass
+
 
 func exit() -> void:
 	pass

@@ -1,14 +1,80 @@
-[gd_scene load_steps=4 format=3 uid="uid://d058ortyf7d08"]
+[gd_scene load_steps=10 format=3 uid="uid://d058ortyf7d08"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
-[ext_resource type="PackedScene" uid="uid://8agfkeryohk2" path="res://Scenes/Level1.tscn" id="2_lb5ns"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
+[ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="3_ixe75"]
+[ext_resource type="Texture2D" uid="uid://no6acplfbuwu" path="res://Images/GreyboxTextures/greybox_grey_grid.png" id="4_ihbq4"]
+[ext_resource type="Texture2D" uid="uid://duxxlaxmbq2hl" path="res://Images/GreyboxTextures/greybox_light_grid.png" id="5_neq34"]
+
+[sub_resource type="Environment" id="Environment_fl8jm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsg4v"]
+albedo_texture = ExtResource("5_neq34")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6qao"]
+albedo_texture = ExtResource("4_ihbq4")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdnj1"]
+albedo_texture = ExtResource("4_ihbq4")
+uv1_triplanar = true
 
 [node name="Disk1Level" type="Node3D"]
 script = ExtResource("1_4mir1")
 
-[node name="Node3D" parent="." instance=ExtResource("2_lb5ns")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fl8jm")
 
 [node name="Player" parent="." instance=ExtResource("3_7yx3n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83012, 2, 0)
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, -4.54784, -4)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["Climbable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.564925)
+use_collision = true
+polygon = PackedVector2Array(1.1, 0.5, 1.1, 1.4, 1.1, 2.8, 0, 3, -1, 2.8, -1, 1.4, -1, 0.5, -0.5, 0.5, -0.5, 1.4, -0.5, 2.3, 0, 2.6, 0.6, 2.3, 0.6, 1.4, 0.6, 0.5)
+material = SubResource("StandardMaterial3D_bsg4v")
+
+[node name="Hole" type="CSGCombiner3D" parent="." groups=["Climbable"]]
+use_collision = true
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Hole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.51815, -5.47772)
+size = Vector3(10, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Hole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, -2.5, 5.5)
+size = Vector3(10, 6, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Hole"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.6, -4.5, -4.47035e-08)
+size = Vector3(10, 10, 1)
+material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hole"]
+size = Vector3(10, 1, 10)
+material = ExtResource("3_ixe75")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hole"]
+operation = 2
+material = SubResource("StandardMaterial3D_fdnj1")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Hole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115762, -3.40763, 0.0219785)
+radius = 3.10436
+height = 3.80741
+material = ExtResource("3_ixe75")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hole"]
+transform = Transform3D(1, 0, 0, 0, 0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 1.31401, -2.34785)
+size = Vector3(1, 2.09814, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+size = Vector3(25.0166, 1, 22.3545)
+material = SubResource("StandardMaterial3D_x6qao")
