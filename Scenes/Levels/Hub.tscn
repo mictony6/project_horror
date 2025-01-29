@@ -72,7 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 [node name="Sorter" parent="." instance=ExtResource("7_kpjat")]
 transform = Transform3D(0.207055, 0, -0.772741, 0, 0.8, 0, 0.772741, 0, 0.207055, 4.23343, 1.08247, -2.16973)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Climbable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202881, 3.48893, 1.09351)
 use_collision = true
 size = Vector3(5.38135, 2.80252, 1)

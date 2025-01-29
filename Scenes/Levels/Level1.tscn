@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d058ortyf7d08"]
+[gd_scene load_steps=25 format=3 uid="uid://d058ortyf7d08"]
 
 [ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
@@ -6,7 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://no6acplfbuwu" path="res://Images/GreyboxTextures/greybox_grey_grid.png" id="4_ihbq4"]
 [ext_resource type="Texture2D" uid="uid://duxxlaxmbq2hl" path="res://Images/GreyboxTextures/greybox_light_grid.png" id="5_neq34"]
 [ext_resource type="Script" path="res://Scripts/Triggers/underworld_trigger.gd" id="5_qnhot"]
+[ext_resource type="Texture2D" uid="uid://dxlgeyl0jycv1" path="res://Images/GreyboxTextures/greybox_orange_grid.png" id="6_18lst"]
+[ext_resource type="Script" path="res://Scripts/Triggers/room_trigger.gd" id="7_a6pvk"]
 [ext_resource type="AudioStream" uid="uid://o0ludr0eu2k6" path="res://Audio/Super Low Rumbles, Apocalypse, Underwater, Groans.wav" id="7_aef1o"]
+[ext_resource type="Texture2D" uid="uid://d0px0828r5iig" path="res://Images/GreyboxTextures/greybox_purple_grid.png" id="8_rrrwb"]
+[ext_resource type="PackedScene" uid="uid://ddglot4hivgm1" path="res://Scenes/Rooms/rotating_room_1.tscn" id="11_x5koo"]
+[ext_resource type="LightmapGIData" uid="uid://oik5q1redtu7" path="res://Baked/Level1.lmbake" id="12_6y7f1"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_nxlau"]
 
@@ -19,15 +24,27 @@ sky = SubResource("Sky_kmkyb")
 tonemap_mode = 3
 tonemap_white = 8.0
 ssr_enabled = true
-ssao_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_temporal_reprojection_enabled = false
+glow_normalized = true
+fog_light_color = Color(0.580965, 0.32611, 0.245002, 1)
+fog_density = 0.001
+fog_sky_affect = 0.0
+volumetric_fog_density = 0.4598
+volumetric_fog_albedo = Color(0.475318, 0.280799, 0.244477, 1)
+volumetric_fog_emission = Color(0.158472, 0.158472, 0.158472, 1)
+adjustment_contrast = 1.26
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78ka5"]
+size = Vector3(42.1152, 1, 74.4002)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_x0xyl"]
 radius = 0.547322
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6qao"]
 albedo_texture = ExtResource("4_ihbq4")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uuk2w"]
+albedo_texture = ExtResource("6_18lst")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsg4v"]
@@ -39,16 +56,22 @@ albedo_texture = ExtResource("4_ihbq4")
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s1d5o"]
+lightmap_size_hint = Vector2i(27, 27)
 size = Vector2(5, 5)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qnics"]
+albedo_texture = ExtResource("8_rrrwb")
+uv1_triplanar = true
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_bihnf"]
-size = Vector2(50, 50)
+material = SubResource("StandardMaterial3D_qnics")
+size = Vector2(150, 50)
 
 [node name="Disk1Level" type="Node3D"]
 script = ExtResource("1_4mir1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.595035, 0.242161, 0.76635, 0.433013, 0.899895, 0.0518543, -0.677077, 0.362694, -0.640328, 0, 0, 0)
+transform = Transform3D(-0.595035, 0.242161, 0.766349, 0.433013, 0.899895, 0.051854, -0.677077, 0.362694, -0.640328, 0.0320091, -0.200089, 0.0992546)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -56,6 +79,29 @@ environment = SubResource("Environment_fl8jm")
 
 [node name="Player" parent="." instance=ExtResource("3_7yx3n")]
 transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, 0, 15.8522, -4)
+
+[node name="RoomTrigger" type="Area3D" parent="." node_paths=PackedStringArray("environment")]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 16.0205, -4.51862, 6.75686)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_a6pvk")
+environment = NodePath("../WorldEnvironment")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.55658, -0.395829, -38.0631)
+shape = SubResource("BoxShape3D_78ka5")
+
+[node name="UnderworldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sun", "ambient")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.40341, 0)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_qnhot")
+sun = NodePath("../DirectionalLight3D")
+ambient = NodePath("../AudioStreamPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="UnderworldTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+shape = SubResource("SphereShape3D_x0xyl")
 
 [node name="Shrine" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9999, -3.60763, 0.0219785)
@@ -96,18 +142,6 @@ light_color = Color(0.745794, 0.565543, 0.295621, 1)
 light_energy = 2.0
 shadow_enabled = true
 
-[node name="UnderworldTrigger" type="Area3D" parent="." node_paths=PackedStringArray("sun", "ambient")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.40341, 0)
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("5_qnhot")
-sun = NodePath("../DirectionalLight3D")
-ambient = NodePath("../AudioStreamPlayer")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="UnderworldTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
-shape = SubResource("SphereShape3D_x0xyl")
-
 [node name="FloorAndWalls" type="CSGCombiner3D" parent="." groups=["Climbable"]]
 use_collision = true
 
@@ -117,13 +151,13 @@ size = Vector3(10, 6, 1)
 material = SubResource("StandardMaterial3D_x6qao")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="FloorAndWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -2.51815, -10.4777)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -2.51815, -21.0777)
 size = Vector3(25.4, 6, 1)
 material = SubResource("StandardMaterial3D_x6qao")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="FloorAndWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, -2.51815, 10.5223)
-size = Vector3(25.4, 6, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -2.51815, 21.5223)
+size = Vector3(29, 6, 1)
 material = SubResource("StandardMaterial3D_x6qao")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="FloorAndWalls"]
@@ -136,13 +170,74 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.6, 
 size = Vector3(10, 10, 1)
 material = SubResource("StandardMaterial3D_x6qao")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4102, -0.882781, 0.189575)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 10.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4102, -0.882781, 0.189575)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 10.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.4102, -0.882781, 0.189575)
+light_energy = 5.0
+light_bake_mode = 1
+omni_range = 10.0
+
+[node name="PuzzleRoom1" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
-size = Vector3(25.0166, 1, 22.3545)
+[node name="FloorBelow" type="CSGBox3D" parent="PuzzleRoom1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5147, -6, 0)
+size = Vector3(104.046, 1, 43.8115)
 material = SubResource("StandardMaterial3D_x6qao")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PuzzleRoom1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.3102, -0.677499, 0.189575)
+size = Vector3(75.1279, 11, 43.8)
+material = SubResource("StandardMaterial3D_uuk2w")
+
+[node name="Inside" type="CSGBox3D" parent="PuzzleRoom1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.0695, -0.0922676, 0.0666409)
+operation = 2
+size = Vector3(72.8652, 12.1725, 41.0823)
+material = SubResource("StandardMaterial3D_uuk2w")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="PuzzleRoom1"]
+use_collision = true
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PuzzleRoom1/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 67.9236, -2.32642, 0.0849934)
+size = Vector3(43, 10, 1)
+material = ExtResource("3_ixe75")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PuzzleRoom1/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40.9236, -2.12642, 0.0849934)
+size = Vector3(43, 10, 1)
+material = ExtResource("3_ixe75")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="PuzzleRoom1/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.2, -5, 14)
+operation = 2
+radius = 2.29571
+material = ExtResource("3_ixe75")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="PuzzleRoom1/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.2, -5, 14)
+operation = 2
+radius = 2.29571
+material = ExtResource("3_ixe75")
+
+[node name="DoorCut" type="CSGPolygon3D" parent="PuzzleRoom1"]
+transform = Transform3D(2.98023e-08, 0, -1, 0, 1, 0, 1, 0, 2.98023e-08, 16.0205, -4.51862, 6.75686)
+operation = 2
+polygon = PackedVector2Array(0, -1, 0, 1, 0.5, 1.4, 1, 1, 1, 0, 1, -1)
+depth = 2.85
+material = ExtResource("3_ixe75")
 
 [node name="Hole2" type="CSGCombiner3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.4, 0)
@@ -180,9 +275,26 @@ mesh = SubResource("PlaneMesh_s1d5o")
 skeleton = NodePath("../Hole2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.400001, -0.392391)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 22.2681, 0.220659, -0.681413)
 mesh = SubResource("PlaneMesh_bihnf")
 skeleton = NodePath("../Hole2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_aef1o")
+
+[node name="RotatingRoom1" parent="." instance=ExtResource("11_x5koo")]
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 9, 15.5571, -4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RotatingRoom1"]
+transform = Transform3D(1, 0, -1.59872e-14, 0, 1, 0, 1.59872e-14, 0, 1, 0, 1.46389, 0)
+light_energy = 6.0
+light_bake_mode = 1
+shadow_enabled = true
+omni_range = 11.007
+omni_attenuation = 2.0
+
+[node name="LightmapGI" type="LightmapGI" parent="."]
+quality = 2
+bounces = 12
+directional = true
+light_data = ExtResource("12_6y7f1")

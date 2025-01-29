@@ -30,6 +30,8 @@ func _process(delta: float) -> void:
 		screen_position.y -= input_prompt.size.y
 
 		input_prompt.global_position = screen_position
+	else:
+		unhighlight()
 
 
 func highlight() -> void:

@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed():
+	if event is InputEventKey and event.is_released():
 		if event.keycode == KEY_F:
 			flashlight.toggle();
 		if event.keycode == KEY_F11:

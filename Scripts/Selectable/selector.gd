@@ -17,5 +17,5 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			if last_colliding_body:
+			if last_colliding_body and last_colliding_body.can_be_selected:
 				last_colliding_body.select.call()

@@ -6,7 +6,6 @@ func handle_input(_event: InputEvent) -> void:
 func update(_delta: float) -> void:
 	pass
 
-
 func physics_update(_delta: float) -> void:
 
 	player.velocity.x = player.direction.x * player.SPEED;
