@@ -1,5 +1,4 @@
 extends PlayerState
-
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
 	pass
@@ -39,11 +38,3 @@ func enter(previous_state_path: String, data := {}) -> void:
 func exit() -> void:
 	pass
 	
-
-func get_num_rays_colliding(rays: Array):
-	var sum = 0
-	for ray in rays:
-		ray.force_raycast_update()
-		if ray.is_colliding() and ray.get_collider().is_in_group("Climbable"):
-			sum += 1
-	return sum

@@ -12,7 +12,6 @@ const JUMP_FORCE = 4;
 const CLIMB_SPEED: int = 1;
 var direction: Vector3 = Vector3.ZERO;
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
-
 # Components
 @export var head: Head
 @onready var flashlight: Flashlight = $Head/Flashlight

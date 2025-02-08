@@ -1,20 +1,114 @@
-[gd_scene load_steps=5 format=3 uid="uid://page8jtypua8"]
+[gd_scene load_steps=8 format=3 uid="uid://page8jtypua8"]
 
 [ext_resource type="Script" path="res://Scripts/Level/main_scene.gd" id="1_pynj8"]
 [ext_resource type="PackedScene" uid="uid://rmiyddqx7xt0" path="res://Scenes/UI/loading_screen.tscn" id="2_d81ir"]
+[ext_resource type="PackedScene" uid="uid://cu3qjmux10r7y" path="res://Scenes/UI/quick_tool_select.tscn" id="3_h23l4"]
 [ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03bdw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lobc2"]
+font_size = 24
 
 [node name="LevelManager" type="Node3D"]
 script = ExtResource("1_pynj8")
 
 [node name="LoadingScreen" parent="." instance=ExtResource("2_d81ir")]
+visible = false
 mouse_filter = 2
+
+[node name="QuickToolSelect" parent="." instance=ExtResource("3_h23l4")]
 
 [node name="UiRoot" type="CanvasLayer" parent="."]
 script = ExtResource("6_3iylo")
 
-[node name="InventoryDialog" parent="UiRoot" instance=ExtResource("7_uss5p")]
+[node name="GeneralMenu" type="Control" parent="UiRoot"]
+layout_mode = 3
+anchor_left = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="UiRoot/GeneralMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_03bdw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiRoot/GeneralMenu/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings
+"
+label_settings = SubResource("LabelSettings_lobc2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 1
+tab_focus_mode = 0
+
+[node name="Inventory" type="TabBar" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="InventoryDialog" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Inventory" instance=ExtResource("7_uss5p")]
 unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Graphics" type="TabBar" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Graphics"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -247.5
+offset_right = 216.0
+offset_bottom = 247.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1280x720"
+popup/item_1/id = 1
+
+[node name="AO" type="CheckButton" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+text = "Ambient Occlusion"
+
+[node name="SSR" type="CheckButton" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer/Graphics/VBoxContainer"]
+layout_mode = 2
+text = "Screen Space Reflections"
+
+[node name="Audio" type="TabBar" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="LevelContainer" type="Node3D" parent="."]

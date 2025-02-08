@@ -20,6 +20,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func hold_item(id: int):
+	if player.inventory.size() == 0:
+		return
+	if id < 0:
+		unequip_item()
+		return
+
 	var item: Item = player.inventory.get_items()[id]
 	item.is_equipped = true
 	# if the item clicked is the same as the one held, unequip it
@@ -35,10 +41,12 @@ func hold_item(id: int):
 	item_held = item
 	add_child(scene)
 
+
 func unequip_item():
-	item_held.is_equipped = false
-	item_held = null
-	get_child(0).queue_free()
+	if item_held:
+		item_held.is_equipped = false
+		item_held = null
+		get_child(0).queue_free()
 
 func use_held_item():
 

@@ -1,15 +1,15 @@
 extends Node3D
 class_name Flashlight
 var is_on: bool = true
-var spotlight: SpotLight3D
-var omni_light: OmniLight3D
+@export var spotlight: SpotLight3D
+@export var omni_light: OmniLight3D
 @export var animation_player: AnimationPlayer
 
 @export var energy = 2.5
 
 func _ready() -> void:
-	spotlight = $MeshInstance3D/SpotLight3D
-	omni_light = $MeshInstance3D/OmniLight3D
+	# spotlight = $MeshInstance3D/SpotLight3D
+	# omni_light = $MeshInstance3D/OmniLight3D
 	toggle()
 
 

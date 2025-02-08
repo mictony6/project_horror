@@ -1,6 +1,7 @@
 extends RefCounted
 class_name Inventory
 
+
 var _content: Array[Item];
 
 
@@ -12,3 +13,6 @@ func remove_item(item: Item):
     
 func get_items() -> Array[Item]:
     return _content;
+
+func size():
+    return _content.size()

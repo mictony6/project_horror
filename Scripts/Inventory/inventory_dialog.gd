@@ -33,7 +33,3 @@ func close():
 	hide()
 
 	get_tree().paused = false
-
-
-func _on_close_button_pressed() -> void:
-	close()

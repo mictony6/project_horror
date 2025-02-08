@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu3qjmux10r7y"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/quick_tool_select.gd" id="1_kytul"]
+[ext_resource type="PackedScene" uid="uid://dgn6ix5ktv3d8" path="res://Scenes/UI/scroll_item.tscn" id="2_pt18n"]
+[ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="3_ys7x8"]
+
+[node name="QuickToolSelect" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_kytul")
+scroll_item_scene = ExtResource("2_pt18n")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.25
+offset_top = -69.5
+offset_bottom = 69.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "Name"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemList" type="ScrollContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ItemList"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="None" parent="VBoxContainer/ItemList/HBoxContainer" instance=ExtResource("2_pt18n")]
+layout_mode = 2
+item = ExtResource("3_ys7x8")
+
+[node name="None2" parent="VBoxContainer/ItemList/HBoxContainer" instance=ExtResource("2_pt18n")]
+layout_mode = 2
+
+[node name="None3" parent="VBoxContainer/ItemList/HBoxContainer" instance=ExtResource("2_pt18n")]
+layout_mode = 2
+
+[node name="None4" parent="VBoxContainer/ItemList/HBoxContainer" instance=ExtResource("2_pt18n")]
+layout_mode = 2
+
+[node name="ScrollBar" type="HScrollBar" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 7.0
+rounded = true

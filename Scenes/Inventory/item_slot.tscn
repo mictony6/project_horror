@@ -16,7 +16,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [node name="ItemSlot" type="PanelContainer"]
-custom_minimum_size = Vector2(180, 180)
+custom_minimum_size = Vector2(120, 180)
 offset_right = 4.0
 offset_bottom = 4.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hpw6f")

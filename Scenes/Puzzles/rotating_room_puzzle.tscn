@@ -1,0 +1,383 @@
+[gd_scene load_steps=17 format=4 uid="uid://dgjldtkan7in4"]
+
+[ext_resource type="PackedScene" uid="uid://ddglot4hivgm1" path="res://Scenes/Rooms/rotating_room_1.tscn" id="1_3m3rv"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/rotating_room.gd" id="2_vbxvq"]
+[ext_resource type="PackedScene" uid="uid://bjbvvk20jsg52" path="res://Scenes/Rooms/switch.tscn" id="3_5muro"]
+[ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="4_bxua0"]
+[ext_resource type="Texture2D" uid="uid://d0px0828r5iig" path="res://Images/GreyboxTextures/greybox_purple_grid.png" id="5_ju0hc"]
+[ext_resource type="PackedScene" uid="uid://cjpmsfxwi5j61" path="res://Scenes/Rooms/wall_open.tscn" id="6_tep1m"]
+[ext_resource type="PackedScene" uid="uid://bpwtqqqhyv5t0" path="res://Scenes/Rooms/column_corner.tscn" id="7_mliy7"]
+[ext_resource type="PackedScene" uid="uid://dyvugtkcakpj2" path="res://Scenes/Rooms/wall_closed.tscn" id="8_ldcl4"]
+[ext_resource type="PackedScene" uid="uid://ds306wijl7vf6" path="res://Scenes/Rooms/connector.tscn" id="9_cc2kb"]
+[ext_resource type="PackedScene" uid="uid://5cujvecudvbu" path="res://Scenes/Rooms/floor.tscn" id="10_28tcp"]
+[ext_resource type="PackedScene" uid="uid://dhixinwo6i761" path="res://Scenes/Rooms/roof.tscn" id="11_vmnep"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4cyv5"]
+radius = 0.183087
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d4mp2"]
+points = PackedVector3Array(1.11746, 0.2, 1.11746, -1.21905, -0.0190476, -1.21905, -1.21905, -0.0190476, 1.21905, 1.21905, -0.0190476, -1.21905, -1.11746, 0.2, -1.11746, 1.21905, -0.0190476, 1.21905, -1.11746, 0.2, 1.11746, 1.11746, 0.2, -1.11746)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvrkx"]
+albedo_texture = ExtResource("5_ju0hc")
+rim = 0.06
+uv1_triplanar = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u7th0"]
+_surfaces = [{
+"aabb": AABB(-1.2, 0, -1.2, 2.4, 0.2, 2.4),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAIAAAABAAMABQAHAAYABQAEAAcAAQAHAAMAAQAGAAcAAgAFAAAAAgAEAAUAAwAEAAIAAwAHAAQAAAAGAAEAAAAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mpmZvwAAAACamZk/mpmZPwAAAACamZk/mpmZvwAAAACamZm/mpmZPwAAAACamZm/mpmZv83MTD6amZm/mpmZv83MTD6amZk/mpmZP83MTD6amZk/mpmZP83MTD6amZm/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0s5a4"]
+resource_name = "rotating_room_Plane"
+lightmap_size_hint = Vector2i(102, 74)
+_surfaces = [{
+"aabb": AABB(-1.2, 0, -1.2, 2.4, 0.2, 2.4),
+"attribute_data": PackedByteArray("AAAAAAAAgD+/vn4/RT4rPwAAgD8AAAAAxMMDP8ln3TsAAAAAAAAAAL++fj/JZ907AACAPwAAgD/EwwM/RT4rPwAAAAAAAIA/eHj4PkU+Kz8AAIA/AAAAAKGgoDvJZ907AACAPwAAgD94ePg+yWfdOwAAAAAAAAAAoaCgO0U+Kz8AAIA/AACAP3h4+D4+60Y/AACAPwAAAAChoKA7I581PwAAgD8AAAAAoaCgOz7rRj8AAIA/AACAP3h4+D4jnzU/AAAAAAAAAAC1tDQ9HExRPwAAAAAAAIA/RkYGPzeYYj8AAAAAAACAP0ZGBj8cTFE/AAAAAAAAAAC1tDQ9N5hiPwAAgD8AAAAAtbQ0PRX5bD8AAAAAAAAAAEZGBj8wRX4/AAAAAAAAAABGRgY/FflsPwAAgD8AAAAAtbQ0PTBFfj8AAAAAAACAP7++fj8jnzU/AACAPwAAgD/EwwM/PutGPwAAgD8AAIA/xMMDPyOfNT8AAAAAAACAP7++fj8+60Y/"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_mvrkx"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("mpmZvwAAAACamZk/mpmZPwAAAACamZm/mpmZvwAAAACamZm/mpmZPwAAAACamZk/mpmZv83MTD6amZk/mpmZP83MTD6amZm/mpmZP83MTD6amZk/mpmZv83MTD6amZm/mpmZPwAAAACamZk/mpmZP83MTD6amZm/mpmZPwAAAACamZm/mpmZP83MTD6amZk/mpmZvwAAAACamZm/mpmZv83MTD6amZk/mpmZvwAAAACamZk/mpmZv83MTD6amZm/mpmZPwAAAACamZm/mpmZv83MTD6amZm/mpmZvwAAAACamZm/mpmZP83MTD6amZm/mpmZvwAAAACamZk/mpmZP83MTD6amZk/mpmZPwAAAACamZk/mpmZv83MTD6amZk/AIAAAP///z8AgAAA////PwCAAAD///8/AIAAAP///z8AgP//////vwCA//////+/AID//////78AgP//////v///AID///+///8AgP///7///wCA////v///AID///+/AAAAgP///78AAACA////vwAAAID///+/AAAAgP///7//////////v/////////+//////////7//////////v/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u7th0")
+
+[node name="RotatingRoomPuzzle" type="Node3D"]
+
+[node name="RotatingRoom1" parent="." instance=ExtResource("1_3m3rv")]
+
+[node name="RotatingRoom2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 0, 0)
+script = ExtResource("2_vbxvq")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="RotatingRoom2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Switch" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("3_5muro")]
+
+[node name="Selectable" parent="RotatingRoom2/AnimatableBody3D/Switch" instance=ExtResource("4_bxua0")]
+interaction_name = "Rotate"
+secondary_interaction_name = "Rotate"
+
+[node name="Switch" type="CollisionShape3D" parent="RotatingRoom2/AnimatableBody3D/Switch/Selectable"]
+shape = SubResource("SphereShape3D_4cyv5")
+
+[node name="Roof" type="CollisionShape3D" parent="RotatingRoom2/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConvexPolygonShape3D_d4mp2")
+
+[node name="Plane_011" type="MeshInstance3D" parent="RotatingRoom2/AnimatableBody3D/Roof"]
+mesh = SubResource("ArrayMesh_0s5a4")
+skeleton = NodePath("")
+
+[node name="WallOpen2" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("6_tep1m")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.1, 0, 0)
+
+[node name="WallClosed3" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.1)
+
+[node name="CornerColumn" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, 1.09617)
+
+[node name="CornerColumn2" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, 1.09617)
+
+[node name="CornerColumn3" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, -1.10383)
+
+[node name="CornerColumn4" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, -1.10383)
+
+[node name="WallClosed" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, 1.1, 0, 0)
+
+[node name="WallClosed2" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 2.23517e-08, 0, -1.1)
+
+[node name="Connector2" parent="RotatingRoom2/AnimatableBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10041, 0.803756, -0.0031606)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RotatingRoom2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Floor" parent="RotatingRoom2/StaticBody3D" instance=ExtResource("10_28tcp")]
+
+[node name="RotatingRoom3" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.8, 0, -3.8)
+script = ExtResource("2_vbxvq")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="RotatingRoom3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Switch" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("3_5muro")]
+
+[node name="Selectable" parent="RotatingRoom3/AnimatableBody3D/Switch" instance=ExtResource("4_bxua0")]
+interaction_name = "Rotate"
+secondary_interaction_name = "Rotate"
+
+[node name="Switch" type="CollisionShape3D" parent="RotatingRoom3/AnimatableBody3D/Switch/Selectable"]
+shape = SubResource("SphereShape3D_4cyv5")
+
+[node name="Roof" type="CollisionShape3D" parent="RotatingRoom3/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConvexPolygonShape3D_d4mp2")
+
+[node name="Plane_011" type="MeshInstance3D" parent="RotatingRoom3/AnimatableBody3D/Roof"]
+mesh = SubResource("ArrayMesh_0s5a4")
+skeleton = NodePath("")
+
+[node name="WallOpen2" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("6_tep1m")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.1, 0, 0)
+
+[node name="WallClosed3" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 1.1)
+
+[node name="CornerColumn" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, 1.09617)
+
+[node name="CornerColumn2" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, 1.09617)
+
+[node name="CornerColumn3" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, -1.10383)
+
+[node name="CornerColumn4" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, -1.10383)
+
+[node name="WallClosed" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, 1.1, 0, 0)
+
+[node name="WallClosed2" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 2.23517e-08, 0, -1.1)
+
+[node name="Connector2" parent="RotatingRoom3/AnimatableBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10041, 0.803756, -0.0031606)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RotatingRoom3"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Floor" parent="RotatingRoom3/StaticBody3D" instance=ExtResource("10_28tcp")]
+
+[node name="RotatingRoom4" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.47035e-08, 0, -3.8)
+script = ExtResource("2_vbxvq")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="RotatingRoom4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Switch" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("3_5muro")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.1, 0)
+
+[node name="Selectable" parent="RotatingRoom4/AnimatableBody3D/Switch" instance=ExtResource("4_bxua0")]
+interaction_name = "Rotate"
+secondary_interaction_name = "Rotate"
+
+[node name="Switch" type="CollisionShape3D" parent="RotatingRoom4/AnimatableBody3D/Switch/Selectable"]
+shape = SubResource("SphereShape3D_4cyv5")
+
+[node name="Roof" type="CollisionShape3D" parent="RotatingRoom4/AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConvexPolygonShape3D_d4mp2")
+
+[node name="Plane_011" type="MeshInstance3D" parent="RotatingRoom4/AnimatableBody3D/Roof"]
+mesh = SubResource("ArrayMesh_0s5a4")
+skeleton = NodePath("")
+
+[node name="WallOpen2" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("6_tep1m")]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -1.1, 0, 0)
+
+[node name="Connector2" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10041, 0.803756, -0.00316072)
+
+[node name="CornerColumn" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, 1.09617)
+
+[node name="CornerColumn2" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, 1.09617)
+
+[node name="CornerColumn3" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 1.09933, -0.0031606, -1.10383)
+
+[node name="CornerColumn4" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, -1.10067, -0.0031606, -1.10383)
+
+[node name="WallClosed" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, -2.23517e-08, 0, 1.1)
+
+[node name="WallClosed3" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(0, -1, 0, 0, 0, 1, -1, 0, 0, 1.1, 0, 0)
+
+[node name="WallClosed2" parent="RotatingRoom4/AnimatableBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 2.23517e-08, 0, -1.1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RotatingRoom4"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Floor" parent="RotatingRoom4/StaticBody3D" instance=ExtResource("10_28tcp")]
+
+[node name="FillerRoom" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.6, 0, -3.8)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FillerRoom" groups=["Climbable"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Roof" parent="FillerRoom/StaticBody3D" instance=ExtResource("11_vmnep")]
+
+[node name="Roof2" parent="FillerRoom/StaticBody3D" instance=ExtResource("11_vmnep")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4, 2, -2.4)
+
+[node name="Roof4" parent="FillerRoom/StaticBody3D" instance=ExtResource("11_vmnep")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4, 4.2, -2.4)
+
+[node name="Roof5" parent="FillerRoom/StaticBody3D" instance=ExtResource("11_vmnep")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.4, 4, 2.38419e-06)
+
+[node name="Roof3" parent="FillerRoom/StaticBody3D" instance=ExtResource("11_vmnep")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.53674e-07, 2, -2.4)
+
+[node name="WallOpen2" parent="FillerRoom/StaticBody3D" instance=ExtResource("6_tep1m")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.38419e-07, 0, -1.1)
+
+[node name="WallOpen3" parent="FillerRoom/StaticBody3D" instance=ExtResource("6_tep1m")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.4, 0, -3.5)
+
+[node name="Connector2" parent="FillerRoom/StaticBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 0.00316095, 0.803756, -1.10041)
+
+[node name="Connector4" parent="FillerRoom/StaticBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 2.40316, 0.803756, -3.50041)
+
+[node name="Connector3" parent="FillerRoom/StaticBody3D" instance=ExtResource("9_cc2kb")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 0.00316143, 0.803756, -1.90041)
+
+[node name="CornerColumn" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, -1.09617, -0.0031606, -1.10067)
+
+[node name="CornerColumn2" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, -1.09617, -0.0031606, 1.09933)
+
+[node name="CornerColumn3" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, -0.0031606, 1.09933)
+
+[node name="CornerColumn5" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.10383, -0.0031606, 1.09933)
+
+[node name="CornerColumn6" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.30383, -0.0031606, 1.09933)
+
+[node name="CornerColumn4" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, -0.0031606, -1.10067)
+
+[node name="WallClosed" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, -1.1, 0, -2.38419e-07)
+
+[node name="WallClosed3" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 0, 0, 1.1)
+
+[node name="WallClosed4" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 2.4, 0, 1.1)
+
+[node name="WallClosed2" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, 3.5, 0, 0)
+
+[node name="CornerColumn13" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.51568, 1.99684, 1.09933)
+
+[node name="CornerColumn14" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.30383, 1.99684, 1.09933)
+
+[node name="CornerColumn15" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.51568, 1.99684, -1.10067)
+
+[node name="WallClosed7" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(1, 4.37114e-08, 0, 0, 0, 1, 4.37114e-08, -1, 0, 2.4, 2, 1.1)
+
+[node name="WallClosed8" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, 3.51185, 2, 9.53674e-07)
+
+[node name="CornerColumn18" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(-8.74228e-08, -1, 0, 0, 0, -1, 1, -8.74228e-08, 0, 1.304, 2.197, -3.5)
+
+[node name="WallClosed10" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-1, -1.31134e-07, 0, 0, 0, 1, -1.31134e-07, 1, 0, 2.4, 2.2, -3.5)
+
+[node name="CornerColumn11" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, -0.0031606, -1.30067)
+
+[node name="CornerColumn12" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, -0.0031606, -3.50067)
+
+[node name="WallClosed6" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, 3.5, 0, -2.4)
+
+[node name="CornerColumn16" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, 2.19684, -1.30067)
+
+[node name="CornerColumn17" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 3.50383, 2.19684, -3.50067)
+
+[node name="WallClosed9" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, 3.5, 2.2, -2.4)
+
+[node name="CornerColumn7" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.30383, -0.0031606, -1.30067)
+
+[node name="CornerColumn9" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.10383, -0.0031606, -1.10067)
+
+[node name="CornerColumn10" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.30383, -0.0031606, -1.10067)
+
+[node name="CornerColumn8" parent="FillerRoom/StaticBody3D" instance=ExtResource("7_mliy7")]
+transform = Transform3D(1, -4.37114e-08, 0, 0, 0, -1, 4.37114e-08, 1, 0, 1.30383, -0.0031606, -3.50067)
+
+[node name="WallClosed5" parent="FillerRoom/StaticBody3D" instance=ExtResource("8_ldcl4")]
+transform = Transform3D(-8.74228e-08, 1, 0, 0, 0, 1, 1, 8.74228e-08, 0, 1.3, 0, -2.4)
+
+[node name="Floor" parent="FillerRoom/StaticBody3D" instance=ExtResource("10_28tcp")]
+
+[node name="Floor2" parent="FillerRoom/StaticBody3D" instance=ExtResource("10_28tcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, -0.2, 0)
+
+[node name="Floor3" parent="FillerRoom/StaticBody3D" instance=ExtResource("10_28tcp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, -0.2, -2.4)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 1.2, 0)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8, 1.2, -3.8)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.2, -6.2)
+light_energy = 10.0
+shadow_enabled = true
+omni_range = 20.0
+omni_attenuation = 2.0

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=4 uid="uid://5cujvecudvbu"]
+
+[ext_resource type="Texture2D" uid="uid://dxlgeyl0jycv1" path="res://Images/GreyboxTextures/greybox_orange_grid.png" id="1_yu4nf"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x8lby"]
+data = PackedVector3Array(-1.2, 0, 1.2, 1.2, 0, -1.2, -1.2, 0, -1.2, -1.2, 0, 1.2, 1.2, 0, 1.2, 1.2, 0, -1.2, -1.2, 0.2, 1.2, 1.2, 0.2, -1.2, 1.2, 0.2, 1.2, -1.2, 0.2, 1.2, -1.2, 0.2, -1.2, 1.2, 0.2, -1.2, 1.2, 0, 1.2, 1.2, 0.2, -1.2, 1.2, 0, -1.2, 1.2, 0, 1.2, 1.2, 0.2, 1.2, 1.2, 0.2, -1.2, -1.2, 0, -1.2, -1.2, 0.2, 1.2, -1.2, 0, 1.2, -1.2, 0, -1.2, -1.2, 0.2, -1.2, -1.2, 0.2, 1.2, 1.2, 0, -1.2, -1.2, 0.2, -1.2, -1.2, 0, -1.2, 1.2, 0, -1.2, 1.2, 0.2, -1.2, -1.2, 0.2, -1.2, -1.2, 0, 1.2, 1.2, 0.2, 1.2, 1.2, 0, 1.2, -1.2, 0, 1.2, -1.2, 0.2, 1.2, 1.2, 0.2, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhq16"]
+albedo_texture = ExtResource("1_yu4nf")
+rim = 0.06
+uv1_triplanar = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u7th0"]
+_surfaces = [{
+"aabb": AABB(-1.2, 0, -1.2, 2.4, 0.2, 2.4),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAADAAIAAAABAAMABQAHAAYABQAEAAcAAQAHAAMAAQAGAAcAAgAFAAAAAgAEAAUAAwAEAAIAAwAHAAQAAAAGAAEAAAAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("mpmZvwAAAACamZk/mpmZPwAAAACamZk/mpmZvwAAAACamZm/mpmZPwAAAACamZm/mpmZv83MTD6amZm/mpmZv83MTD6amZk/mpmZP83MTD6amZk/mpmZP83MTD6amZm/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1jogm"]
+resource_name = "rotating_room_Plane"
+lightmap_size_hint = Vector2i(102, 74)
+_surfaces = [{
+"aabb": AABB(-1.2, 0, -1.2, 2.4, 0.2, 2.4),
+"attribute_data": PackedByteArray("AAAAAAAAgD+/vn4/RT4rPwAAgD8AAAAAxMMDP8ln3TsAAAAAAAAAAL++fj/JZ907AACAPwAAgD/EwwM/RT4rPwAAAAAAAIA/eHj4PkU+Kz8AAIA/AAAAAKGgoDvJZ907AACAPwAAgD94ePg+yWfdOwAAAAAAAAAAoaCgO0U+Kz8AAIA/AACAP3h4+D4+60Y/AACAPwAAAAChoKA7I581PwAAgD8AAAAAoaCgOz7rRj8AAIA/AACAP3h4+D4jnzU/AAAAAAAAAAC1tDQ9HExRPwAAAAAAAIA/RkYGPzeYYj8AAAAAAACAP0ZGBj8cTFE/AAAAAAAAAAC1tDQ9N5hiPwAAgD8AAAAAtbQ0PRX5bD8AAAAAAAAAAEZGBj8wRX4/AAAAAAAAAABGRgY/FflsPwAAgD8AAAAAtbQ0PTBFfj8AAAAAAACAP7++fj8jnzU/AACAPwAAgD/EwwM/PutGPwAAgD8AAIA/xMMDPyOfNT8AAAAAAACAP7++fj8+60Y/"),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_lhq16"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("mpmZvwAAAACamZk/mpmZPwAAAACamZm/mpmZvwAAAACamZm/mpmZPwAAAACamZk/mpmZv83MTD6amZk/mpmZP83MTD6amZm/mpmZP83MTD6amZk/mpmZv83MTD6amZm/mpmZPwAAAACamZk/mpmZP83MTD6amZm/mpmZPwAAAACamZm/mpmZP83MTD6amZk/mpmZvwAAAACamZm/mpmZv83MTD6amZk/mpmZvwAAAACamZk/mpmZv83MTD6amZm/mpmZPwAAAACamZm/mpmZv83MTD6amZm/mpmZvwAAAACamZm/mpmZP83MTD6amZm/mpmZvwAAAACamZk/mpmZP83MTD6amZk/mpmZPwAAAACamZk/mpmZv83MTD6amZk/AIAAAP///z8AgAAA////PwCAAAD///8/AIAAAP///z8AgP//////vwCA//////+/AID//////78AgP//////v///AID///+///8AgP///7///wCA////v///AID///+/AAAAgP///78AAACA////vwAAAID///+/AAAAgP///7//////////v/////////+//////////7//////////v/9//3////8//3//f////z//f/9/////P/9//3////8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_u7th0")
+
+[node name="Floor" type="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("ConcavePolygonShape3D_x8lby")
+
+[node name="Plane_011" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_1jogm")
+skeleton = NodePath("")

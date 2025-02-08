@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 
 	else:
 		loading_screen.set_progress(100.0)
-		if level_instance and level_instance.is_node_ready() and loading_screen.progress_bar.value == 100:
+		if level_instance and level_instance.is_node_ready() and $UiRoot.is_node_ready() and loading_screen.progress_bar.value == 100:
 			level_ready.emit()
 
 

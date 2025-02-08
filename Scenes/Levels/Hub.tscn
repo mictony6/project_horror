@@ -33,6 +33,9 @@ background_mode = 2
 sky = SubResource("Sky_aojxt")
 tonemap_mode = 2
 tonemap_white = 8.0
+ssr_enabled = true
+ssao_enabled = true
+ssao_radius = 0.21
 ssil_normal_rejection = 0.52
 glow_enabled = true
 fog_sky_affect = 0.074
@@ -70,7 +73,7 @@ item = ExtResource("5_rj25r")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.889289, 0)
 
 [node name="Sorter" parent="." instance=ExtResource("7_kpjat")]
-transform = Transform3D(0.207055, 0, -0.772741, 0, 0.8, 0, 0.772741, 0, 0.207055, 4.23343, 1.08247, -2.16973)
+transform = Transform3D(0.129409, 0, -0.482963, 0, 0.5, 0, 0.482963, 0, 0.129409, 4.23343, 1.08929, -2.16973)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." groups=["Climbable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202881, 3.48893, 1.09351)

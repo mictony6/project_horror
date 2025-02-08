@@ -31,6 +31,7 @@ size = Vector3(0.242188, 0.0876465, 0.177032)
 script = ExtResource("2_rweyg")
 
 [node name="DiskholderMesh" type="MeshInstance3D" parent="."]
+gi_mode = 2
 mesh = ExtResource("2_dh84y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_lf4sw")

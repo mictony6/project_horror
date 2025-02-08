@@ -1,11 +1,11 @@
 extends Area3D
 class_name Selectable
 
-var can_be_selected: bool = true
+@export var can_be_selected: bool = true
 @export var interaction_name: String
 @export var secondary_interaction_name: String
 var interaction_index: int = 0
-var mesh_instance: MeshInstance3D
+@export var mesh_instance: MeshInstance3D
 var material_overlay: Material
 @onready var input_prompt: VBoxContainer = $InputPrompt
 @onready var label: Label
@@ -26,8 +26,8 @@ func _process(delta: float) -> void:
 			return
 
 		var screen_position = camera.unproject_position(global_position)
-		screen_position.x -= input_prompt.size.x / 2
-		screen_position.y -= input_prompt.size.y
+		screen_position.x += input_prompt.size.x
+		# screen_position.y -= input_prompt.size.y
 
 		input_prompt.global_position = screen_position
 	else:
