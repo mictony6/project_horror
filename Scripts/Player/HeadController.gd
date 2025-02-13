@@ -31,7 +31,7 @@ var can_rotate = true
 var target_rotation: Vector3 = Vector3.ZERO
 
 # Smoothing factor (0.0 to 1.0, where 1.0 is no smoothing)
-var smoothing_factor: float = 0.25
+@export var smoothing_factor: float = 0.25
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and can_rotate:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://crkkjhigwj8cm"]
+
+[ext_resource type="Texture2D" uid="uid://b5vleyeau58k6" path="res://Images/Icons/Items/slotmachine.png" id="1_jfff2"]
+[ext_resource type="PackedScene" uid="uid://dtbqtbgf4i3f6" path="res://Scenes/MiniSlotMachine/mini_slot_machine.tscn" id="2_0a0r3"]
+[ext_resource type="Script" path="res://Scripts/Items/item.gd" id="3_1fpui"]
+
+[resource]
+script = ExtResource("3_1fpui")
+name = "Slot Machine"
+scene = ExtResource("2_0a0r3")
+icon = ExtResource("1_jfff2")
+position = Vector3(-0.2, 0.1, -0.145)
+rotation = Vector3(0.570723, -0.760964, 0.261799)
+strength = 0
+uses = 13
+is_equipped = false

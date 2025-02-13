@@ -54,11 +54,10 @@ vertical_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 tab_focus_mode = 0
 
 [node name="Inventory" type="TabBar" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -67,6 +66,7 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="Graphics" type="TabBar" parent="UiRoot/GeneralMenu/PanelContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

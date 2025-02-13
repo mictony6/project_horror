@@ -4,6 +4,7 @@ class_name Diskholder
 var closed: bool = true
 
 @onready var disk_mesh: MeshInstance3D = $DiskholderMesh
+@onready var disk_body: AnimatableBody3D = $DiskholderBody
 @onready var selectable_component: Selectable = $DiskholderMesh/Selectable
 @onready var insert_marker: Node3D = %InsertMarker
 
@@ -54,6 +55,7 @@ func _on_open_close_opened() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, 0), 0.5)
+	tween.parallel().tween_property(disk_body, "position", Vector3(0, 0, 0), 0.5)
 	closed = false
 	selectable_component.can_be_selected = true
 	diskholder_opened.emit(self.name)
@@ -63,6 +65,7 @@ func _on_open_close_closed() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property(disk_mesh, "position", Vector3(0, 0, -0.7), 0.5)
+	tween.parallel().tween_property(disk_body, "position", Vector3(0, 0, -0.7), 0.5)
 	closed = true
 	selectable_component.can_be_selected = false
 	diskholder_closed.emit(self.name)
@@ -74,9 +77,9 @@ func has_disk() -> bool:
 ## Called when a player uses a disk into an empty diskholder
 func insert_disk(disk: DiskItem):
 	disk_item = disk
-	disk_item.is_equipped = false
 	insert_marker.add_child(disk.scene.instantiate())
 	GlobalEventManager.disk_inserted.emit(disk_item)
+	GlobalVariables.inventory.remove_item(disk_item)
 
 ## Called when player a clicks on the diskholder while a disk exist
 func retrieve_disk(inventory: Inventory):

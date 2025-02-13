@@ -1,10 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=36 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
 [ext_resource type="Script" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
 [ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
-[ext_resource type="Script" path="res://Scripts/ToolManager/tool_manager.gd" id="4_l1v1m"]
+[ext_resource type="PackedScene" uid="uid://bkrxspqdd8fge" path="res://Scenes/ToolManager/tool_manager.tscn" id="4_gvbhy"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
 [ext_resource type="Script" path="res://Scripts/Selectable/selector.gd" id="5_87ota"]
 [ext_resource type="Script" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
@@ -36,9 +36,6 @@ emission = Color(0.103744, 0.103744, 0.103744, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_6nxlb"]
 material = SubResource("StandardMaterial3D_6imyd")
 size = Vector3(0.05, 0.05, 0.25)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fujj6"]
-size = Vector3(0.6, 0.493904, 0.699585)
 
 [sub_resource type="Animation" id="Animation_hnek6"]
 resource_name = "FlashLightDown"
@@ -92,56 +89,44 @@ tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/2/type = "value"
+tracks/2/type = "rotation_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
+tracks/2/path = NodePath("Head/ToolManager")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/3/type = "rotation_3d"
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Head/ToolManager")
+tracks/3/path = NodePath("ColliderStanding:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ColliderStanding:disabled")
+tracks/4/path = NodePath("ColliderCrouching:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ColliderCrouching:disabled")
+tracks/5/path = NodePath("Head:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Head:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -157,7 +142,7 @@ tracks/0/path = NodePath("ColliderStanding:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.533333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -208,7 +193,7 @@ tracks/1/path = NodePath("ColliderCrouching:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5),
+"times": PackedFloat32Array(0.533333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -226,44 +211,13 @@ tracks/2/keys = {
 "values": [Vector3(0, -0.256, 0), Vector3(0, 0.612, 0), Vector3(0, 0.609101, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_g1b5t"]
-resource_name = "use_item"
-length = 0.333337
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/ToolManager")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.0333333, 1, -0.382683, 0, 0, 0.92388, 0.3, 1, 2.98023e-08, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/ToolManager")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557, 0.1, 1, 0.454326, -0.222685, -0.804557, 0.133333, 1, 0.454326, -0.222685, -0.804557, 0.3, 1, 0.454326, -0.222685, -0.504557)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/ToolManagerArea:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
 _data = {
 "FlashLightDown": SubResource("Animation_hnek6"),
 "FlashLightUp": SubResource("Animation_h0unq"),
 "RESET": SubResource("Animation_ixu11"),
 "crouch_down": SubResource("Animation_irgjh"),
-"stand_up": SubResource("Animation_x61lc"),
-"use_item": SubResource("Animation_g1b5t")
+"stand_up": SubResource("Animation_x61lc")
 }
 
 [sub_resource type="Curve" id="Curve_r84nn"]
@@ -333,6 +287,7 @@ disabled = true
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609101, 0)
 script = ExtResource("2_md85o")
+smoothing_factor = 0.5
 
 [node name="Flashlight" type="Node3D" parent="Head" node_paths=PackedStringArray("spotlight", "omni_light", "animation_player")]
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0.455, -0.075)
@@ -361,33 +316,18 @@ spot_range = 50.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
 
-[node name="ToolManager" type="Node3D" parent="Head" node_paths=PackedStringArray("player", "selector", "animation_player")]
+[node name="ToolManager" parent="Head" instance=ExtResource("4_gvbhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
-script = ExtResource("4_l1v1m")
-player = NodePath("../..")
-selector = NodePath("../Selector")
-animation_player = NodePath("../../AnimationPlayer")
 
 [node name="PlayerCamera" type="Camera3D" parent="Head"]
 cull_mask = 1048573
 current = true
 fov = 60.0
 
-[node name="ToolManagerArea" type="Area3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.609101, 0)
-collision_layer = 8
-collision_mask = 16
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/ToolManagerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153247, 0.424211, -0.622159)
-shape = SubResource("BoxShape3D_fujj6")
-
 [node name="Selector" type="RayCast3D" parent="Head"]
 unique_name_in_owner = true
 target_position = Vector3(0, 0, -2)
-collision_mask = 32
+collision_mask = 33
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("5_87ota")

@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ungo6bkoqgtj"]
+[gd_scene load_steps=6 format=3 uid="uid://ungo6bkoqgtj"]
 
 [ext_resource type="Script" path="res://Scripts/Items/item_pick_up.gd" id="1_1m81o"]
 [ext_resource type="PackedScene" uid="uid://bxscfr3d28o76" path="res://Scenes/Components/interaction_area.tscn" id="2_5tnvu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1wx1q"]
 radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5s33d"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.48741, 0.329973, 0.771696, 1)
+roughness = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_4va3t"]
+material = SubResource("StandardMaterial3D_5s33d")
+radius = 0.25
+height = 0.5
 
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_1m81o")
@@ -19,3 +30,10 @@ shape = SubResource("SphereShape3D_1wx1q")
 
 [node name="InteractionArea" parent="." instance=ExtResource("2_5tnvu")]
 interaction_name = "Pickup"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transparency = 0.75
+mesh = SubResource("SphereMesh_4va3t")
+
+[node name="ItemInstanceHolder" type="Node3D" parent="."]
+unique_name_in_owner = true

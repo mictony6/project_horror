@@ -10,14 +10,13 @@ var player: Player:
         _player = value
         player_ready.emit()
 
-var inventory: Inventory:
-    get():
-        return _player.inventory
-    set(value):
-        pass
+var inventory: Inventory = Inventory.new();
 
 var level_manager: LevelManager
 
 var can_open_inventory = true
 
 @onready var voices = DisplayServer.tts_get_voices_for_language("en")
+
+func _ready() -> void:
+    GlobalEventManager.item_pickup.connect(inventory.add_item)

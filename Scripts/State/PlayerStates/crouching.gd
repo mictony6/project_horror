@@ -2,6 +2,8 @@ extends PlayerState
 
 @export var animation_player: AnimationPlayer
 @onready var raycast: RayCast3D = %CheckCanStand
+
+
 ## Called by the state machine when receiving unhandled input events.
 func handle_input(_event: InputEvent) -> void:
 	pass

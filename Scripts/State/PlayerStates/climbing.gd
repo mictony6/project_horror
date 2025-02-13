@@ -19,8 +19,10 @@ func physics_update(_delta: float) -> void:
 		var h_input = Input.get_axis("left", "right");
 		var f_input = Input.get_axis("backward", "forward");
 
+
 		var rot = -(atan2(player.climb_raycast.get_collision_normal().z, player.climb_raycast.get_collision_normal().x) - PI / 2)
-		climbing_direction = Vector3(h_input, f_input, 0).rotated(Vector3.UP, rot).normalized()
+		climbing_direction = Vector3(h_input, f_input, 0).rotated(Vector3.UP, rot)
+		climbing_direction = -climbing_direction.rotated(Vector3.FORWARD, player.head.global_rotation.y).normalized()
 			
 		player.velocity = climbing_direction * player.CLIMB_SPEED * 0.5;
 	else:
@@ -37,4 +39,3 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func exit() -> void:
 	pass
-	

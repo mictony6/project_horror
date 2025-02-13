@@ -1,22 +1,21 @@
 extends Area3D
 @export var environment: WorldEnvironment
 
-
+var tween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(player_inside)
 	body_exited.connect(player_exit)
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	tween = create_tween()
 
 func player_inside(body):
 	environment.environment.fog_enabled = true
 	environment.environment.fog_density = 0
-	create_tween().tween_property(environment.environment, "fog_density", 0.005, 0.5)
+	tween.kill()
+	tween = create_tween()
+	tween.tween_property(environment.environment, "fog_density", 0.005, 0.5)
 func player_exit(body):
-	
-	await create_tween().tween_property(environment.environment, "fog_density", 0.0, 0.5).finished
+	tween.kill()
+	tween = create_tween()
+	await tween.tween_property(environment.environment, "fog_density", 0.0, 0.5).finished
 	environment.environment.fog_enabled = false

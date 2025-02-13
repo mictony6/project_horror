@@ -15,8 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 # Components
 @export var head: Head
 @onready var flashlight: Flashlight = $Head/Flashlight
-var inventory: Inventory = Inventory.new();
-
+@onready var inventory: Inventory = GlobalVariables.inventory
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GlobalVariables.player = self;

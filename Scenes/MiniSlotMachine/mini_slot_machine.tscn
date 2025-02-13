@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtbqtbgf4i3f6"]
+
+[ext_resource type="PackedScene" uid="uid://c07wr1xfmaq1u" path="res://Models/Slot Machine/mini slot machine.glb" id="1_dgo2s"]
+[ext_resource type="Script" path="res://Scripts/Items/mini_slot_machine.gd" id="2_grg58"]
+[ext_resource type="StyleBox" uid="uid://coahhc5ipfywc" path="res://Scenes/UI/slotmachinepanel.tres" id="3_g0135"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n2j08"]
+font_size = 24
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_evv5i"]
+viewport_path = NodePath("SubViewport")
+
+[node name="MiniSlotMachine" groups=["Usable"] instance=ExtResource("1_dgo2s")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("2_grg58")
+panelstyle = ExtResource("3_g0135")
+
+[node name="SubViewport" type="SubViewport" parent="." index="0"]
+size = Vector2i(347, 66)
+
+[node name="Control" type="Control" parent="SubViewport" index="0"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="SubViewport/Control" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_g0135")
+
+[node name="Label" type="Label" parent="SubViewport/Control" index="1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.0
+offset_top = -11.5
+offset_right = 63.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nice!"
+label_settings = SubResource("LabelSettings_n2j08")
+horizontal_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="1"]
+transform = Transform3D(0.5, 0, 0, 0, 0.409576, 0.286788, 0, -0.286788, 0.409576, 0, 0.288006, -0.540432)
+double_sided = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_evv5i")

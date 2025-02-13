@@ -16,4 +16,4 @@ func _unhandled_input(event: InputEvent) -> void:
 			inventory_dialog.close()
 		elif GlobalVariables.can_open_inventory:
 			general_menu.show()
-			inventory_dialog.open(GlobalVariables.player.inventory)
+			inventory_dialog.open(GlobalVariables.inventory)

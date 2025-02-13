@@ -25,6 +25,7 @@ var SCROLL_AMOUNT = 100 + SEPARATION_VALUE
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
+	GlobalEventManager.disk_inserted.connect(_on_disk_inserted)
 	set_process_input(false)
 	await GlobalVariables.player_ready
 	set_process_input(true)
@@ -58,9 +59,8 @@ func scroll(factor: int):
 		else:
 			child.queue_free()
 
-	if GlobalVariables.player.inventory.size() == 0:
+	if GlobalVariables.inventory.size() == 0:
 		name_label.text = "Inventory Empty"
-
 		return
 	
 	for item in GlobalVariables.inventory.get_items():
@@ -77,8 +77,10 @@ func scroll(factor: int):
 	elif accumulator <= -scroll_threshold:
 		select_previous()
 		accumulator = 0
-
-	GlobalEventManager.item_used.emit(scroll_bar.value - 1)
+	
+	scroll_bar.value = target_scroll / SCROLL_AMOUNT
+	GlobalEventManager.item_ui_select.emit(scroll_bar.value - 1)
+	
 	if target_scroll == 0:
 		name_label.text = "Remove"
 	else:
@@ -88,15 +90,15 @@ func scroll(factor: int):
 func select_next():
 	target_scroll += SCROLL_AMOUNT
 	target_scroll = wrapi(target_scroll, 0, (max_size) * SCROLL_AMOUNT)
-	scroll_bar.value = target_scroll / SCROLL_AMOUNT
 
 func select_previous():
 	target_scroll -= SCROLL_AMOUNT
 	target_scroll = wrapi(target_scroll, 0, (max_size) * SCROLL_AMOUNT)
 
-	target_scroll %= max_size * SCROLL_AMOUNT
-	scroll_bar.value = target_scroll / SCROLL_AMOUNT
-
 
 func _on_timer_timeout():
 	hide()
+func _on_disk_inserted(disk: DiskItem):
+	target_scroll = 0
+	scroll_bar.value = 0
+	scroll_bar.max_value -= SCROLL_AMOUNT

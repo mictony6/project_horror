@@ -1,75 +1,57 @@
-extends Node3D
-class_name ToolManager
+class_name ToolManager extends Node3D
 
-@export var player: Player
-@export var selector: RayCast3D
-@export var animation_player: AnimationPlayer
-@onready var hit_particles: GPUParticles3D = %HitParticles
-var item_held: Item
+@onready var right_hand: Marker3D = $RightHand
+
+var _item_equipped: Item
 
 func _ready() -> void:
-	GlobalEventManager.item_used.connect(hold_item)
-	GlobalEventManager.disk_inserted.connect(on_disk_inserted)
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	GlobalEventManager.disk_inserted.connect(_on_disk_inserted)
+	GlobalEventManager.item_ui_select.connect(_on_item_ui_select)
 
+func equip_tool(item: Item):
+	if has_tool_equpped():
+		unequip_tool()
+
+	
+	var tool_scene: Node3D = item.scene.instantiate()
+	tool_scene.position = item.position
+	tool_scene.rotation = item.rotation
+
+
+	right_hand.add_child(tool_scene)
+	_item_equipped = item
+	_item_equipped.is_equipped = true
+
+func unequip_tool():
+	_item_equipped.is_equipped = false
+	_item_equipped = null
+	for child in right_hand.get_children():
+		child.queue_free()
+
+func use_tool():
+	if has_tool_equpped():
+		var tool_equipped: Node3D = right_hand.get_child(0)
+		if tool_equipped.is_in_group("Usable"):
+			tool_equipped.use()
+	
+
+func has_tool_equpped():
+	return _item_equipped != null
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-			use_held_item()
+			use_tool()
 
-
-func hold_item(id: int):
-	if player.inventory.size() == 0:
+func _on_item_ui_select(id: int):
+	if id < 0 and has_tool_equpped():
+		unequip_tool()
 		return
-	if id < 0:
-		unequip_item()
+	var item: Item = GlobalVariables.inventory.get_item(id)
+	if item == null:
+		printerr("Index out of range")
 		return
+	equip_tool(item)
 
-	var item: Item = player.inventory.get_items()[id]
-	item.is_equipped = true
-	# if the item clicked is the same as the one held, unequip it
-
-	if is_holding_item():
-		if item == item_held:
-			unequip_item()
-			return
-		else:
-			unequip_item()
-			
-	var scene = item.scene.instantiate()
-	item_held = item
-	add_child(scene)
-
-
-func unequip_item():
-	if item_held:
-		item_held.is_equipped = false
-		item_held = null
-		get_child(0).queue_free()
-
-func use_held_item():
-
-	# TODO: Replace with tween
-	if !is_holding_item():
-		return
-	
-	animation_player.play("use_item")
-		
-
-func is_holding_item() -> bool:
-	return item_held != null
-
-
-func _process(delta: float) -> void:
-
-	if is_holding_item() and item_held.uses <= 0:
-		player.inventory.remove_item(item_held)
-		item_held = null
-		get_child(0).queue_free()
-
-
-# event handler for when a disk is inserted
-func on_disk_inserted(disk: DiskItem):
-	player.inventory.remove_item(disk)
-	unequip_item()
+func _on_disk_inserted(_disk: DiskItem):
+	unequip_tool()

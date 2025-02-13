@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Selectable/selectable.gd" id="1_8uljv"]
 [ext_resource type="Texture2D" uid="uid://uuglhnq6gcxp" path="res://Images/mouse_left.png" id="2_i06k0"]
 
-[node name="Selectable" type="Area3D"]
+[node name="Selectable" type="Area3D" groups=["Selectable"]]
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_8uljv")

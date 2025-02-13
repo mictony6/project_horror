@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://devmio8hcmrre"]
+[gd_scene load_steps=16 format=3 uid="uid://devmio8hcmrre"]
 
 [ext_resource type="ArrayMesh" uid="uid://b5igjda6chowu" path="res://Models/Sorter/Mesh/sorter_Cube_004.res" id="2_dh84y"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_i0yr5"]
@@ -9,6 +9,9 @@
 [ext_resource type="ArrayMesh" uid="uid://cofnjmlx32ibu" path="res://Models/Sorter/Mesh/sorter_Cube_007.res" id="7_ta4ca"]
 [ext_resource type="ArrayMesh" uid="uid://bt2psuq0iqud0" path="res://Models/Sorter/Mesh/sorter_Cube_008.res" id="8_5muru"]
 [ext_resource type="ArrayMesh" uid="uid://b0vdqyvtblekt" path="res://Models/Sorter/Mesh/sorter_Cube_009.res" id="9_1ah52"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7dwg"]
+size = Vector3(0.760742, 0.0510254, 0.803955)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf4sw"]
 albedo_color = Color(0.403941, 0.410734, 0.359118, 1)
@@ -29,6 +32,12 @@ size = Vector3(0.242188, 0.0876465, 0.177032)
 
 [node name="Diskholder" type="Node3D"]
 script = ExtResource("2_rweyg")
+
+[node name="DiskholderBody" type="AnimatableBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DiskholderBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0528564)
+shape = SubResource("BoxShape3D_t7dwg")
 
 [node name="DiskholderMesh" type="MeshInstance3D" parent="."]
 gi_mode = 2

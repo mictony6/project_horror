@@ -16,3 +16,8 @@ func get_items() -> Array[Item]:
 
 func size():
     return _content.size()
+
+func get_item(idx: int):
+    if idx > get_items().size():
+        return null
+    return get_items()[idx]

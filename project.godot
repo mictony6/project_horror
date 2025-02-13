@@ -44,7 +44,6 @@ layout/default_style=""
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -53,6 +52,8 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/fabi
 [global_group]
 
 Climbable=""
+Selectable=""
+Usable=""
 
 [input]
 
@@ -126,3 +127,7 @@ dialogic_default_action={
 3d_physics/layer_4="Tools"
 3d_physics/layer_5="Interactables"
 3d_physics/layer_6="Selectables"
+
+[rendering]
+
+textures/default_filters/anisotropic_filtering_level=3

@@ -12,4 +12,4 @@ func set_item_to_display(item: Item, id: int):
 
 
 func _on_button_button_down() -> void:
-	GlobalEventManager.item_used.emit(_id)
+	GlobalEventManager.item_ui_select.emit(_id)
