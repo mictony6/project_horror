@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://6b2fnxsp2l43"]
+
+[ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="1_6lqn4"]
+[ext_resource type="Script" path="res://Scripts/Puzzles/circle_path.gd" id="2_5ukdd"]
+
+[sub_resource type="Curve3D" id="Curve3D_2qu3t"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1jfqj"]
+top_radius = 0.25
+bottom_radius = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ng5dl"]
+albedo_color = Color(0.968967, 0.242554, 0.387098, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_gn82m"]
+material = SubResource("StandardMaterial3D_ng5dl")
+radial_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4hlv"]
+albedo_color = Color(0.497771, 0.61042, 0.259164, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5kx60"]
+material = SubResource("StandardMaterial3D_v4hlv")
+radial_segments = 12
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1e4s5"]
+radius = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r8ggv"]
+size = Vector3(0.3, 2, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8pwm"]
+size = Vector3(0.3, 2, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7slvs"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.00809925, 0.597896, 0.972497, 0.188235)
+
+[sub_resource type="SphereMesh" id="SphereMesh_xd4e7"]
+material = SubResource("StandardMaterial3D_7slvs")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="MultiMesh" id="MultiMesh_atx1e"]
+transform_format = 1
+instance_count = 72
+mesh = SubResource("SphereMesh_xd4e7")
+buffer = PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, -5, 1, 0, 0, -0.435779, 0, 1, 0, 0, 0, 0, 1, -4.98097, 1, 0, 0, -0.868241, 0, 1, 0, 0, 0, 0, 1, -4.92404, 1, 0, 0, -1.2941, 0, 1, 0, 0, 0, 0, 1, -4.82963, 1, 0, 0, -1.7101, 0, 1, 0, 0, 0, 0, 1, -4.69846, 1, 0, 0, -2.11309, 0, 1, 0, 0, 0, 0, 1, -4.53154, 1, 0, 0, -2.5, 0, 1, 0, 0, 0, 0, 1, -4.33013, 1, 0, 0, -2.86788, 0, 1, 0, 0, 0, 0, 1, -4.09576, 1, 0, 0, -3.21394, 0, 1, 0, 0, 0, 0, 1, -3.83022, 1, 0, 0, -3.53553, 0, 1, 0, 0, 0, 0, 1, -3.53553, 1, 0, 0, -3.83022, 0, 1, 0, 0, 0, 0, 1, -3.21394, 1, 0, 0, -4.09576, 0, 1, 0, 0, 0, 0, 1, -2.86788, 1, 0, 0, -4.33013, 0, 1, 0, 0, 0, 0, 1, -2.5, 1, 0, 0, -4.53154, 0, 1, 0, 0, 0, 0, 1, -2.11309, 1, 0, 0, -4.69846, 0, 1, 0, 0, 0, 0, 1, -1.7101, 1, 0, 0, -4.82963, 0, 1, 0, 0, 0, 0, 1, -1.2941, 1, 0, 0, -4.92404, 0, 1, 0, 0, 0, 0, 1, -0.868241, 1, 0, 0, -4.98097, 0, 1, 0, 0, 0, 0, 1, -0.435779, 1, 0, 0, -5, 0, 1, 0, 0, 0, 0, 1, 2.18557e-07, 1, 0, 0, -4.98097, 0, 1, 0, 0, 0, 0, 1, 0.435779, 1, 0, 0, -4.92404, 0, 1, 0, 0, 0, 0, 1, 0.868241, 1, 0, 0, -4.82963, 0, 1, 0, 0, 0, 0, 1, 1.2941, 1, 0, 0, -4.69846, 0, 1, 0, 0, 0, 0, 1, 1.7101, 1, 0, 0, -4.53154, 0, 1, 0, 0, 0, 0, 1, 2.11309, 1, 0, 0, -4.33013, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, -4.09576, 0, 1, 0, 0, 0, 0, 1, 2.86788, 1, 0, 0, -3.83022, 0, 1, 0, 0, 0, 0, 1, 3.21394, 1, 0, 0, -3.53553, 0, 1, 0, 0, 0, 0, 1, 3.53553, 1, 0, 0, -3.21394, 0, 1, 0, 0, 0, 0, 1, 3.83022, 1, 0, 0, -2.86788, 0, 1, 0, 0, 0, 0, 1, 4.09576, 1, 0, 0, -2.5, 0, 1, 0, 0, 0, 0, 1, 4.33013, 1, 0, 0, -2.11309, 0, 1, 0, 0, 0, 0, 1, 4.53154, 1, 0, 0, -1.7101, 0, 1, 0, 0, 0, 0, 1, 4.69846, 1, 0, 0, -1.2941, 0, 1, 0, 0, 0, 0, 1, 4.82963, 1, 0, 0, -0.868241, 0, 1, 0, 0, 0, 0, 1, 4.92404, 1, 0, 0, -0.435778, 0, 1, 0, 0, 0, 0, 1, 4.98097, 1, 0, 0, 4.37114e-07, 0, 1, 0, 0, 0, 0, 1, 5, 1, 0, 0, 0.435779, 0, 1, 0, 0, 0, 0, 1, 4.98097, 1, 0, 0, 0.868241, 0, 1, 0, 0, 0, 0, 1, 4.92404, 1, 0, 0, 1.2941, 0, 1, 0, 0, 0, 0, 1, 4.82963, 1, 0, 0, 1.7101, 0, 1, 0, 0, 0, 0, 1, 4.69846, 1, 0, 0, 2.11309, 0, 1, 0, 0, 0, 0, 1, 4.53154, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, 4.33013, 1, 0, 0, 2.86788, 0, 1, 0, 0, 0, 0, 1, 4.09576, 1, 0, 0, 3.21394, 0, 1, 0, 0, 0, 0, 1, 3.83022, 1, 0, 0, 3.53553, 0, 1, 0, 0, 0, 0, 1, 3.53553, 1, 0, 0, 3.83022, 0, 1, 0, 0, 0, 0, 1, 3.21394, 1, 0, 0, 4.09576, 0, 1, 0, 0, 0, 0, 1, 2.86788, 1, 0, 0, 4.33013, 0, 1, 0, 0, 0, 0, 1, 2.5, 1, 0, 0, 4.53154, 0, 1, 0, 0, 0, 0, 1, 2.11309, 1, 0, 0, 4.69846, 0, 1, 0, 0, 0, 0, 1, 1.7101, 1, 0, 0, 4.82963, 0, 1, 0, 0, 0, 0, 1, 1.29409, 1, 0, 0, 4.92404, 0, 1, 0, 0, 0, 0, 1, 0.868241, 1, 0, 0, 4.98097, 0, 1, 0, 0, 0, 0, 1, 0.435779, 1, 0, 0, 5, 0, 1, 0, 0, 0, 0, 1, -5.96244e-08, 1, 0, 0, 4.98097, 0, 1, 0, 0, 0, 0, 1, -0.435779, 1, 0, 0, 4.92404, 0, 1, 0, 0, 0, 0, 1, -0.868241, 1, 0, 0, 4.82963, 0, 1, 0, 0, 0, 0, 1, -1.2941, 1, 0, 0, 4.69846, 0, 1, 0, 0, 0, 0, 1, -1.7101, 1, 0, 0, 4.53154, 0, 1, 0, 0, 0, 0, 1, -2.11309, 1, 0, 0, 4.33013, 0, 1, 0, 0, 0, 0, 1, -2.5, 1, 0, 0, 4.09576, 0, 1, 0, 0, 0, 0, 1, -2.86788, 1, 0, 0, 3.83022, 0, 1, 0, 0, 0, 0, 1, -3.21394, 1, 0, 0, 3.53553, 0, 1, 0, 0, 0, 0, 1, -3.53553, 1, 0, 0, 3.21394, 0, 1, 0, 0, 0, 0, 1, -3.83022, 1, 0, 0, 2.86788, 0, 1, 0, 0, 0, 0, 1, -4.09576, 1, 0, 0, 2.5, 0, 1, 0, 0, 0, 0, 1, -4.33013, 1, 0, 0, 2.11309, 0, 1, 0, 0, 0, 0, 1, -4.53154, 1, 0, 0, 1.7101, 0, 1, 0, 0, 0, 0, 1, -4.69846, 1, 0, 0, 1.29409, 0, 1, 0, 0, 0, 0, 1, -4.82963, 1, 0, 0, 0.86824, 0, 1, 0, 0, 0, 0, 1, -4.92404, 1, 0, 0, 0.435778, 0, 1, 0, 0, 0, 0, 1, -4.98097)
+
+[node name="ColumnPath" type="Path3D" node_paths=PackedStringArray("multi_meshinstance")]
+curve = SubResource("Curve3D_2qu3t")
+script = ExtResource("2_5ukdd")
+multi_meshinstance = NodePath("MultiMeshInstance3D")
+NUM_POINTS = 64
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.049063, 0, 0.998698, 0, 1, 0, -0.998698, 0, -0.049063, 0, 1, -1)
+v_offset = 1.0
+
+[node name="LogicColumn" type="AnimatableBody3D" parent="PathFollow3D"]
+sync_to_physics = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D/LogicColumn"]
+mesh = SubResource("CylinderMesh_1jfqj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D/LogicColumn/MeshInstance3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0098145, 0, 0.199779)
+mesh = SubResource("SphereMesh_gn82m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PathFollow3D/LogicColumn/MeshInstance3D"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.00981456, 0, -0.199779)
+mesh = SubResource("SphereMesh_5kx60")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/LogicColumn"]
+shape = SubResource("CylinderShape3D_1e4s5")
+
+[node name="RightSelectable" parent="PathFollow3D/LogicColumn" node_paths=PackedStringArray("mesh_instance") instance=ExtResource("1_6lqn4")]
+transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 0, 0, 0)
+interaction_name = "Push Left"
+secondary_interaction_name = "Push"
+mesh_instance = NodePath("../MeshInstance3D/MeshInstance3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/LogicColumn/RightSelectable"]
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 1, -0.16, 0, 0)
+shape = SubResource("BoxShape3D_r8ggv")
+
+[node name="LeftSelectable" parent="PathFollow3D/LogicColumn" node_paths=PackedStringArray("mesh_instance") instance=ExtResource("1_6lqn4")]
+transform = Transform3D(-8.9407e-08, 0, -1, 0, 1, 0, 1, 0, -8.9407e-08, 0, 0, 0)
+interaction_name = "Push Right"
+secondary_interaction_name = "Push"
+mesh_instance = NodePath("../MeshInstance3D/MeshInstance3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/LogicColumn/LeftSelectable"]
+transform = Transform3D(1, 0, 0, 0, 0.999998, 0, 0, 0, 1, 0.16, 0, 0)
+shape = SubResource("BoxShape3D_u8pwm")
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+multimesh = SubResource("MultiMesh_atx1e")

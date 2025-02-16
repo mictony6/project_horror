@@ -3,4 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://c0ddeybfel4up" path="res://Models/Knife/knife.glb" id="1_k2d2a"]
 
 [node name="Knife" instance=ExtResource("1_k2d2a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

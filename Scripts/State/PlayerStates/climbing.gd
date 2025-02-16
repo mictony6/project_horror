@@ -21,8 +21,8 @@ func physics_update(_delta: float) -> void:
 
 
 		var rot = -(atan2(player.climb_raycast.get_collision_normal().z, player.climb_raycast.get_collision_normal().x) - PI / 2)
-		climbing_direction = Vector3(h_input, f_input, 0).rotated(Vector3.UP, rot)
-		climbing_direction = -climbing_direction.rotated(Vector3.FORWARD, player.head.global_rotation.y).normalized()
+		climbing_direction = Vector3(h_input, f_input, 0).rotated(Vector3.UP, rot).normalized()
+		# climbing_direction = -climbing_direction.rotated(Vector3.FORWARD, player.head.global_rotation.y).normalized()
 			
 		player.velocity = climbing_direction * player.CLIMB_SPEED * 0.5;
 	else:
@@ -30,12 +30,8 @@ func physics_update(_delta: float) -> void:
 
 	player.move_and_slide()
 
-	if Input.is_action_just_pressed("jump") and !player.head_raycast.is_colliding():
+	if Input.is_action_just_pressed("jump") and !player.head_rays_colliding():
 		finished.emit(JUMPING)
 
 func enter(previous_state_path: String, data := {}) -> void:
-	player.climb_raycast.global_rotation.y = -(atan2(player.head_raycast.get_collision_normal().z, player.head_raycast.get_collision_normal().x) - PI / 2)
-	
-
-func exit() -> void:
-	pass
+	player.climb_raycast.global_rotation.y = -(atan2(player.head_rays_colliding().get_collision_normal().z, player.head_rays_colliding().get_collision_normal().x) - PI / 2)

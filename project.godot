@@ -47,7 +47,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg")
+enabled=PackedStringArray("res://addons/PathMesh3D/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/fabimakesgames.embed_game/plugin.cfg")
 
 [global_group]
 
@@ -127,6 +127,10 @@ dialogic_default_action={
 3d_physics/layer_4="Tools"
 3d_physics/layer_5="Interactables"
 3d_physics/layer_6="Selectables"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
 
 [rendering]
 

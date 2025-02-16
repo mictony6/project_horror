@@ -177,14 +177,14 @@ size = Vector3(88.3488, 1, 43.8115)
 material = SubResource("StandardMaterial3D_x6qao")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="PuzzleRoom1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.8059, -0.677499, 1.89485)
-size = Vector3(58.1194, 11, 47.2105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.8059, -0.677499, 7.04584)
+size = Vector3(58.1194, 11, 57.5125)
 material = SubResource("StandardMaterial3D_uuk2w")
 
 [node name="Inside" type="CSGBox3D" parent="PuzzleRoom1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6284, -0.0922676, 1.6335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.6284, -0.0922676, 7.2778)
 operation = 2
-size = Vector3(55.983, 12.1725, 44.216)
+size = Vector3(55.983, 12.1725, 55.5046)
 material = SubResource("StandardMaterial3D_uuk2w")
 
 [node name="DoorCut" type="CSGPolygon3D" parent="PuzzleRoom1"]
@@ -238,4 +238,4 @@ skeleton = NodePath("../Hole2")
 stream = ExtResource("7_aef1o")
 
 [node name="RotatingRoomPuzzle" parent="." instance=ExtResource("12_wenug")]
-transform = Transform3D(2.08616e-07, 0, -3, 0, 3, 0, 3, 0, 2.08616e-07, 30.8277, -5.57852, 6.4)
+transform = Transform3D(3.77489e-07, 0, -5, 0, 5, 0, 5, 0, 3.77489e-07, 30.8277, -5.17852, 5.03899)

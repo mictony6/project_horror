@@ -3,7 +3,8 @@ class_name Player
 
 # Raycasts
 @onready var climb_raycast: RayCast3D = $CheckCanClimb
-@onready var head_raycast: RayCast3D = $HeadRayCast
+@onready var head_rays: Node3D = $HeadRays
+
 
 # Movement variables
 const SPEED: int = 2;
@@ -19,7 +20,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GlobalVariables.player = self;
-	
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_released():
@@ -30,7 +31,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
-	head_raycast.global_rotation.y = head.global_rotation.y
+	head_rays.global_rotation.y = head.global_rotation.y
 
 	var h_movement = Input.get_axis("left", "right");
 	var z_movement = Input.get_axis("backward", "forward");
@@ -44,10 +45,20 @@ func _process(_delta: float) -> void:
 
 
 func can_climb():
-	if head_raycast.is_colliding():
-		var collider = head_raycast.get_collider()
+	var colliding_ray: RayCast3D = head_rays_colliding()
+
+
+	if colliding_ray != null:
+		var collider = colliding_ray.get_collider()
 		if collider.is_in_group("Climbable"):
 			
-			var normal: Vector3 = head_raycast.get_collision_normal()
+			var normal: Vector3 = colliding_ray.get_collision_normal()
 			var angle = rad_to_deg(normal.angle_to(Vector3(0, -1, 0)))
 			return angle > 70 and angle < 120
+
+func head_rays_colliding():
+	for child in head_rays.get_children():
+		var ray: RayCast3D = child
+		if ray.is_colliding():
+			return ray
+	return null

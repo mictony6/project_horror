@@ -2,7 +2,7 @@ extends RayCast3D
 var last_colliding_body: Selectable
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if is_colliding() and get_collider().is_in_group("Selectable"):
 		var colliding_body: Selectable = get_collider()
 		colliding_body.highlight()
