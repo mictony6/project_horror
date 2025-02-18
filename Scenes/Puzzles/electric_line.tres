@@ -1,0 +1,55 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://ctk5lsexqbymi"]
+
+[sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_t2eo4"]
+output_port_for_preview = 0
+parameter_name = "TextureParameterTriplanar"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D TextureParameterTriplanar;
+
+
+// TextureParameterTriplanar
+	vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
+		vec4 samp = vec4(0.0);
+		samp += texture(p_sampler, p_triplanar_pos.xy) * p_weights.z;
+		samp += texture(p_sampler, p_triplanar_pos.xz) * p_weights.y;
+		samp += texture(p_sampler, p_triplanar_pos.zy * vec2(-1.0, 1.0)) * p_weights.x;
+		return samp;
+	}
+
+	uniform vec3 triplanar_scale = vec3(1.0, 1.0, 1.0);
+	uniform vec3 triplanar_offset;
+	uniform float triplanar_sharpness = 0.5;
+
+	varying vec3 triplanar_power_normal;
+	varying vec3 triplanar_pos;
+
+void vertex() {
+// TextureParameterTriplanar
+	{
+		triplanar_power_normal = pow(abs(NORMAL), vec3(triplanar_sharpness));
+		triplanar_power_normal /= dot(triplanar_power_normal, vec3(1.0));
+		triplanar_pos = VERTEX * triplanar_scale + triplanar_offset;
+		triplanar_pos *= vec3(1.0, -1.0, 1.0);
+	}
+}
+
+void fragment() {
+// TextureParameterTriplanar:14
+	vec4 n_out14p0 = triplanar_texture(TextureParameterTriplanar, triplanar_power_normal, triplanar_pos);
+
+
+// Output:0
+	ALBEDO = vec3(n_out14p0.xyz);
+
+
+}
+"
+graph_offset = Vector2(-476.275, 208.247)
+nodes/fragment/0/position = Vector2(560, 500)
+nodes/fragment/14/node = SubResource("VisualShaderNodeTextureParameterTriplanar_t2eo4")
+nodes/fragment/14/position = Vector2(-520, 500)
+nodes/fragment/connections = PackedInt32Array(14, 0, 0, 0)

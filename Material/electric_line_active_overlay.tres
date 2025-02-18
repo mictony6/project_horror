@@ -1,0 +1,29 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dw131frqef04"]
+
+[sub_resource type="Gradient" id="Gradient_tvvtj"]
+offsets = PackedFloat32Array(0.16309, 0.83691)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t1ptn"]
+noise_type = 2
+seed = 42
+frequency = 0.0175
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wdiaj"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_tvvtj")
+noise = SubResource("FastNoiseLite_t1ptn")
+
+[resource]
+transparency = 1
+blend_mode = 3
+albedo_texture = SubResource("NoiseTexture2D_wdiaj")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.970767, 0.67384, 0.233054, 1)
+emission_energy_multiplier = 3.0
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(-0.007854, 0, 0)
+uv1_triplanar = true

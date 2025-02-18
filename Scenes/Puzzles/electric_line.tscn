@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://2qh62ctp28xg"]
+
+[ext_resource type="Script" path="res://Scripts/Puzzles/electric_line.gd" id="1_67m7r"]
+[ext_resource type="PackedScene" uid="uid://cssdq2qgtboc6" path="res://Scenes/Components/conductive.tscn" id="2_lo13c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_r3qcg"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfq5l"]
+radius = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_faki2"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.15
+radial_segments = 24
+
+[node name="ElectricLine" type="Node3D"]
+script = ExtResource("1_67m7r")
+
+[node name="PathMesh3D" type="PathMesh3D" parent="."]
+mesh = SubResource("BoxMesh_r3qcg")
+surface_0/tile_rotation = Vector3(0, 0, 0)
+surface_0/tile_rotation_order = 2
+surface_0/distribution = 0
+surface_0/alignment = 0
+surface_0/warp_along_curve = true
+surface_0/sample_cubic = true
+surface_0/tilt = true
+surface_0/offset = Vector2(0, 0)
+
+[node name="Conductive" parent="." instance=ExtResource("2_lo13c")]
+
+[node name="EndCollider" type="CollisionShape3D" parent="Conductive"]
+shape = SubResource("SphereShape3D_xfq5l")
+
+[node name="EndMesh" type="MeshInstance3D" parent="Conductive/EndCollider"]
+mesh = SubResource("CylinderMesh_faki2")
+skeleton = NodePath("../../..")
+
+[node name="StartCollider" type="CollisionShape3D" parent="Conductive"]
+shape = SubResource("SphereShape3D_xfq5l")
+
+[node name="StartMesh" type="MeshInstance3D" parent="Conductive/StartCollider"]
+mesh = SubResource("CylinderMesh_faki2")
+skeleton = NodePath("../../..")

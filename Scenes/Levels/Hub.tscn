@@ -20,7 +20,7 @@ sky_material = SubResource("ProceduralSkyMaterial_bkw26")
 [sub_resource type="Environment" id="Environment_ywojk"]
 background_mode = 2
 sky = SubResource("Sky_w3ixa")
-tonemap_mode = 3
+tonemap_mode = 2
 tonemap_white = 8.0
 ssr_enabled = true
 ssao_enabled = true

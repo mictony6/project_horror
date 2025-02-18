@@ -54,6 +54,7 @@ enabled=PackedStringArray("res://addons/PathMesh3D/plugin.cfg", "res://addons/di
 Climbable=""
 Selectable=""
 Usable=""
+Conductive=""
 
 [input]
 
