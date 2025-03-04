@@ -2,10 +2,10 @@
 
 [ext_resource type="ArrayMesh" uid="uid://b5igjda6chowu" path="res://Models/Sorter/Mesh/sorter_Cube_004.res" id="2_dh84y"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_i0yr5"]
-[ext_resource type="Script" path="res://Scripts/Sorter/diskholder.gd" id="2_rweyg"]
+[ext_resource type="Script" uid="uid://b8fmtuufwfcty" path="res://Scripts/Sorter/diskholder.gd" id="2_rweyg"]
 [ext_resource type="ArrayMesh" uid="uid://ddleqw5vgds4t" path="res://Models/Sorter/Mesh/sorter_Cube_005.res" id="4_vgjd7"]
-[ext_resource type="Script" path="res://Scripts/Sorter/open_close_button.gd" id="5_yyxub"]
-[ext_resource type="Script" path="res://Scripts/Sorter/play_button.gd" id="7_hp4a6"]
+[ext_resource type="Script" uid="uid://8vfpa6wicc67" path="res://Scripts/Sorter/open_close_button.gd" id="5_yyxub"]
+[ext_resource type="Script" uid="uid://d1heihf70dmiu" path="res://Scripts/Sorter/play_button.gd" id="7_hp4a6"]
 [ext_resource type="ArrayMesh" uid="uid://cofnjmlx32ibu" path="res://Models/Sorter/Mesh/sorter_Cube_007.res" id="7_ta4ca"]
 [ext_resource type="ArrayMesh" uid="uid://bt2psuq0iqud0" path="res://Models/Sorter/Mesh/sorter_Cube_008.res" id="8_5muru"]
 [ext_resource type="ArrayMesh" uid="uid://b0vdqyvtblekt" path="res://Models/Sorter/Mesh/sorter_Cube_009.res" id="9_1ah52"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bkrxspqdd8fge"]
 
-[ext_resource type="Script" path="res://Scripts/ToolManager/tool_manager.gd" id="1_smjlv"]
+[ext_resource type="Script" uid="uid://cnx4c1k0k5qum" path="res://Scripts/ToolManager/tool_manager.gd" id="1_smjlv"]
 
 [node name="ToolManager" type="Node3D"]
 script = ExtResource("1_smjlv")

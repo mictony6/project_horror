@@ -1,14 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cssdq2qgtboc6"]
 
-[ext_resource type="Script" path="res://Scripts/Conductive/conductive.gd" id="1_e3so8"]
+[ext_resource type="Script" uid="uid://ceok1svwy1vnk" path="res://Scripts/Conductive/conductive.gd" id="1_e3so8"]
 
 [node name="Conductive" type="Area3D"]
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("1_e3so8")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Off
-"

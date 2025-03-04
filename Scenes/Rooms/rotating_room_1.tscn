@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://ddglot4hivgm1"]
 
-[ext_resource type="Script" path="res://Scripts/Puzzles/rotating_room.gd" id="1_5iluh"]
+[ext_resource type="Script" uid="uid://de3v8y53ixyh6" path="res://Scripts/Puzzles/rotating_room.gd" id="1_5iluh"]
 [ext_resource type="Texture2D" uid="uid://d0px0828r5iig" path="res://Images/GreyboxTextures/greybox_purple_grid.png" id="1_6afdg"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_dbi4f"]
 [ext_resource type="PackedScene" uid="uid://bjbvvk20jsg52" path="res://Scenes/Rooms/switch.tscn" id="2_ubjsx"]

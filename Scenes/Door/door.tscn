@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ldkpt3p061qj"]
 
 [ext_resource type="PackedScene" uid="uid://hqqkrg8j3e43" path="res://Models/Prototyping/door-rotate.glb" id="1_igaas"]
-[ext_resource type="Script" path="res://Scripts/Door/door.gd" id="2_4sy5e"]
+[ext_resource type="Script" uid="uid://diseloaqoheug" path="res://Scripts/Door/door.gd" id="2_4sy5e"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2hmf1"]
 points = PackedVector3Array(0.0499951, 0.8, 0.6, -0.0500098, 0.8, 0.6, 0.0499951, -5.00927e-33, 0.6, 0.075, 0.42498, 0.549961, 0.0499951, 0.8, 1.44382e-15, -0.0500098, 0.8, 1.44382e-15, -0.075, 0.42498, 0.549961, -0.0500098, -5.00927e-33, 0.6, 0.0499951, -5.00927e-33, 1.44382e-15, 0.075, 0.274941, 0.549961, 0.075, 0.42498, 0.449941, -0.0500098, -5.00927e-33, 1.44382e-15, -0.075, 0.42498, 0.449941, -0.075, 0.274941, 0.549961, 0.075, 0.274941, 0.449941, -0.075, 0.274941, 0.449941)

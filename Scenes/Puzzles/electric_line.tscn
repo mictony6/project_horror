@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://2qh62ctp28xg"]
 
-[ext_resource type="Script" path="res://Scripts/Puzzles/electric_line.gd" id="1_67m7r"]
+[ext_resource type="Script" uid="uid://i8fns7we3aj2" path="res://Scripts/Puzzles/electric_line.gd" id="1_67m7r"]
 [ext_resource type="PackedScene" uid="uid://cssdq2qgtboc6" path="res://Scenes/Components/conductive.tscn" id="2_lo13c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_r3qcg"]
 size = Vector3(0.1, 0.1, 0.1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xfq5l"]
-radius = 0.2
+radius = 0.15
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_faki2"]
 top_radius = 0.1
@@ -28,6 +28,7 @@ surface_0/warp_along_curve = true
 surface_0/sample_cubic = true
 surface_0/tilt = true
 surface_0/offset = Vector2(0, 0)
+gi_mode = 2
 
 [node name="Conductive" parent="." instance=ExtResource("2_lo13c")]
 

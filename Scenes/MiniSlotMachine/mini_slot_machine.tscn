@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtbqtbgf4i3f6"]
 
 [ext_resource type="PackedScene" uid="uid://c07wr1xfmaq1u" path="res://Models/Slot Machine/mini slot machine.glb" id="1_dgo2s"]
-[ext_resource type="Script" path="res://Scripts/Items/mini_slot_machine.gd" id="2_grg58"]
+[ext_resource type="Script" uid="uid://bn7kd3wiyup6r" path="res://Scripts/Items/mini_slot_machine.gd" id="2_grg58"]
 [ext_resource type="StyleBox" uid="uid://coahhc5ipfywc" path="res://Scenes/UI/slotmachinepanel.tres" id="3_g0135"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n2j08"]

@@ -8,7 +8,8 @@ func _ready() -> void:
     hide()
 
 func set_progress(val: Variant):
-    progress_bar.value = move_toward(progress_bar.value, val, 1.0)
+    if progress_bar.value <= val:
+        progress_bar.value = move_toward(progress_bar.value, val, 1.0)
 
 func reset_progress():
     self.modulate.a = 1

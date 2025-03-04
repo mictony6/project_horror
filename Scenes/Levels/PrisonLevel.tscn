@@ -1,14 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://dtfjsr7bh6ktr"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_xpfuy"]
+[ext_resource type="Script" uid="uid://d1rgqvt001c74" path="res://Scripts/Level/Level.gd" id="1_xpfuy"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="2_ctmn0"]
-[ext_resource type="Texture2D" uid="uid://bstbcvk7gr7ne" path="res://Images/GreyboxTextures/greybox_yellow_grid.png" id="3_sp15b"]
+[ext_resource type="Texture2D" uid="uid://mgne6vrcyq2i" path="res://Images/GreyboxTextures/greybox_red_solid.png" id="2_mb5p5"]
 [ext_resource type="PackedScene" uid="uid://r26ffo5gqobo" path="res://Scenes/Decor/PrisonBed.tscn" id="4_vsqic"]
-[ext_resource type="Script" path="res://Scripts/Unique/readable_note.gd" id="5_5cm71"]
+[ext_resource type="Script" uid="uid://5x2ocfteqfu" path="res://Scripts/Unique/readable_note.gd" id="5_5cm71"]
 [ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="5_xq2ck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7qmk"]
-albedo_texture = ExtResource("3_sp15b")
+albedo_texture = ExtResource("2_mb5p5")
+albedo_texture_force_srgb = true
 roughness = 0.5
 uv1_triplanar = true
 
@@ -20,7 +21,7 @@ sky_material = SubResource("ProceduralSkyMaterial_o73l3")
 [sub_resource type="Environment" id="Environment_p15cp"]
 background_mode = 2
 sky = SubResource("Sky_5im31")
-tonemap_mode = 3
+tonemap_mode = 4
 tonemap_white = 8.0
 ssao_enabled = true
 ssao_radius = 0.25
@@ -39,39 +40,37 @@ points = PackedVector3Array(0.125, 0.0025, 0.2, 0.125, -0.0025, 0.2, 0.125, 0.00
 [node name="PrisonLevel" type="Node3D"]
 script = ExtResource("1_xpfuy")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7118, 9.5, 0)
 material_override = SubResource("StandardMaterial3D_y7qmk")
 use_collision = true
+size = Vector3(107.083, 8, 20)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7118, 9.5, 0)
-size = Vector3(107.083, 20, 20)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1141, 10.2122, 0)
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4023, 1.07652, 0)
 operation = 2
-size = Vector3(103.737, 18.5757, 17.3513)
+size = Vector3(103.737, 9.60822, 17.3513)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7297, 9.52603, 18.8691)
-size = Vector3(22.6506, 19.9723, 20.5693)
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.0471, 1.167, -18.9795)
+size = Vector3(22.6506, 10, 20.5693)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7297, 9.61981, 18.5844)
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0471, 1.167, 18.8093)
+size = Vector3(22.6506, 10, 20.5693)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 13.0471, 1.26078, -18.4319)
 operation = 2
-size = Vector3(20, 18.8153, 20)
+size = Vector3(20, 10, 20.5259)
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.7297, 9.52603, -18.9197)
-size = Vector3(22.6506, 19.9723, 20.5693)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 32.7297, 9.61981, -18.635)
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0471, 1.26078, 18.5246)
 operation = 2
-size = Vector3(20, 18.8153, 20)
+size = Vector3(20, 10, 20)
 
 [node name="PrisonBed" parent="." instance=ExtResource("4_vsqic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.274781, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5.91576, 19)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p15cp")
@@ -81,12 +80,10 @@ transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_ctmn0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 1.3, 0)
-
-[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.72457, 0)
 
 [node name="Note" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8969, 0.969939, 18.9004)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8969, 6.61092, 18.9004)
 mass = 0.1
 script = ExtResource("5_5cm71")
 

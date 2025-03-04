@@ -1,20 +1,20 @@
 [gd_scene load_steps=36 format=3 uid="uid://biw12q6503xhq"]
 
-[ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
-[ext_resource type="Script" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
-[ext_resource type="Script" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
-[ext_resource type="Script" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
+[ext_resource type="Script" uid="uid://b05ioikgvi7w4" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
+[ext_resource type="Script" uid="uid://c5x3spfwl4u6i" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
+[ext_resource type="Script" uid="uid://chq0rds48lusv" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
+[ext_resource type="Script" uid="uid://kox5ngc15r5o" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
 [ext_resource type="PackedScene" uid="uid://bkrxspqdd8fge" path="res://Scenes/ToolManager/tool_manager.tscn" id="4_gvbhy"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
-[ext_resource type="Script" path="res://Scripts/Selectable/selector.gd" id="5_87ota"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
-[ext_resource type="Script" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/crouching.gd" id="13_r45dv"]
-[ext_resource type="Script" path="res://Scripts/State/PlayerStates/climbing.gd" id="14_344hs"]
+[ext_resource type="Script" uid="uid://c8mocgjckgvpc" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
+[ext_resource type="Script" uid="uid://cpi4x18ibywff" path="res://Scripts/Selectable/selector.gd" id="5_87ota"]
+[ext_resource type="Script" uid="uid://i2ppf3uxrmqf" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
+[ext_resource type="Script" uid="uid://dqhqqd50lxsa0" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
+[ext_resource type="Script" uid="uid://r2wrifylntwk" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
+[ext_resource type="Script" uid="uid://dvj02job5s0gr" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
+[ext_resource type="Script" uid="uid://jcwi7f76dbva" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
+[ext_resource type="Script" uid="uid://bghe5qo0ojye" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
+[ext_resource type="Script" uid="uid://cftf62g746xec" path="res://Scripts/State/PlayerStates/crouching.gd" id="13_r45dv"]
+[ext_resource type="Script" uid="uid://bg72g24mx7bbb" path="res://Scripts/State/PlayerStates/climbing.gd" id="14_344hs"]
 [ext_resource type="Texture2D" uid="uid://0h3lijepkj2a" path="res://Images/keyboard_e.png" id="14_xo1pu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
@@ -213,11 +213,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
 _data = {
-"FlashLightDown": SubResource("Animation_hnek6"),
-"FlashLightUp": SubResource("Animation_h0unq"),
-"RESET": SubResource("Animation_ixu11"),
-"crouch_down": SubResource("Animation_irgjh"),
-"stand_up": SubResource("Animation_x61lc")
+&"FlashLightDown": SubResource("Animation_hnek6"),
+&"FlashLightUp": SubResource("Animation_h0unq"),
+&"RESET": SubResource("Animation_ixu11"),
+&"crouch_down": SubResource("Animation_irgjh"),
+&"stand_up": SubResource("Animation_x61lc")
 }
 
 [sub_resource type="Curve" id="Curve_r84nn"]
@@ -264,6 +264,7 @@ font_size = 30
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head")]
 collision_layer = 2
 collision_mask = 5
+floor_max_angle = 0.872665
 script = ExtResource("1_iw56a")
 head = NodePath("Head")
 
@@ -335,7 +336,7 @@ current = true
 fov = 60.0
 
 [node name="3rdPersCamera" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 0.91064, 0.4132, 0, -0.4132, 0.91064, 0, 3.43199, 3.67772)
+transform = Transform3D(1, 0, 0, 0, 0.91064, 0.4132, 0, -0.4132, 0.91064, 0, 1.5, 3.678)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_1pglf")
@@ -369,7 +370,7 @@ script = ExtResource("14_344hs")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_j7fa5")
+&"": SubResource("AnimationLibrary_j7fa5")
 }
 
 [node name="HitParticles" type="GPUParticles3D" parent="."]

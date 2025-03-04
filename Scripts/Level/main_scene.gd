@@ -9,15 +9,16 @@ var level_instance: Level = null
 
 # no usage yet but could be helpful
 signal level_loaded(scene: PackedScene)
-signal level_ready()
+signal level_ready
 
 func _ready() -> void:
 	GlobalVariables.level_manager = self
 	load_level("res://Scenes/Levels/Hub.tscn")
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 
 func _process(delta: float) -> void:
 	if loading:
-		
 		var progress: Array = []
 		var status = ResourceLoader.load_threaded_get_status(level_path, progress)
 		match status:
@@ -30,7 +31,6 @@ func _process(delta: float) -> void:
 				await level_ready
 				await fade_out_loading_screen()
 				loading_screen.hide()
-				set_process(false)
 
 
 	else:
@@ -45,7 +45,6 @@ func unload_level():
 		level_instance = null
 
 func load_level(_level_path: String):
-	set_process(true)
 	level_path = _level_path
 	loading_screen.reset_progress()
 	loading_screen.show()

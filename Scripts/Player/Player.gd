@@ -18,7 +18,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 @onready var flashlight: Flashlight = $Head/Flashlight
 @onready var inventory: Inventory = GlobalVariables.inventory
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	GlobalVariables.player = self;
 
 
@@ -36,7 +35,7 @@ func _process(_delta: float) -> void:
 	var h_movement = Input.get_axis("left", "right");
 	var z_movement = Input.get_axis("backward", "forward");
 	direction.x = h_movement;
-	direction.z = -z_movement;
+	direction.z = - z_movement;
 
 
 	# make direction relative to camera
@@ -51,7 +50,6 @@ func can_climb():
 	if colliding_ray != null:
 		var collider = colliding_ray.get_collider()
 		if collider.is_in_group("Climbable"):
-			
 			var normal: Vector3 = colliding_ray.get_collision_normal()
 			var angle = rad_to_deg(normal.angle_to(Vector3(0, -1, 0)))
 			return angle > 70 and angle < 120

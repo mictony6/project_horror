@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DiskItem" load_steps=4 format=3 uid="uid://cerhtm150rp7p"]
 
 [ext_resource type="Texture2D" uid="uid://cp7kh0gcbxomi" path="res://Models/CD/cd1_pexels-zekai-zhu-214984943-11827780.jpg" id="1_7kqwx"]
-[ext_resource type="Script" path="res://Scripts/Items/disk_item.gd" id="1_qqwds"]
+[ext_resource type="Script" uid="uid://cpj0xomyo50pa" path="res://Scripts/Items/disk_item.gd" id="1_qqwds"]
 [ext_resource type="PackedScene" uid="uid://dbpbf6fgbtsjr" path="res://Scenes/CD/cd_1.tscn" id="2_phbyg"]
 
 [resource]

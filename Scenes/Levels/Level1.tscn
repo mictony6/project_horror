@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://d058ortyf7d08"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
+[ext_resource type="Script" uid="uid://d1rgqvt001c74" path="res://Scripts/Level/Level.gd" id="1_4mir1"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="3_7yx3n"]
 [ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="3_ixe75"]
 [ext_resource type="Texture2D" uid="uid://no6acplfbuwu" path="res://Images/GreyboxTextures/greybox_grey_grid.png" id="4_ihbq4"]
 [ext_resource type="Texture2D" uid="uid://duxxlaxmbq2hl" path="res://Images/GreyboxTextures/greybox_light_grid.png" id="5_neq34"]
-[ext_resource type="Script" path="res://Scripts/Triggers/underworld_trigger.gd" id="5_qnhot"]
+[ext_resource type="Script" uid="uid://b62p8ehdtys77" path="res://Scripts/Triggers/underworld_trigger.gd" id="5_qnhot"]
 [ext_resource type="Texture2D" uid="uid://dxlgeyl0jycv1" path="res://Images/GreyboxTextures/greybox_orange_grid.png" id="6_18lst"]
-[ext_resource type="Script" path="res://Scripts/Triggers/room_trigger.gd" id="7_a6pvk"]
+[ext_resource type="Script" uid="uid://canetwjfu64ab" path="res://Scripts/Triggers/room_trigger.gd" id="7_a6pvk"]
 [ext_resource type="AudioStream" uid="uid://o0ludr0eu2k6" path="res://Audio/Super Low Rumbles, Apocalypse, Underwater, Groans.wav" id="7_aef1o"]
 [ext_resource type="Texture2D" uid="uid://d0px0828r5iig" path="res://Images/GreyboxTextures/greybox_purple_grid.png" id="8_rrrwb"]
 [ext_resource type="PackedScene" uid="uid://dgjldtkan7in4" path="res://Scenes/Puzzles/rotating_room_puzzle.tscn" id="12_wenug"]
@@ -20,7 +20,7 @@ sky_material = SubResource("ProceduralSkyMaterial_t1nh2")
 [sub_resource type="Environment" id="Environment_fl8jm"]
 background_mode = 2
 sky = SubResource("Sky_kmkyb")
-tonemap_mode = 3
+tonemap_mode = 4
 tonemap_white = 8.0
 ssao_enabled = true
 ssao_radius = 0.25

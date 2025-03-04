@@ -1,6 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://c86sht6vha1ke"]
+[gd_scene load_steps=17 format=3 uid="uid://c86sht6vha1ke"]
 
-[ext_resource type="Script" path="res://Scripts/Level/Level.gd" id="1_kip1u"]
+[ext_resource type="Script" uid="uid://d1rgqvt001c74" path="res://Scripts/Level/Level.gd" id="1_kip1u"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="2_3yv8b"]
 [ext_resource type="PackedScene" uid="uid://ungo6bkoqgtj" path="res://Scenes/Items/ItemPickUp.tscn" id="3_q0q54"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="4_bu2r3"]
@@ -20,19 +20,39 @@ sky_material = SubResource("ProceduralSkyMaterial_bkw26")
 [sub_resource type="Environment" id="Environment_ywojk"]
 background_mode = 2
 sky = SubResource("Sky_w3ixa")
-tonemap_mode = 2
+tonemap_mode = 4
 tonemap_white = 8.0
 ssr_enabled = true
 ssao_enabled = true
-ssao_radius = 0.21
 ssil_normal_rejection = 0.52
+glow_normalized = true
+glow_bloom = 1.0
+fog_mode = 1
+fog_density = 1.0
 fog_sky_affect = 0.074
-volumetric_fog_sky_affect = 0.387
-volumetric_fog_temporal_reprojection_enabled = false
+fog_height = 1.0
+fog_height_density = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8cnb"]
 albedo_texture = ExtResource("7_vw4fm")
 uv1_triplanar = true
+
+[sub_resource type="GDScript" id="GDScript_2pc8b"]
+resource_name = "rise"
+script/source = "extends CSGCombiner3D
+
+var end_pos : Vector3 = Vector3(0, -1.395,-6.889 )
+var start_pos : Vector3 = Vector3(0,-3.495, -6.889)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_elevator_puzzle_solution_1_solved() -> void:
+	create_tween().tween_property(self, \"position\", end_pos, 1.0)
+"
 
 [node name="Hub" type="Node3D"]
 script = ExtResource("1_kip1u")
@@ -117,7 +137,58 @@ use_collision = true
 size = Vector3(47, 1, 22.1747)
 
 [node name="RotatingRoom1" parent="." instance=ExtResource("8_10j5j")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.34736, -22.0856)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 1.29736, -22.0856)
 
 [node name="ElevatorPuzzle" parent="." instance=ExtResource("11_mn3xm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5837, 0.522365, -1.57353)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.5837, 0.522365, -1.57353)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5837, 2.57745, -1.57353)
+light_color = Color(0.934643, 0.752142, 0.143186, 1)
+light_energy = 5.0
+shadow_enabled = true
+omni_range = 6.76641
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.5837, 0.277448, -1.57353)
+light_color = Color(0.782183, 0.626518, 0.0802129, 1)
+light_energy = 0.25
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5837, 2.07745, -1.57353)
+use_collision = true
+radius = 7.0
+height = 3.0
+sides = 32
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+operation = 2
+radius = 6.0
+height = 2.5
+sides = 32
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.64014, -0.422461, 0)
+operation = 2
+size = Vector3(1.71973, 2.04492, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCylinder3D"]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 6.88873, -1.39522, 0)
+operation = 2
+size = Vector3(0.495117, 0.164551, 1)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGCylinder3D"]
+transform = Transform3D(-4.2222e-08, -1.13133e-08, 1, -0.258819, 0.965926, 0, -0.965926, -0.258819, -4.37114e-08, 0, -3.49522, -6.88873)
+operation = 2
+script = SubResource("GDScript_2pc8b")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCylinder3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 3.55271e-15, 8.88178e-16, 1, 0, 0, 0)
+size = Vector3(0.495117, 0.164551, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCylinder3D/CSGCombiner3D"]
+transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 3.55271e-15, 0, 1, -0.491891, 0.875273, 0)
+size = Vector3(1.71973, 2.04492, 1)
+
+[connection signal="solution1_solved" from="ElevatorPuzzle" to="CSGCylinder3D/CSGCombiner3D" method="_on_elevator_puzzle_solution_1_solved"]

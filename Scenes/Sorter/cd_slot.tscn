@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cebkhw8yskfnv"]
 
-[ext_resource type="Script" path="res://Scripts/Sorter/cd_slot.gd" id="1_croir"]
+[ext_resource type="Script" uid="uid://ci3wotyowmlyx" path="res://Scripts/Sorter/cd_slot.gd" id="1_croir"]
 [ext_resource type="Texture2D" uid="uid://b1y0njss806dw" path="res://Images/sample_vhs_poster.jpg" id="1_um1jd"]
 [ext_resource type="Resource" uid="uid://cg1umgmr2iffk" path="res://Resources/Items/EmptyCD.tres" id="2_cvr4h"]
-[ext_resource type="Script" path="res://Scripts/Sorter/cd_display.gd" id="2_w1o1w"]
+[ext_resource type="Script" uid="uid://xogd6vmkf6ju" path="res://Scripts/Sorter/cd_display.gd" id="2_w1o1w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vevbs"]
 content_margin_top = 6.0

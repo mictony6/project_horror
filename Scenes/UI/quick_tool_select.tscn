@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu3qjmux10r7y"]
 
-[ext_resource type="Script" path="res://Scripts/Ui/quick_tool_select.gd" id="1_kytul"]
+[ext_resource type="Script" uid="uid://drdd5bu0cgpq1" path="res://Scripts/Ui/quick_tool_select.gd" id="1_kytul"]
 [ext_resource type="PackedScene" uid="uid://dgn6ix5ktv3d8" path="res://Scenes/UI/scroll_item.tscn" id="2_pt18n"]
 [ext_resource type="Resource" uid="uid://do3q85f4hq28m" path="res://Resources/Items/Knife.tres" id="3_ys7x8"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://jhee7el5barj"]
 
-[ext_resource type="Script" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
+[ext_resource type="Script" uid="uid://sufein5dr7tx" path="res://Scripts/Sorter/sorter.gd" id="1_p1nr8"]
 [ext_resource type="ArrayMesh" uid="uid://cb8ifmao4wklg" path="res://Models/Sorter/Mesh/sorter_Cube_003.res" id="6_37yn7"]
 [ext_resource type="PackedScene" uid="uid://devmio8hcmrre" path="res://Scenes/Sorter/diskholder.tscn" id="7_g5qku"]
 

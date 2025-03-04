@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://page8jtypua8"]
 
-[ext_resource type="Script" path="res://Scripts/Level/main_scene.gd" id="1_pynj8"]
+[ext_resource type="Script" uid="uid://qmwb3uo0a3mq" path="res://Scripts/Level/main_scene.gd" id="1_pynj8"]
 [ext_resource type="PackedScene" uid="uid://rmiyddqx7xt0" path="res://Scenes/UI/loading_screen.tscn" id="2_d81ir"]
 [ext_resource type="PackedScene" uid="uid://cu3qjmux10r7y" path="res://Scenes/UI/quick_tool_select.tscn" id="3_h23l4"]
-[ext_resource type="Script" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
+[ext_resource type="Script" uid="uid://r1hjentd50ff" path="res://Scripts/Ui/ui_root.gd" id="6_3iylo"]
 [ext_resource type="PackedScene" uid="uid://c443kxbgrt23s" path="res://Scenes/Inventory/inventory_dialog.tscn" id="7_uss5p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03bdw"]
@@ -95,6 +95,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 item_count = 2
 popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
 popup/item_1/text = "1280x720"
 popup/item_1/id = 1
 
