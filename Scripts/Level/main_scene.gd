@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 				await level_ready
 				await fade_out_loading_screen()
 				loading_screen.hide()
+				set_process(false)
 
 
 	else:
@@ -45,6 +46,7 @@ func unload_level():
 		level_instance = null
 
 func load_level(_level_path: String):
+	set_process(true)
 	level_path = _level_path
 	loading_screen.reset_progress()
 	loading_screen.show()
@@ -56,7 +58,7 @@ func load_level(_level_path: String):
 		change_scene(scene)
 		return
 
-	ResourceLoader.load_threaded_request(level_path, "PackedScene", true)
+	ResourceLoader.load_threaded_request(level_path, "PackedScene")
 	loading = true
 
 func change_scene(scene: PackedScene):

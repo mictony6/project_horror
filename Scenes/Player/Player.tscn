@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=37 format=3 uid="uid://biw12q6503xhq"]
 
 [ext_resource type="Script" uid="uid://b05ioikgvi7w4" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
 [ext_resource type="Script" uid="uid://c5x3spfwl4u6i" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
@@ -28,6 +28,11 @@ height = 1.69
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3ffw"]
 radius = 0.25
 height = 0.845
+
+[sub_resource type="Curve" id="Curve_6tu5v"]
+_limits = [-1.0, 1.0, -1.0, 1.0]
+_data = [Vector2(-1, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6imyd"]
 albedo_color = Color(0.408329, 0.408329, 0.408329, 1)
@@ -255,6 +260,7 @@ radius = 0.952158
 
 [sub_resource type="SystemFont" id="SystemFont_y0hnp"]
 font_names = PackedStringArray("Arial")
+subpixel_positioning = 0
 oversampling = 2.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rpyav"]
@@ -290,7 +296,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609101, 0)
 script = ExtResource("2_md85o")
 first_person_cam = NodePath("1sPersCamera")
 third_person_cam = NodePath("3rdPersCamera")
-smoothing_factor = 0.5
+HEAD_BOB_INTENSITY = 0.01
+bob_curve = SubResource("Curve_6tu5v")
 
 [node name="Flashlight" type="Node3D" parent="Head" node_paths=PackedStringArray("spotlight", "omni_light", "animation_player")]
 transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0.455, -0.075)
@@ -332,6 +339,7 @@ script = ExtResource("5_87ota")
 
 [node name="1sPersCamera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00910097, 0)
+cull_mask = 1048573
 current = true
 fov = 60.0
 
@@ -391,6 +399,7 @@ interaction_prompt = NodePath("../InteractPrompt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
 shape = SubResource("SphereShape3D_hwxf7")
+debug_color = Color(0.358291, 0.588305, 0.532702, 0.42)
 
 [node name="Recticle" type="Label" parent="."]
 anchors_preset = 15

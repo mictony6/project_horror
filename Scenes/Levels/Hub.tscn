@@ -152,7 +152,7 @@ omni_range = 6.76641
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.5837, 0.277448, -1.57353)
 light_color = Color(0.782183, 0.626518, 0.0802129, 1)
-light_energy = 0.25
+light_energy = 0.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5837, 2.07745, -1.57353)

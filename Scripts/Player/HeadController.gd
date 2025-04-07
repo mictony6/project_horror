@@ -5,10 +5,18 @@ class_name Head
 @export var third_person_cam: Camera3D
 var _current_camera: Camera3D
 
+var last_global_position: Vector3 = Vector3.ZERO
+var camera_velocity: Vector3 = Vector3.ZERO
+
+@export var HEAD_BOB_INTENSITY = 1.0
+@export var HEAD_BOB_SPEED = 10.0
+var t_bob: float = 0.0
+@export var bob_curve: Curve
+var default_camera_y: float
 
 var MOUSE_SENSITIVITY = 0.25
-var MOUSE_X_SENSITIVITY = 1.0
-var MOUSE_Y_SENSITIVITY = 0.5
+var MOUSE_X_SENSITIVITY = 0.6
+var MOUSE_Y_SENSITIVITY = 0.75
 
 var can_rotate = true
 
@@ -16,11 +24,12 @@ var can_rotate = true
 var target_rotation: Vector3 = Vector3.ZERO
 
 # Smoothing factor (0.0 to 1.0, where 1.0 is no smoothing)
-@export var smoothing_factor: float = 0.25
+@export var smoothing_factor: float = 0.5
 
 
 func _ready() -> void:
 	_current_camera = first_person_cam
+	default_camera_y = position.y
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and can_rotate:
@@ -40,6 +49,17 @@ func _physics_process(delta: float) -> void:
 	# Smoothly interpolate towards the target rotation
 	rotation_degrees.x = lerpf(rotation_degrees.x, target_rotation.x, smoothing_factor)
 	rotation_degrees.y = lerpf(rotation_degrees.y, target_rotation.y, smoothing_factor)
+
+	# Apply head bobbing
+	var is_sprinting = 1.5 if Input.is_action_pressed("sprint") else 1.0
+	if Input.is_action_pressed("forward") or Input.is_action_pressed("backward"):
+		t_bob += delta
+		var t = sin(t_bob * (is_sprinting * HEAD_BOB_SPEED)) * HEAD_BOB_INTENSITY
+		var bob_offset = bob_curve.sample(t)
+		position.y = default_camera_y + bob_offset
+	else:
+		t_bob = 0.0
+		position.y = move_toward(position.y, default_camera_y, delta)
 
 
 func switch_camera():
