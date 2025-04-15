@@ -15,7 +15,7 @@ var t_bob: float = 0.0
 var default_camera_y: float
 
 var MOUSE_SENSITIVITY = 0.25
-var MOUSE_X_SENSITIVITY = 0.6
+var MOUSE_X_SENSITIVITY = 0.5
 var MOUSE_Y_SENSITIVITY = 0.75
 
 var can_rotate = true
@@ -29,7 +29,7 @@ var target_rotation: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	_current_camera = first_person_cam
-	default_camera_y = position.y
+	default_camera_y = first_person_cam.position.y
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and can_rotate:
@@ -56,10 +56,9 @@ func _physics_process(delta: float) -> void:
 		t_bob += delta
 		var t = sin(t_bob * (is_sprinting * HEAD_BOB_SPEED)) * HEAD_BOB_INTENSITY
 		var bob_offset = bob_curve.sample(t)
-		position.y = default_camera_y + bob_offset
+		first_person_cam.position.y = lerpf(first_person_cam.position.y, default_camera_y + bob_offset, 0.1)
 	else:
-		t_bob = 0.0
-		position.y = move_toward(position.y, default_camera_y, delta)
+		first_person_cam.position.y = lerpf(first_person_cam.position.y, default_camera_y, 0.1)
 
 
 func switch_camera():
