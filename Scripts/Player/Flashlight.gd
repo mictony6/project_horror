@@ -4,8 +4,10 @@ var is_on: bool = true
 @export var spotlight: SpotLight3D
 @export var omni_light: OmniLight3D
 @export var animation_player: AnimationPlayer
-
 @export var energy = 2.5
+
+var hand_position: int = 1 # -1 left hand, 1 right hand
+
 
 func _ready() -> void:
 	# spotlight = $MeshInstance3D/SpotLight3D

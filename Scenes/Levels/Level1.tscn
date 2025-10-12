@@ -12,20 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://d0px0828r5iig" path="res://Images/GreyboxTextures/greybox_purple_grid.png" id="8_rrrwb"]
 [ext_resource type="PackedScene" uid="uid://dgjldtkan7in4" path="res://Scenes/Puzzles/rotating_room_puzzle.tscn" id="12_wenug"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t1nh2"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57lp3"]
 
 [sub_resource type="Sky" id="Sky_kmkyb"]
-sky_material = SubResource("ProceduralSkyMaterial_t1nh2")
+sky_material = SubResource("ProceduralSkyMaterial_57lp3")
 
 [sub_resource type="Environment" id="Environment_fl8jm"]
 background_mode = 2
-background_energy_multiplier = 0.3
 sky = SubResource("Sky_kmkyb")
 tonemap_mode = 4
 tonemap_white = 8.0
+ssr_enabled = true
 ssao_enabled = true
 ssao_radius = 0.25
 sdfgi_use_occlusion = true
+glow_enabled = true
 glow_normalized = true
 fog_light_color = Color(0.580965, 0.32611, 0.245002, 1)
 fog_density = 0.001
@@ -70,7 +71,7 @@ size = Vector2(50, 50)
 script = ExtResource("1_4mir1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.595035, 0.242161, 0.766349, 0.433013, 0.899895, 0.051854, -0.677077, 0.362694, -0.640328, 0.0320091, -0.200089, 0.0992546)
+transform = Transform3D(-0.595035, 0.242161, 0.766349, 0.793338, 0.0243578, 0.608294, 0.128638, 0.96993, -0.206609, 0.0320091, -0.200089, 0.0992546)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

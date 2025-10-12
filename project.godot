@@ -12,7 +12,7 @@ config_version=5
 
 config/name="project_horror_storm"
 run/main_scene="res://Scenes/MainScene.tscn"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
@@ -135,3 +135,4 @@ dialogic_default_action={
 [rendering]
 
 textures/default_filters/anisotropic_filtering_level=3
+anti_aliasing/quality/msaa_3d=1

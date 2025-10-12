@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdeqj2vt7u4th"]
+
+[ext_resource type="PackedScene" uid="uid://xtfajw2awoas" path="res://Models/Rooms/test_room.glb" id="1_srpdh"]
+[ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="2_ln0w4"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c42wt"]
+points = PackedVector3Array(-5.601741, 0, -4.2462506, -5.601741, 0, 3.671516, -5.601741, 0.09, -4.2462506, 2.2382216, 0, -4.2462506, -5.601741, 0.09, 3.671516, 4.160943, 0, 3.671516, 2.2382216, 0.09, -4.2462506, 4.160943, 0, -0.28736734, 4.160943, 0.09, 3.671516, 4.160943, 0.09, -0.28736734)
+
+[node name="TestRoom" instance=ExtResource("1_srpdh")]
+
+[node name="Plane_002" parent="." index="0"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane_002" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
+shape = SubResource("ConvexPolygonShape3D_c42wt")
+
+[node name="Plane_001" parent="." index="1"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="stairs" parent="." index="2"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="landing1" parent="." index="3"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="2ndFloorWalls" parent="." index="4"]
+material_override = ExtResource("2_ln0w4")
+material_overlay = ExtResource("2_ln0w4")
+
+[node name="ceilling2" parent="." index="11"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="upperfloorwall" parent="." index="12"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="Cube_001" parent="." index="13"]
+material_override = ExtResource("2_ln0w4")
+
+[node name="wall3" parent="." index="14"]
+material_override = ExtResource("2_ln0w4")

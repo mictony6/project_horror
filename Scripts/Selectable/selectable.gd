@@ -9,8 +9,12 @@ var interaction_index: int = 0
 var material_overlay: Material
 @onready var input_prompt: VBoxContainer = $InputPrompt
 @onready var label: Label
+
+# for some reason i made this a callable. this cold be a signal instead where items can connect to. but this is fine for now
 var select: Callable = (func(): pass )
 
+signal highlighted
+signal unhighlighted
 
 func _ready() -> void:
 	label = input_prompt.get_node("Label")
@@ -39,10 +43,12 @@ func highlight() -> void:
 		return
 	input_prompt.show()
 	mesh_instance.material_overlay = material_overlay
+	highlighted.emit()
 
 func unhighlight() -> void:
 	input_prompt.hide()
 	mesh_instance.material_overlay = null
+	unhighlighted.emit()
 
 func switch_interaction_label() -> void:
 	if interaction_index == 0:

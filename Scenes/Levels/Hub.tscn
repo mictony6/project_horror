@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c86sht6vha1ke"]
+[gd_scene load_steps=18 format=3 uid="uid://c86sht6vha1ke"]
 
 [ext_resource type="Script" uid="uid://d1rgqvt001c74" path="res://Scripts/Level/Level.gd" id="1_kip1u"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="2_3yv8b"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ddglot4hivgm1" path="res://Scenes/Rooms/rotating_room_1.tscn" id="8_10j5j"]
 [ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="8_cd6c8"]
 [ext_resource type="PackedScene" uid="uid://ci1pvgs7oaars" path="res://Scenes/Puzzles/elevator_puzzle.tscn" id="11_mn3xm"]
+[ext_resource type="VoxelGIData" uid="uid://rupddbhrrgsh" path="res://Scenes/Hub.VoxelGI_data.res" id="12_4uaew"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkw26"]
 
@@ -24,7 +25,9 @@ tonemap_mode = 4
 tonemap_white = 8.0
 ssr_enabled = true
 ssao_enabled = true
+ssil_enabled = true
 ssil_normal_rejection = 0.52
+sdfgi_use_occlusion = true
 glow_normalized = true
 glow_bloom = 1.0
 fog_mode = 1
@@ -110,9 +113,9 @@ size = Vector3(2.25122, 2.80252, 1)
 material = ExtResource("8_cd6c8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -33.4995)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81255, 7, -34.2522)
 use_collision = true
-size = Vector3(58.7178, 15, 0.001)
+size = Vector3(58.7178, 15, 1.50636)
 
 [node name="Floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88703, -0.202635, -12.0594)
@@ -148,11 +151,6 @@ light_color = Color(0.934643, 0.752142, 0.143186, 1)
 light_energy = 5.0
 shadow_enabled = true
 omni_range = 6.76641
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -14.5837, 0.277448, -1.57353)
-light_color = Color(0.782183, 0.626518, 0.0802129, 1)
-light_energy = 0.0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5837, 2.07745, -1.57353)
@@ -190,5 +188,12 @@ size = Vector3(0.495117, 0.164551, 1)
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGCylinder3D/CSGCombiner3D"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 3.55271e-15, 0, 1, -0.491891, 0.875273, 0)
 size = Vector3(1.71973, 2.04492, 1)
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29726, 5.88242, -18.9182)
+visible = false
+subdiv = 3
+size = Vector3(61.3975, 19.0401, 57.8364)
+data = ExtResource("12_4uaew")
 
 [connection signal="solution1_solved" from="ElevatorPuzzle" to="CSGCylinder3D/CSGCombiner3D" method="_on_elevator_puzzle_solution_1_solved"]

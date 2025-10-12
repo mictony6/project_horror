@@ -23,8 +23,11 @@ background_mode = 2
 sky = SubResource("Sky_5im31")
 tonemap_mode = 4
 tonemap_white = 8.0
+ssr_enabled = true
 ssao_enabled = true
 ssao_radius = 0.25
+ssil_enabled = true
+sdfgi_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iji3e"]
 albedo_color = Color(0.837891, 0.598406, 0.22806, 1)
@@ -70,7 +73,7 @@ operation = 2
 size = Vector3(20, 10, 20)
 
 [node name="PrisonBed" parent="." instance=ExtResource("4_vsqic")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5.91576, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 5.82229, 19)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p15cp")
@@ -78,6 +81,7 @@ environment = SubResource("Environment_p15cp")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, 0, 0, 0)
 shadow_enabled = true
+shadow_bias = 0.05
 
 [node name="Player" parent="." instance=ExtResource("2_ctmn0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 6.72457, 0)
@@ -88,6 +92,7 @@ mass = 0.1
 script = ExtResource("5_5cm71")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Note"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0934734, 0)
 mesh = SubResource("BoxMesh_lymkx")
 skeleton = NodePath("../../PrisonBed")
 

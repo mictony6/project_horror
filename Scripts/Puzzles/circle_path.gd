@@ -27,9 +27,19 @@ func _ready() -> void:
 	load_curve()
 	left_select.select = push_right
 	right_select.select = push_left
+	
+	left_select.highlighted.connect(show_path)
+	right_select.highlighted.connect(show_path)
+
+	left_select.unhighlighted.connect(hide_path)
+	right_select.unhighlighted.connect(hide_path)
+
+
 	path_follow.progress -= path_follow.progress
 	move_length = curve.get_baked_length() / (curve.point_count - 1)
 	moves_per_place = curve.point_count / 8
+
+	hide_path()
 
 func load_curve():
 	curve.clear_points()
@@ -57,3 +67,8 @@ func push_left():
 	await create_tween().tween_property(path_follow, "progress", path_follow.progress - (move_length * moves_per_place), 0.5).finished
 	left_select.can_be_selected = true
 	right_select.can_be_selected = true
+
+func show_path():
+	multi_meshinstance.visible = true
+func hide_path():
+	multi_meshinstance.visible = false

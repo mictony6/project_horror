@@ -1,33 +1,37 @@
-[gd_scene load_steps=37 format=3 uid="uid://biw12q6503xhq"]
+[gd_scene load_steps=39 format=3 uid="uid://bvvcpmy0vj03a"]
 
-[ext_resource type="Script" uid="uid://b05ioikgvi7w4" path="res://Scripts/Player/Player.gd" id="1_iw56a"]
-[ext_resource type="Script" uid="uid://c5x3spfwl4u6i" path="res://Scripts/Player/HeadController.gd" id="2_md85o"]
-[ext_resource type="Script" uid="uid://chq0rds48lusv" path="res://Scripts/Player/Flashlight.gd" id="3_lf4xw"]
-[ext_resource type="Script" uid="uid://kox5ngc15r5o" path="res://Scripts/State/state_machine.gd" id="4_1pglf"]
-[ext_resource type="PackedScene" uid="uid://bkrxspqdd8fge" path="res://Scenes/ToolManager/tool_manager.tscn" id="4_gvbhy"]
-[ext_resource type="Script" uid="uid://c8mocgjckgvpc" path="res://Scripts/State/PlayerStates/idle.gd" id="5_3osqa"]
-[ext_resource type="Script" uid="uid://cpi4x18ibywff" path="res://Scripts/Selectable/selector.gd" id="5_87ota"]
-[ext_resource type="Script" uid="uid://i2ppf3uxrmqf" path="res://Scripts/State/PlayerStates/walking.gd" id="6_ljmwu"]
-[ext_resource type="Script" uid="uid://dqhqqd50lxsa0" path="res://Scripts/State/PlayerStates/jumping.gd" id="7_66hg8"]
-[ext_resource type="Script" uid="uid://r2wrifylntwk" path="res://Scripts/State/PlayerStates/sprinting.gd" id="8_44e46"]
-[ext_resource type="Script" uid="uid://dvj02job5s0gr" path="res://Scripts/State/PlayerStates/falling.gd" id="9_tv1m5"]
-[ext_resource type="Script" uid="uid://jcwi7f76dbva" path="res://Scripts/State/PlayerStates/menu.gd" id="10_6f3fu"]
-[ext_resource type="Script" uid="uid://bghe5qo0ojye" path="res://Scripts/Interactiions/interactable_detector.gd" id="12_vrtle"]
-[ext_resource type="Script" uid="uid://cftf62g746xec" path="res://Scripts/State/PlayerStates/crouching.gd" id="13_r45dv"]
-[ext_resource type="Script" uid="uid://bg72g24mx7bbb" path="res://Scripts/State/PlayerStates/climbing.gd" id="14_344hs"]
-[ext_resource type="Texture2D" uid="uid://0h3lijepkj2a" path="res://Images/keyboard_e.png" id="14_xo1pu"]
+[ext_resource type="Script" uid="uid://b05ioikgvi7w4" path="res://Scripts/Player/Player.gd" id="1_q1k58"]
+[ext_resource type="Script" uid="uid://c5x3spfwl4u6i" path="res://Scripts/Player/HeadController.gd" id="2_0boa7"]
+[ext_resource type="Script" uid="uid://chq0rds48lusv" path="res://Scripts/Player/Flashlight.gd" id="3_ybxwn"]
+[ext_resource type="PackedScene" uid="uid://bkrxspqdd8fge" path="res://Scenes/ToolManager/tool_manager.tscn" id="4_t4pru"]
+[ext_resource type="Script" uid="uid://cpi4x18ibywff" path="res://Scripts/Selectable/selector.gd" id="5_nd6cf"]
+[ext_resource type="Script" uid="uid://kox5ngc15r5o" path="res://Scripts/State/state_machine.gd" id="6_qjn46"]
+[ext_resource type="Script" uid="uid://c8mocgjckgvpc" path="res://Scripts/State/PlayerStates/idle.gd" id="7_k8k6u"]
+[ext_resource type="Script" uid="uid://i2ppf3uxrmqf" path="res://Scripts/State/PlayerStates/walking.gd" id="8_m84na"]
+[ext_resource type="Script" uid="uid://dqhqqd50lxsa0" path="res://Scripts/State/PlayerStates/jumping.gd" id="9_va32a"]
+[ext_resource type="Script" uid="uid://r2wrifylntwk" path="res://Scripts/State/PlayerStates/sprinting.gd" id="10_qn778"]
+[ext_resource type="Script" uid="uid://dvj02job5s0gr" path="res://Scripts/State/PlayerStates/falling.gd" id="11_eh01q"]
+[ext_resource type="Script" uid="uid://jcwi7f76dbva" path="res://Scripts/State/PlayerStates/menu.gd" id="12_dy8yn"]
+[ext_resource type="Script" uid="uid://cftf62g746xec" path="res://Scripts/State/PlayerStates/crouching.gd" id="13_f5p7m"]
+[ext_resource type="Script" uid="uid://bg72g24mx7bbb" path="res://Scripts/State/PlayerStates/climbing.gd" id="14_dnesv"]
+[ext_resource type="Script" uid="uid://bghe5qo0ojye" path="res://Scripts/Interactiions/interactable_detector.gd" id="15_8kam0"]
+[ext_resource type="Animation" uid="uid://rjlrqf82s3vk" path="res://Animation Libraries/FlashLightDown.res" id="15_nd6cf"]
+[ext_resource type="Texture2D" uid="uid://0h3lijepkj2a" path="res://Images/keyboard_e.png" id="16_o518a"]
+[ext_resource type="Animation" uid="uid://ps3q11vjldmg" path="res://Animation Libraries/FlashLightToLeft.res" id="16_qjn46"]
+[ext_resource type="Animation" uid="uid://cfh6lgfxrd314" path="res://Animation Libraries/FlashLightToRight.res" id="17_k8k6u"]
+[ext_resource type="Animation" uid="uid://duejn7jjqaq1g" path="res://Animation Libraries/FlashLightUp.res" id="18_m84na"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_l0bnd"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gv24q"]
 radius = 0.25
-height = 1.69
+height = 1.19
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7kvy1"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kmfnq"]
 radius = 0.25
-height = 1.69
+height = 1.19
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k3ffw"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ky1gj"]
 radius = 0.25
-height = 0.845
+height = 0.644
 
 [sub_resource type="Curve" id="Curve_6tu5v"]
 _limits = [-1.0, 1.0, -1.0, 1.0]
@@ -42,42 +46,6 @@ emission = Color(0.103744, 0.103744, 0.103744, 1)
 material = SubResource("StandardMaterial3D_6imyd")
 size = Vector3(0.05, 0.05, 0.25)
 
-[sub_resource type="Animation" id="Animation_hnek6"]
-resource_name = "FlashLightDown"
-length = 0.400003
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Flashlight/MeshInstance3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.0666667, 1, -0.142315, 0, 0, 0.989821, 0.166667, 1, -0.0826485, 0, 0, 0.996579, 0.366667, 1, -0.707107, 0, 0, 0.707107)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.477, -0.259, -0.27, 0.1, 1, -0.477, -0.259, -0.27, 0.366667, 1, -0.477, -0.593915, -0.000639707)
-
-[sub_resource type="Animation" id="Animation_h0unq"]
-resource_name = "FlashLightUp"
-length = 0.200003
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Flashlight/MeshInstance3D")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -0.707107, 0, 0, 0.707107, 0.2, 1, 0, 0, 0, 1)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.477, -0.593915, -0.000639707, 0.2, 1, -0.477, -0.259, -0.27)
-
 [sub_resource type="Animation" id="Animation_ixu11"]
 length = 0.001
 tracks/0/type = "position_3d"
@@ -90,52 +58,81 @@ tracks/0/keys = PackedFloat32Array(0, 1, 0.454326, -0.222685, -0.504557)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Flashlight/MeshInstance3D")
+tracks/1/path = NodePath("Head/ToolManager")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
-tracks/2/type = "rotation_3d"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Head/ToolManager")
+tracks/2/path = NodePath("ColliderStanding:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("ColliderStanding:disabled")
+tracks/3/path = NodePath("ColliderCrouching:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ColliderCrouching:disabled")
+tracks/4/path = NodePath("Head:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0.359, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Head:position")
+tracks/5/path = NodePath("Head/Flashlight:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.609101, 0)]
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Head/Flashlight/MeshInstance3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.16406502, 0.11634123, -0.30997896)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head/Flashlight/MeshInstance3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.3161256, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_irgjh"]
@@ -174,7 +171,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.659, 0), Vector3(0, -0.26, 0), Vector3(0, -0.255635, 0)]
+"values": [Vector3(0, 0.359, 0), Vector3(0, -0.26, 0), Vector3(0, -0.255635, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_x61lc"]
@@ -213,13 +210,15 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.666667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -0.256, 0), Vector3(0, 0.619, 0), Vector3(0, 0.659, 0)]
+"values": [Vector3(0, -0.256, 0), Vector3(0, 0.319, 0), Vector3(0, 0.359, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7fa5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1k58"]
 _data = {
-&"FlashLightDown": SubResource("Animation_hnek6"),
-&"FlashLightUp": SubResource("Animation_h0unq"),
+&"FlashLightDown": ExtResource("15_nd6cf"),
+&"FlashLightToLeft": ExtResource("16_qjn46"),
+&"FlashLightToRight": ExtResource("17_k8k6u"),
+&"FlashLightUp": ExtResource("18_m84na"),
 &"RESET": SubResource("Animation_ixu11"),
 &"crouch_down": SubResource("Animation_irgjh"),
 &"stand_up": SubResource("Animation_x61lc")
@@ -271,7 +270,8 @@ font_size = 30
 collision_layer = 2
 collision_mask = 5
 floor_max_angle = 0.872665
-script = ExtResource("1_iw56a")
+script = ExtResource("1_q1k58")
+JUMP_FORCE = 2
 head = NodePath("Head")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -281,44 +281,44 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 layers = 2
 cast_shadow = 0
 gi_mode = 0
-mesh = SubResource("CapsuleMesh_l0bnd")
+mesh = SubResource("CapsuleMesh_gv24q")
 
 [node name="ColliderStanding" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_7kvy1")
+shape = SubResource("CapsuleShape3D_kmfnq")
 
 [node name="ColliderCrouching" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.419521, 0)
-shape = SubResource("CapsuleShape3D_k3ffw")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272746, 0)
+shape = SubResource("CapsuleShape3D_ky1gj")
 disabled = true
 
 [node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("first_person_cam", "third_person_cam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.609101, 0)
-script = ExtResource("2_md85o")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.359, 0)
+script = ExtResource("2_0boa7")
 first_person_cam = NodePath("1sPersCamera")
 third_person_cam = NodePath("3rdPersCamera")
 HEAD_BOB_INTENSITY = 0.01
 bob_curve = SubResource("Curve_6tu5v")
 
 [node name="Flashlight" type="Node3D" parent="Head" node_paths=PackedStringArray("spotlight", "omni_light", "animation_player")]
-transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0.455, -0.075)
-script = ExtResource("3_lf4xw")
+transform = Transform3D(0.996195, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996195, 0, 0, 0)
+script = ExtResource("3_ybxwn")
 spotlight = NodePath("MeshInstance3D/SpotLight3D")
 omni_light = NodePath("MeshInstance3D/OmniLight3D")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.477, -0.259, -0.27)
+transform = Transform3D(-0.9848083, 0, -0.17364834, 0, 0.99999994, 0, 0.17364833, 0, -0.98480844, 0.16406502, 0.11634123, -0.30997896)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_6nxlb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
-transform = Transform3D(1, -2.79397e-09, 1.49012e-08, 2.79397e-09, 1, -3.72529e-09, -1.49012e-08, 3.72529e-09, 1, -0.0073247, -8.9407e-08, 0.167613)
+transform = Transform3D(0.9999991, -2.7939644e-09, 3.7252903e-08, 2.7939675e-09, 1.0000001, -3.725295e-09, -2.2351742e-08, 3.7252903e-09, 0.999999, 0.025517523, -8.940697e-08, -0.20777488)
 light_specular = 0.0
 omni_range = 20.0
 omni_attenuation = 2.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Flashlight/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0073247, 2.98023e-08, 0.167613)
+transform = Transform3D(-0.9999991, 0, -1.0430813e-07, 0, 1.0000001, 0, 9.685755e-08, 0, -0.999999, 0.025517508, 2.9802322e-08, -0.20777485)
 light_energy = 5.0
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
@@ -326,7 +326,7 @@ spot_range = 75.0
 spot_attenuation = 2.0
 spot_angle_attenuation = 2.0
 
-[node name="ToolManager" parent="Head" instance=ExtResource("4_gvbhy")]
+[node name="ToolManager" parent="Head" instance=ExtResource("4_t4pru")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454326, -0.222685, -0.504557)
 
 [node name="Selector" type="RayCast3D" parent="Head"]
@@ -335,50 +335,49 @@ target_position = Vector3(0, 0, -2)
 collision_mask = 33
 collide_with_areas = true
 collide_with_bodies = false
-script = ExtResource("5_87ota")
+script = ExtResource("5_nd6cf")
 
 [node name="1sPersCamera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083, -0.009, 0)
 cull_mask = 1048573
 current = true
-fov = 60.0
 
 [node name="3rdPersCamera" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 0.91064, 0.4132, 0, -0.4132, 0.91064, 0, 1.5, 3.678)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_1pglf")
+script = ExtResource("6_qjn46")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_3osqa")
+script = ExtResource("7_k8k6u")
 
 [node name="Walking" type="Node" parent="StateMachine"]
-script = ExtResource("6_ljmwu")
+script = ExtResource("8_m84na")
 
 [node name="Jumping" type="Node" parent="StateMachine"]
-script = ExtResource("7_66hg8")
+script = ExtResource("9_va32a")
 
 [node name="Sprinting" type="Node" parent="StateMachine"]
-script = ExtResource("8_44e46")
+script = ExtResource("10_qn778")
 
 [node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("9_tv1m5")
+script = ExtResource("11_eh01q")
 
 [node name="Menu" type="Node" parent="StateMachine"]
-script = ExtResource("10_6f3fu")
+script = ExtResource("12_dy8yn")
 
 [node name="Crouching" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_player")]
-script = ExtResource("13_r45dv")
+script = ExtResource("13_f5p7m")
 animation_player = NodePath("../../AnimationPlayer")
 
 [node name="Climbing" type="Node" parent="StateMachine"]
-script = ExtResource("14_344hs")
+script = ExtResource("14_dnesv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-&"": SubResource("AnimationLibrary_j7fa5")
+&"": SubResource("AnimationLibrary_q1k58")
 }
 
 [node name="HitParticles" type="GPUParticles3D" parent="."]
@@ -394,7 +393,7 @@ draw_pass_1 = SubResource("SphereMesh_xogcg")
 [node name="InteractableDetector" type="Area3D" parent="." node_paths=PackedStringArray("interaction_prompt")]
 collision_layer = 2
 collision_mask = 16
-script = ExtResource("12_vrtle")
+script = ExtResource("15_8kam0")
 interaction_prompt = NodePath("../InteractPrompt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableDetector"]
@@ -440,7 +439,7 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="InteractPrompt/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-texture = ExtResource("14_xo1pu")
+texture = ExtResource("16_o518a")
 
 [node name="Label" type="Label" parent="InteractPrompt/HBoxContainer"]
 layout_mode = 2
@@ -450,9 +449,9 @@ vertical_alignment = 1
 
 [node name="CheckCanStand" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.834163, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.605695, 0)
 enabled = false
-target_position = Vector3(0, 1.7, 0)
+target_position = Vector3(0, 1.19, 0)
 
 [node name="HeadRays" type="Node3D" parent="."]
 unique_name_in_owner = true

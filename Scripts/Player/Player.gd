@@ -7,10 +7,10 @@ class_name Player
 
 
 # Movement variables
-const SPEED: int = 2;
-const SPRINT_SPEED: int = 3;
-const JUMP_FORCE = 4;
-const CLIMB_SPEED: int = 1;
+@export var SPEED: float = 2;
+@export var SPRINT_SPEED: float = 3;
+@export var JUMP_FORCE = 4;
+@export var CLIMB_SPEED: float = 1;
 var direction: Vector3 = Vector3.ZERO;
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity");
 # Components

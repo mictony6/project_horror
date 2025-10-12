@@ -1,11 +1,13 @@
 extends Node3D
 class_name LevelManager
 
+@export var default_test_level: String = "res://Scenes/Levels/Hub.tscn"
 @onready var loading_screen: LoadingScreen = $LoadingScreen
 @onready var level_container: Node3D = $LevelContainer
 var loading: bool = false
 var level_path: String
 var level_instance: Level = null
+
 
 # no usage yet but could be helpful
 signal level_loaded(scene: PackedScene)
@@ -13,7 +15,7 @@ signal level_ready
 
 func _ready() -> void:
 	GlobalVariables.level_manager = self
-	load_level("res://Scenes/Levels/Hub.tscn")
+	load_level(default_test_level)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 

@@ -14,7 +14,7 @@ var t_bob: float = 0.0
 @export var bob_curve: Curve
 var default_camera_y: float
 
-var MOUSE_SENSITIVITY = 0.25
+var MOUSE_SENSITIVITY = 0.15
 var MOUSE_X_SENSITIVITY = 0.5
 var MOUSE_Y_SENSITIVITY = 0.75
 

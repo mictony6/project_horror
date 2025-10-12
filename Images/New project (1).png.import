@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kh774j3rc7vw"
-path.s3tc="res://.godot/imported/greybox_grey_solid_2.png-34afe5cea451c892fbe176a7278f1a0a.s3tc.ctex"
+uid="uid://cbheylmjvr4c"
+path.s3tc="res://.godot/imported/New project (1).png-0ec83da9074a4b6feae75eddc2fcd235.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,14 +11,16 @@ metadata={
 
 [deps]
 
-source_file="res://Images/GreyboxTextures/greybox_grey_solid_2.png"
-dest_files=["res://.godot/imported/greybox_grey_solid_2.png-34afe5cea451c892fbe176a7278f1a0a.s3tc.ctex"]
+source_file="res://Images/New project (1).png"
+dest_files=["res://.godot/imported/New project (1).png-0ec83da9074a4b6feae75eddc2fcd235.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -26,6 +28,10 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
