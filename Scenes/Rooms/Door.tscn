@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://dln56n4wckihg"]
+
+[ext_resource type="PackedScene" uid="uid://bmfadgcdy2mnd" path="res://Models/Rooms/door.glb" id="1_2xw0u"]
+[ext_resource type="Material" uid="uid://cx2grx2wrmcer" path="res://Material/beige_concrete_wall.tres" id="2_bvfef"]
+[ext_resource type="Script" uid="uid://diseloaqoheug" path="res://Scripts/Door/door.gd" id="2_g1s0f"]
+[ext_resource type="Material" uid="uid://js0owsl1raqu" path="res://Material/laminate_floor.tres" id="3_g1s0f"]
+[ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="3_pvrfi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g1s0f"]
+size = Vector3(1.0311584, 2.045544, 0.060079575)
+
+[sub_resource type="Animation" id="Animation_2xw0u"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plane/Plane_002:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.4082887, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bvfef"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plane/Plane_002:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g1s0f"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Plane/Plane_002:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.4082887, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g1s0f"]
+_data = {
+&"Close": SubResource("Animation_g1s0f"),
+&"Open": SubResource("Animation_2xw0u"),
+&"RESET": SubResource("Animation_bvfef")
+}
+
+[node name="Door" instance=ExtResource("1_2xw0u")]
+script = ExtResource("2_g1s0f")
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_bvfef")
+
+[node name="Plane_002" parent="Plane" index="0"]
+surface_material_override/0 = ExtResource("3_g1s0f")
+
+[node name="Selectable" parent="Plane/Plane_002" index="0" node_paths=PackedStringArray("mesh_instance") instance=ExtResource("3_pvrfi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.515342, -0.13846266, 0.287367)
+interaction_name = "Open"
+secondary_interaction_name = "Close"
+mesh_instance = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/Plane_002/Selectable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015188813, 0.15874183, -0.33886662)
+shape = SubResource("BoxShape3D_g1s0f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_g1s0f")
+}
+playback_default_blend_time = 0.25

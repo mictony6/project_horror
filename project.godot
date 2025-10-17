@@ -134,5 +134,6 @@ dialogic_default_action={
 
 [rendering]
 
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=5
 textures/default_filters/anisotropic_filtering_level=3
 anti_aliasing/quality/msaa_3d=1

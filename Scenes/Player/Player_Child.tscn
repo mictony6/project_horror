@@ -305,6 +305,7 @@ script = ExtResource("3_ybxwn")
 spotlight = NodePath("MeshInstance3D/SpotLight3D")
 omni_light = NodePath("MeshInstance3D/OmniLight3D")
 animation_player = NodePath("../../AnimationPlayer")
+energy = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Flashlight"]
 transform = Transform3D(-0.9848083, 0, -0.17364834, 0, 0.99999994, 0, 0.17364833, 0, -0.98480844, 0.16406502, 0.11634123, -0.30997896)
@@ -313,13 +314,14 @@ mesh = SubResource("BoxMesh_6nxlb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Head/Flashlight/MeshInstance3D"]
 transform = Transform3D(0.9999991, -2.7939644e-09, 3.7252903e-08, 2.7939675e-09, 1.0000001, -3.725295e-09, -2.2351742e-08, 3.7252903e-09, 0.999999, 0.025517523, -8.940697e-08, -0.20777488)
+light_energy = 0.15
 light_specular = 0.0
 omni_range = 20.0
 omni_attenuation = 2.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Head/Flashlight/MeshInstance3D"]
 transform = Transform3D(-0.9999991, 0, -1.0430813e-07, 0, 1.0000001, 0, 9.685755e-08, 0, -0.999999, 0.025517508, 2.9802322e-08, -0.20777485)
-light_energy = 5.0
+light_energy = 2.5
 light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 spot_range = 75.0

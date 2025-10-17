@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c86sht6vha1ke"]
+[gd_scene load_steps=19 format=3 uid="uid://c86sht6vha1ke"]
 
 [ext_resource type="Script" uid="uid://d1rgqvt001c74" path="res://Scripts/Level/Level.gd" id="1_kip1u"]
 [ext_resource type="PackedScene" uid="uid://biw12q6503xhq" path="res://Scenes/Player/Player.tscn" id="2_3yv8b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="8_cd6c8"]
 [ext_resource type="PackedScene" uid="uid://ci1pvgs7oaars" path="res://Scenes/Puzzles/elevator_puzzle.tscn" id="11_mn3xm"]
 [ext_resource type="VoxelGIData" uid="uid://rupddbhrrgsh" path="res://Scenes/Hub.VoxelGI_data.res" id="12_4uaew"]
+[ext_resource type="PackedScene" uid="uid://biqemy6yfvncy" path="res://Scenes/Props/light_switch.tscn" id="13_aobgf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bkw26"]
 
@@ -195,5 +196,8 @@ visible = false
 subdiv = 3
 size = Vector3(61.3975, 19.0401, 57.8364)
 data = ExtResource("12_4uaew")
+
+[node name="LightSwitch" parent="." instance=ExtResource("13_aobgf")]
+transform = Transform3D(0.25, 0, 0, 0, -1.0927847e-08, 0.25, 0, -0.25, -1.0927847e-08, 3.05633, 1.7066624, -0.78279704)
 
 [connection signal="solution1_solved" from="ElevatorPuzzle" to="CSGCylinder3D/CSGCombiner3D" method="_on_elevator_puzzle_solution_1_solved"]

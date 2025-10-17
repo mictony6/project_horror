@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://biqemy6yfvncy"]
+
+[ext_resource type="PackedScene" uid="uid://dme0ankr5myr5" path="res://Models/Props/LightSwitch.glb" id="1_r84r5"]
+[ext_resource type="PackedScene" uid="uid://dcrdncdcmw4yn" path="res://Scenes/Components/selectable.tscn" id="2_bbg32"]
+[ext_resource type="Script" uid="uid://cj2kluol52o0k" path="res://Scripts/Props/light_switch.gd" id="2_pnvte"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pnvte"]
+size = Vector3(1.3000001, 0.22052145, 1.3000001)
+
+[sub_resource type="Animation" id="Animation_pnvte"]
+resource_name = "SwitchOFF"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.5235988, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j7rub"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5235988, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_o3j0s"]
+resource_name = "SwitchON"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333333, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5235988, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7rub"]
+_data = {
+&"RESET": SubResource("Animation_j7rub"),
+&"SwitchOFF": SubResource("Animation_pnvte"),
+&"SwitchON": SubResource("Animation_o3j0s")
+}
+
+[node name="LightSwitch" instance=ExtResource("1_r84r5")]
+script = ExtResource("2_pnvte")
+
+[node name="Selectable" parent="." index="0" node_paths=PackedStringArray("mesh_instance") instance=ExtResource("2_bbg32")]
+interaction_name = "SwitchOn"
+secondary_interaction_name = "SwitchOff"
+mesh_instance = NodePath("../Button")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Selectable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10976076, 0)
+shape = SubResource("BoxShape3D_pnvte")
+
+[node name="Button" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0.016880115, -0.08881043, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_j7rub")
+}

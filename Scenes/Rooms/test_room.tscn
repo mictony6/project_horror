@@ -1,42 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdeqj2vt7u4th"]
+[gd_scene load_steps=7 format=3 uid="uid://cdeqj2vt7u4th"]
 
 [ext_resource type="PackedScene" uid="uid://xtfajw2awoas" path="res://Models/Rooms/test_room.glb" id="1_srpdh"]
+[ext_resource type="Material" uid="uid://dkaqdus6ubj8a" path="res://Material/marble_floor.tres" id="2_8k5sq"]
 [ext_resource type="Material" uid="uid://bi250q6yy4hhi" path="res://Material/greybox_green.tres" id="2_ln0w4"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c42wt"]
-points = PackedVector3Array(-5.601741, 0, -4.2462506, -5.601741, 0, 3.671516, -5.601741, 0.09, -4.2462506, 2.2382216, 0, -4.2462506, -5.601741, 0.09, 3.671516, 4.160943, 0, 3.671516, 2.2382216, 0.09, -4.2462506, 4.160943, 0, -0.28736734, 4.160943, 0.09, 3.671516, 4.160943, 0.09, -0.28736734)
+[ext_resource type="Material" uid="uid://cx2grx2wrmcer" path="res://Material/beige_concrete_wall.tres" id="3_mgnh5"]
+[ext_resource type="Material" uid="uid://dwxood6gckq2t" path="res://Material/smooth_concrete_floor.tres" id="4_wrd0h"]
+[ext_resource type="Material" uid="uid://js0owsl1raqu" path="res://Material/laminate_floor.tres" id="6_wrd0h"]
 
 [node name="TestRoom" instance=ExtResource("1_srpdh")]
 
-[node name="Plane_002" parent="." index="0"]
-material_override = ExtResource("2_ln0w4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Plane_002" index="0"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_002/StaticBody3D" index="0"]
-shape = SubResource("ConvexPolygonShape3D_c42wt")
+[node name="1stFloor" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_8k5sq")
 
 [node name="Plane_001" parent="." index="1"]
-material_override = ExtResource("2_ln0w4")
+surface_material_override/0 = ExtResource("3_mgnh5")
 
 [node name="stairs" parent="." index="2"]
-material_override = ExtResource("2_ln0w4")
+surface_material_override/0 = ExtResource("3_mgnh5")
 
 [node name="landing1" parent="." index="3"]
-material_override = ExtResource("2_ln0w4")
+material_override = ExtResource("2_8k5sq")
+surface_material_override/0 = ExtResource("2_ln0w4")
 
-[node name="2ndFloorWalls" parent="." index="4"]
-material_override = ExtResource("2_ln0w4")
-material_overlay = ExtResource("2_ln0w4")
+[node name="2ndFloorWalls3" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_mgnh5")
 
-[node name="ceilling2" parent="." index="11"]
-material_override = ExtResource("2_ln0w4")
+[node name="2ndfloorwall" parent="." index="11"]
+surface_material_override/0 = ExtResource("3_mgnh5")
 
-[node name="upperfloorwall" parent="." index="12"]
-material_override = ExtResource("2_ln0w4")
+[node name="Cube_001" parent="." index="12"]
+surface_material_override/0 = ExtResource("2_8k5sq")
+surface_material_override/1 = ExtResource("3_mgnh5")
 
-[node name="Cube_001" parent="." index="13"]
-material_override = ExtResource("2_ln0w4")
+[node name="1stFloorRoof" parent="." index="13"]
+surface_material_override/0 = ExtResource("4_wrd0h")
 
-[node name="wall3" parent="." index="14"]
-material_override = ExtResource("2_ln0w4")
+[node name="2ndFloor" parent="." index="14"]
+surface_material_override/0 = ExtResource("6_wrd0h")
+
+[node name="2ndFloorWalls" parent="." index="15"]
+surface_material_override/0 = ExtResource("3_mgnh5")
+
+[node name="2ndfloorfloor" parent="." index="16"]
+surface_material_override/0 = ExtResource("6_wrd0h")
+
+[node name="2ndFloorWalls2" parent="." index="17"]
+material_override = ExtResource("3_mgnh5")
+surface_material_override/0 = ExtResource("2_ln0w4")
+
+[node name="2ndfloorroof" parent="." index="18"]
+surface_material_override/0 = ExtResource("4_wrd0h")
+
+[node name="ThirdFloor" parent="." index="19"]
+surface_material_override/0 = ExtResource("6_wrd0h")
+
+[node name="2ndFloorWalls4" parent="." index="20"]
+surface_material_override/0 = ExtResource("3_mgnh5")
+
+[node name="2ndFloorWalls5" parent="." index="21"]
+surface_material_override/0 = ExtResource("3_mgnh5")
+
+[node name="StairsRoof1" parent="." index="22"]
+surface_material_override/0 = ExtResource("4_wrd0h")
+
+[node name="ThirdFloorWalls" parent="." index="23"]
+surface_material_override/0 = ExtResource("3_mgnh5")
+
+[node name="ThirdFloorWalls2" parent="." index="24"]
+surface_material_override/0 = ExtResource("3_mgnh5")
